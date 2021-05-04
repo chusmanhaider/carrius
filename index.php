@@ -136,7 +136,7 @@
                         switch fast lane for generating more leads and we believe that the<br>
                         habits of car buyers are changing for good in the near future.
                     </p><br><br>
-                    <a href="join.php" class="noUnderline"><button class="btn rightPartBtn"><b>JOIN US</b></button></a>
+                    <a href="join-us.php" class="noUnderline"><button class="btn rightPartBtn"><b>JOIN US</b></button></a>
                 </div>
             </div>
         </div>

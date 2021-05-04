@@ -292,7 +292,7 @@
                     <hr style="border: 2px solid #047cf3;width:65px;stroke: #047cf3; fill: #047cf3;margin-top:-8px;margin-bottom:10px">
                     <div class="linkDiv setAlign">
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a dealer</a>
+                            <a href="join-us.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a dealer</a>
                         </span>
                         <span class="linkContent">
                             <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a member</a>

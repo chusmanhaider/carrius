@@ -1,0 +1,66 @@
+.wrapper{
+    top:84px;
+    position: relative;
+}
+.hrUnderStyle{
+    margin-left:39%;
+    width:240px;
+}
+#innerContainer{
+    margin-left:15%;
+}
+.alignCenter{
+    margin-left: 344px;
+    margin-top:-10px;
+}
+.firstRow,.row{
+    margin-top:25px;
+}
+#submitBtn{
+    margin-left:10px;
+    height:40px;
+    color:white;
+    font-weight: bold;
+    background-color:#044cc4;
+    border:1px solid #044cc4;
+    border-radius: 5px;
+    width:100px;
+    font-size:18px;
+}
+.lastDiv{
+    background-color: white;
+    
+}
+.lastHeading{
+    float:right;
+    margin-right:140px;
+    margin-bottom: 55px;
+    font-weight: bold;
+}
+@media (max-width:575px){
+    #innerContainer{
+        margin-left:5%;
+    }
+    .wrapper{
+        top:132px;
+        position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:23%;
+        width:240px;
+    }
+    .alignCenter{
+        margin-left: 20px;
+        margin-top:-10px;
+    }
+    .addSpace{
+        margin-top:25px;
+    }
+    .lastHeading{
+        font-size:20px;
+        float: right;
+        margin-right:10px;
+        margin-bottom: 70px;
+        font-weight: bold;
+    }
+}
