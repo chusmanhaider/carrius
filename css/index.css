@@ -1,0 +1,296 @@
+
+/*xs*/
+@media (min-width:576px) and (max-width:767px){
+    .wrapper{
+        top:182px;
+        position: relative;
+    }
+}
+@media (min-width:768px) and (max-width:991px){
+    .wrapper{
+        top:82px;
+        position: relative;
+    }
+}
+.wrapper{
+    top:84px;
+    position: relative;
+}
+.left-center {
+    position: absolute;
+    top: 2%;
+    left: 12%;
+    font-size:46px;
+    font-weight: bold;
+    color:white;
+    
+}
+.headerBtn{
+    background-color:white;
+    color:black;
+    width:260px;
+    padding:10px;
+    height:48px;
+    border-radius:30px;
+    position: absolute;
+    top: 98%;
+    
+    text-align: center;
+    font-weight:bold;
+    font-size:20px;
+    border:1px solid white;
+    
+}
+.custom-padding{
+    width: 100%;
+    padding-left: 5%;
+}
+.browseByCar >span > img{
+    width:100px;
+    height:58px;
+    margin-top:30px;
+    margin-left:51px;
+}
+.browseByCar{
+    display:flex;
+    flex-wrap: wrap;
+    float:left;
+    margin-top:-15px;
+    margin-left:-25px;
+}
+.textBrowseCar{
+    text-align:bottom;
+    color:grey;
+    margin-left:64px;
+    font-size:12px;
+    font-weight:bold;
+    margin-top:10px;
+    cursor:pointer;
+}
+@media (max-width:575px){
+    .browseByCar{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content:center;
+    }
+    .browseByCar >span > img{
+      width:80px;
+      height:48px;
+      margin-top:30px;
+      margin-left:51px;
+    }
+    .wrapper{
+        top:136px;
+        position: relative;
+    }
+    .left-center {
+        position: absolute;
+        top: 1%;
+        left: 6%;
+        font-size:20px;
+        font-weight: bold;
+        color:white;
+        
+    }
+    .headerBtn{
+        background-color:white;
+        color:black;
+        width:140px;
+        padding:2px;
+        height:24px;
+        border-radius:30px;
+        position: absolute;
+        top: 98%;
+        text-align: center;
+        font-weight:bold;
+        font-size:13px;
+        border:1px solid white;
+        
+    }
+    
+    .jumboo{
+        width:100%;
+        height:790px;
+    }
+    .howItWorks{
+      
+    }
+    .worksContent{
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        column-count: 4;
+        justify-content:space-evenly;
+        margin-left: 10px;
+    }
+    #ulList{
+        width:200px;
+    }
+    .firstWorkContent{
+        margin-left:-80px;
+    }
+    .thirdWorkContent{
+        margin-left:-1px;
+    }
+    .fourthWorkContent{
+        margin-right: 2px;
+    }
+    .clearMe{
+        clear:both;
+    }
+    .leftPara{
+        float: left;
+        margin-left:15px;
+        margin-top:10px;
+    }
+    .leftHeading{
+        float: left;
+        margin-left: 15px;
+    }
+    .rightPartBtn{
+        float:right;
+        background-color:white;
+        color:blue;
+        width:165px;
+        padding:7px;
+        margin-right:15px;
+        font-weight:bold;
+        border:1px solid white;
+        border-radius:5px;
+    }
+    .rightPartBtn:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    .addBreak{
+        display: inline-block;
+    }
+    .browseCarBrand{
+        margin-top: 220px;
+    }
+    .browseCarDL{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex:25%;
+    }
+    .browseCarDD{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex:20%;
+        margin-top:10px;
+    }
+}
+.browseByCarBrand{
+    display: flex;
+    flex-direction: row;
+    max-width: 93%;
+    margin-left:3.5%;
+}
+.browseCarDL{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex:25%;
+}
+.browseCarDD{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex:20%;
+    margin-top:10px;
+}
+.carBrands,.carBrands:hover{
+    color:#999999;
+    text-decoration: none;
+    font-size:18px;
+}
+.addBreak{
+    display: none;
+}
+.howItWorks{
+    width: 100%;
+    padding-left: 5%;
+    
+}
+.works{
+    width:90%;
+    height:290px;   
+}
+.isCheckedLogo{
+    width:12px;
+    height:12px;
+    margin-right:2px;
+    align-items:center;
+    border-radius: 50%;
+}
+ul>li{
+    list-style-type: none;
+    line-height:22px;
+}
+.isBold{
+    font-weight: bold;
+    text-align: center;
+}
+.firstWorkContent{
+    margin-bottom:80px;
+}
+.worksContent{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    column-count: 4;
+    justify-content:space-evenly;
+    margin-left: 40px;
+}
+.firstWorkContent{
+    margin-top:80px;
+}
+.leftPartBtn,.rightPartBtn{
+    float:right;
+    background-color:white;
+    color:#000;
+
+    width:165px;
+    padding:7px;
+    margin-right:45px;
+    font-weight:bold;
+    border-radius:5px;
+}
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+.joining,.joinBuyer,.joinDealer{
+    height:220px;
+}
+
+.rightPara{
+    float: left;
+    margin-left:22px;
+    margin-top:10px;
+    
+}
+.leftPara{
+    float: right;
+    margin-right:62px;
+    margin-top:10px;
+    max-width: 430px;
+}
+.leftHeading{
+    float: left;
+    margin-left:26%;
+}
+.rightHeading{
+    float: left;
+    margin-left:5%;
+}
+.rightPartBtn{
+    float:right;
+    background-color:white;
+    margin-right:145px;
+    font-weight:bold;
+    border-radius:5px;
+    margin-top:18px;
+}

@@ -1,0 +1,29 @@
+.wrapper{
+    top:82px;
+    position: relative;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:132px;
+        position: relative;
+    }
+
+}
+
+
+.covid-descrption{
+    display: flex;
+    flex-direction: row;
+}
+.left-span{
+    flex: 75%;
+}
+.right-span{
+    flex: 25%;
+    margin-right: -10px;
+}
+.changeColor{
+    background-color: #F0F0F0;
+    width:100%;
+    padding:10px;
+}
