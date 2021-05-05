@@ -13,7 +13,7 @@
     <?php
         include_once "header.php";
     ?>
-    <div class="wrapper">
+    <div class="wrapper" style="background-color: white;">
         <div class="container-fluid setHeight" style="background-color: #044cc4;">
             <div class="innerBlock">
                 <h3 class="text-center alignHeading"><b>Services we offer at Carrius.net</b></h3>
@@ -31,7 +31,7 @@
             <div class="innerContainer">
                 <div class="row">
                     <div class="col col-lg-3 col-xs-6 firstCol">
-                        <img src="resources/Icons png/user.png" style="margin-left:50px" width="100px" height="100px">
+                        <img src="resources/Updated Icons/layout.png" style="margin-left:50px" width="100px" height="100px">
                         <h4  style="color:black;text-align:center">Website Interface</h4>
                         <p  style="color:#999999;font-size:16px;text-align:center;">
                             User Interface is our priority and at Carrius.net, we have a seamless blend
@@ -41,7 +41,7 @@
                         </p> 
                     </div>
                     <div class="col col-lg-3 col-xs-6 addMargin">
-                        <img src="resources/Icons png/user.png" style="margin-left:50px" width="100px" height="100px">
+                        <img src="resources/Updated Icons/filter.png" style="margin-left:50px" width="100px" height="100px">
                         <h4 style="color:black;text-align:center">Sorting System</h4>
                         <p  style="color:#999999;font-size:16px;text-align:center;">
                             User Interface is our priority and at Carrius.net, we have a seamless blend
@@ -51,7 +51,7 @@
                         </p> 
                     </div>
                     <div class="col col-lg-3 col-xs-6 addMargin">
-                        <img src="resources/Icons png/user.png" style="margin-left:50px" width="100px" height="100px">
+                        <img src="resources/Updated Icons/connection.png" style="margin-left:50px" width="100px" height="100px">
                         <h4 style="color:black;text-align:center">Communication</h4>
                         <p  style="color:#999999;font-size:16px;text-align:center;">
                             User Interface is our priority and at Carrius.net, we have a seamless blend
@@ -61,9 +61,9 @@
                         </p> 
                     </div>
                     <div class="col col-lg-3 col-xs-6 addMargin">
-                        <img src="resources/Icons png/user.png" style="margin-left:50px" width="100px" height="100px">
+                        <img src="resources/Updated Icons/cyber-security.png" style="margin-left:50px" width="100px" height="100px">
                         <h4 style="color:black;text-align:center">Data Security</h4>
-                        <p  style="color:#999999;font-size:16px;text-align:center;">
+                        <p  style="color:#999999;font-size:16px;text-align:center;width:100%">
                             User Interface is our priority and at Carrius.net, we have a seamless blend
                             of minimilistic visual design, interaction design and relevant information
                             about how to buy a car the smart way. We believe that user interaction is a
