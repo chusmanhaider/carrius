@@ -1,0 +1,163 @@
+.wrapper{
+    top:80px;
+    position: relative;
+    color: white;
+}
+.hrUnderStyle{
+    margin-left:38%;
+    width:320px;
+}
+.alignCenter{
+    margin-left: 394px;
+    margin-top:-10px;
+}
+.btnAlign{
+    margin-left: 43%;
+}
+.servicesBtn{
+    background-color: white;
+    border:1px solid white;
+    border-radius:5px;
+    width:150px;
+    margin-top: 10px;
+    height: 30px;
+    color:black;
+    margin-bottom: 40px;
+}
+.styleUs{
+    margin-left: 90px;
+}
+#textAlign{
+    color:#044cc4;
+    background-color: white;
+    text-align: center;
+    
+}
+.setToAlignP{
+    margin-top:20px;
+}
+.iContainer{
+    margin-top:20px;
+    margin-left:10%;
+}
+.alignImgImg{
+    margin-left: -45px;
+}
+.innerContainer{
+    max-width: 80%;
+    margin-left:15%;
+}
+.alignImg{
+    margin-left: 40px;
+}
+.changeColor{
+    color:black;
+    width: 100%;
+}
+.changeColorToGrey{
+    color:#999999;
+}
+.alignSomeTop{
+    margin-top:10px;
+}
+
+.alignImgQ{
+    margin-left: -10px;
+    margin-top:10px;
+}
+.alignImgP{
+    margin-left: 60px;
+    margin-top:10px;
+}
+.alignImgR{
+    margin-left: 50px;
+    margin-top:10px;
+}
+.downBlock{
+    margin-left:-20px;
+}
+.alignBottom{
+    padding-top:170px;
+}
+.badge{
+    margin-left: 20px;
+}
+.addSomeMargin{
+    margin-left: 130px;
+}
+.addSomeMarginCen{
+    margin-left: 60px;
+}
+.maxheight{
+    height:400px;
+}
+.btnBrowse{
+    width:145px;
+    background-color: #044cc4;
+    color:white;
+    border:1px solid #044cc4;
+    border-radius:5px;
+    font-weight:bold;
+    height:30px;
+    margin-left: 45%;
+    margin-top:25px;
+    margin-bottom:40px;
+
+}
+@media (max-width:575px){
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:23%;
+        width:240px;
+    }
+    .alignCenter{
+        margin-left: 5px;
+        margin-top:-10px;
+    }
+    .btnAlign{
+        margin-left: 40%;
+    }
+    .alignImg{
+        margin-left:36%;
+    }
+    .servicesBtn{
+        width:120px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .alignImgQSec{
+        margin-left:-30px;
+    }
+    .styleUs{
+        margin-left: 0px;
+    }
+    .alignBottom{
+        padding-top:10px;
+    }
+    .addSomeMargin{
+        margin-left: 0px;
+    }
+    .addSomeMarginCen{
+        margin-left: 0px;
+    }
+    .alignImgTw,.alignImgImg{
+        margin-left:15%;
+        margin-top:20px;
+    }
+    .btnBrowse{
+        width:145px;
+        background-color: #044cc4;
+        color:white;
+        border:1px solid #044cc4;
+        border-radius:5px;
+        font-weight:bold;
+        height:30px;
+        margin-left: 38%;
+        margin-top:25px;
+        margin-bottom:90px;
+    
+    }
+}

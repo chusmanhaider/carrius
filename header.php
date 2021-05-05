@@ -177,7 +177,7 @@
                     </a>
                     <ul style="min-width: auto;" class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="faq.php">How it Works?</a>
+                            <a href="how-it-works.php">How it Works?</a>
                         </li>
                         <li>
                             <a href="our-services.php">Our Services</a>
