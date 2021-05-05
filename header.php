@@ -186,7 +186,7 @@
                             <a href="COVID-19.php">COVID-19</a>
                         </li>
                         <li>
-                            <a href="contactus.php">Contact Us</a>
+                            <a href="contact-us.php">Contact Us</a>
                         </li>
                     </ul>
                 </li>
@@ -198,7 +198,7 @@
                         </span>
                     </a>
                     <ul id="loginView" class="dropdown-menu">
-                        <span data-toggle="tooltip" title="As Dealer"><a class="firstLink loginBtns" href="#" role="button"><button class="btn btn-primary btn-xs">Sign Up</button></a></span>
+                        <span data-toggle="tooltip" title="As Dealer"><a class="firstLink loginBtns" href="join-us.php" role="button"><button class="btn btn-primary btn-xs">Sign Up</button></a></span>
                         <a id="secondLink" class="loginBtns" href="#" role="button"><button class="btn btn-info btn-xs">Sign In</button></a>
                     </ul>
                     

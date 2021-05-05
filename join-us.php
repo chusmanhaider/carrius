@@ -168,5 +168,10 @@
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+        });
+    </script>
 </body>
 </html>

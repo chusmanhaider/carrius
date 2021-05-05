@@ -311,10 +311,10 @@
                             <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Our services</a>
                         </span>
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Contact us</a>
+                            <a href="contact-us.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Contact us</a>
                         </span>
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> FAQs</a>
+                            <a href="faq.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> FAQs</a>
                         </span>
                     </div>
                 </div>

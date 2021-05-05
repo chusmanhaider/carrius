@@ -1,0 +1,26 @@
+.wrapper{
+    top:84px;
+    position: relative;
+}
+.hrUnderStyle{
+    margin-left:39%;
+    width:240px;
+}
+.alignCenter{
+    margin-left: 304px;
+    margin-top:-10px;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:132px;
+        position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:23%;
+        width:240px;
+    }
+    .alignCenter{
+        margin-left: 5px;
+        margin-top:-10px;
+    }
+}
