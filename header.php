@@ -180,7 +180,7 @@
                             <a href="faq.php">How it Works?</a>
                         </li>
                         <li>
-                            <a href="Dashboard/New cars.php">Our Services</a>
+                            <a href="our-services.php">Our Services</a>
                         </li>
                         <li>
                             <a href="COVID-19.php">COVID-19</a>

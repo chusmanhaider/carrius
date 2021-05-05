@@ -1,0 +1,104 @@
+.wrapper{
+    top:80px;
+    position: relative;
+    color: white;
+}
+.hrUnderStyle{
+    margin-left:38%;
+    width:320px;
+}
+.alignCenter{
+    margin-left: 394px;
+    margin-top:-10px;
+}
+.btnAlign{
+    margin-left: 37%;
+}
+.faqBtn{
+    color:#044cc4;
+    background-color: white;
+    border:1px solid white;
+    border-radius:5px;
+    font-weight: bold;
+    width:120px;
+    margin-top: 20px;
+}
+.joinBtn{
+    background-color:#044cc4;
+    color: white;
+    border:1px solid white;
+    border-radius:5px;
+    font-weight: bold;
+    margin-left:115px;
+    width:120px;
+    margin-top: 20px;
+}
+.firstCol{
+   max-width:410px;
+}
+.innerContainer{
+    max-width: 80%;
+    margin-left:9%;
+    margin-top:3%;
+}
+.lastPart{
+    float:right;
+    margin-right:100px;
+}
+#btnGetTouch{
+    background-color:#044cc4;
+    color: white;
+    border:1px solid #044cc4;
+    border-radius:5px;
+    font-weight: bold;
+    width:180px;
+    height:30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.setHeight{
+    height:180px;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:23%;
+        width:240px;
+    }
+    .alignCenter{
+        margin-left: 5px;
+        margin-top:-10px;
+    }
+    .btnAlign{
+        margin-left: 15%;
+    }
+    .faqBtn{
+        width:120px;
+        margin-top: 20px;
+    }
+    .joinBtn{
+        
+        margin-left:115px;
+        width:120px;
+        margin-top: 20px;
+    }
+    .setHeight{
+        height:200px;
+    }
+    #btnGetTouch{
+        background-color:#044cc4;
+        color: white;
+        border:1px solid #044cc4;
+        border-radius:5px;
+        font-weight: bold;
+        width:180px;
+        height:30px;
+        float:right;
+        margin-right: 40px;
+        margin-top: 10px;
+        margin-bottom: 60px;
+    }
+}

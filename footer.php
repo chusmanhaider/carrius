@@ -308,7 +308,7 @@
                             <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> About carrius</a>
                         </span>
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Our services</a>
+                            <a href="our-services.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Our services</a>
                         </span>
                         <span class="linkContent">
                             <a href="contact-us.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Contact us</a>
