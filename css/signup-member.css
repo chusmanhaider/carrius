@@ -1,0 +1,11 @@
+.wrapper{
+    top:95px;
+    position: relative;
+    color: white;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+}

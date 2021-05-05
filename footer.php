@@ -295,7 +295,7 @@
                             <a href="join-us.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a dealer</a>
                         </span>
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a member</a>
+                            <a href="signup-member.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> As a member</a>
                         </span>
                     </div>
                 </div>
