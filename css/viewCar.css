@@ -3,6 +3,12 @@
     position: relative;
     color: white;
 }
+
+.iContainer{
+    max-width: 80%;
+    margin-left: 8%;
+}
+
 @media (max-width:575px){
     .wrapper{
         top:131px;

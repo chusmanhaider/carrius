@@ -1,0 +1,175 @@
+.wrapper{
+    top:95px;
+    position: relative;
+    color: white;
+}
+
+.iContainer{
+    max-width: 80%;
+    margin-left: 8%;
+}
+.marginLeft{
+    margin-left: 32px;
+}
+.textPara{
+    max-width: 110%;
+}
+.thisbox{
+    width:100%;
+    background-color: white;
+    color: black;
+}
+.alignMe{
+    margin-left: 70px;
+}
+.addTopMargin{
+    margin-top: 14px;
+}
+#signUpBtn,#signUpBtnDummy{
+    width:100%;
+    background-color: #047cf3;
+    color:white;
+    border:1px solid #047cf3;
+    font-weight: bold;
+    height:30px;
+    border-radius: 5px;
+}
+#signInBtn,#signInBtnDummy{
+    width:100%;
+    background-color: #044cc4;
+    color:white;
+    border:1px solid #044cc4;
+    font-weight: bold;
+    height:30px;
+    border-radius: 5px;
+}
+.hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    margin: 8px 0px;
+}
+.hr-sect:before,
+.hr-sect:after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 8px;
+}
+.boxSet{
+    background-color: white;
+    float:right;
+    margin-right:-100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    height:380px;
+    margin-bottom: 35px;
+}
+.topMargin{
+    margin-top: 40px;
+}
+.topMarginB{
+    margin-top: 30px;
+}
+.alignHeading{
+    color:black;
+}
+.hrUnderStyle{
+    margin-left:38%;
+    width:280px;
+}
+.setMarginForm{
+    margin-left:12px;
+}
+.usedCarDetail{
+    margin-left: 8%;
+}
+.eachBlock{
+    height:50%;
+    margin-top:20px;
+    margin-bottom:130px;
+    display: grid;
+    max-width: 300px;
+    margin-left: 35px;
+}
+.infoSet{
+    color:grey;
+    font-weight: bold;
+    font-size:14px;
+}
+.loctionInfo{
+    color:#135fd7;
+    font-size:14px;
+    text-transform:capitalize;
+}
+strong{
+    color: #135fd7;
+    font-weight: bold;
+    font-size:18px;
+}
+.viewCarBtn{
+    float:right;
+    background-color:#044cc4;
+    color:white;
+    width:115px;
+    display:inline-block;
+    padding:1px;
+    margin-right:55px;
+    font-weight:bold;
+    border:2px solid white;
+    border-radius:8px;
+    
+}
+#noCarFound
+{
+    text-align:center;
+    color:red;
+    margin-top:20px; 
+    margin-bottom:40px;
+    margin-right:3%;
+}
+@media (max-width:575px){
+    .boxSet{
+        background-color: white;
+        margin-right:70px;
+        width:73%;
+        margin-top: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        padding-top: 10px;
+        padding-bottom: 20px;
+        height:380px;
+        margin-bottom: 35px;
+    }
+    .setMarginForm{
+        margin-left:-2px;
+    }
+    .usedCarDetail{
+        margin-left: 22%;
+    }
+    .eachBlock{
+        margin-left:-3px;
+    }
+    .hrUnderStyle{
+        margin-left:20%;
+        width:280px;
+    }
+    #noCarFound{
+        margin-bottom: 65px;
+        text-align:center;
+        color:red;
+        margin-top:10px; 
+        margin-right:5%;
+    }
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+}

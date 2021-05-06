@@ -7,6 +7,7 @@
     <link href="Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
     <link href="css/used-cars.css" rel="stylesheet">
+    <link href="css/scrollbar.css" rel="stylesheet">
     <style>
         .alignAddMoreCarBtn{
             float:right;
