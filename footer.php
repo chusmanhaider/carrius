@@ -277,7 +277,7 @@
                             <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Car dealer locator</a>
                         </span>
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Vehicle research</a>
+                            <a href="all-cars-model.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> All cars model</a>
                         </span>
                         <span class="linkContent">
                             <a href="COVID-19.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> COVID-19</a>

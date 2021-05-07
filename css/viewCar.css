@@ -105,6 +105,13 @@ strong{
     border-radius:8px;
     
 }
+.styleFavIcon{
+    position: absolute;
+    top:4%;
+    left:81%;
+    cursor: pointer;
+    text-decoration: none;
+}
 .setFontSize{
     margin-left: 3px;
 }
@@ -124,7 +131,7 @@ strong{
 .detailUnder{
     /*background-color: #999999;*/
     color: grey;
-    background-color:#eaeaea;
+    background-color:#f7f7f7;
     width:100%;
     display: block;
     margin-bottom: 20px;
@@ -140,6 +147,11 @@ strong{
     margin-left:39%;
     width:260px;
 }
+.hrUnderStyleDInfo{
+    margin-left:1%;
+    width:160px;
+}
+
 .eachBlock{
     height:50%;
     margin-top:20px;
@@ -152,6 +164,120 @@ strong{
     color:grey;
     font-weight: bold;
     font-size:14px;
+}
+.hrUnderStylevOver{
+    margin-left: 11px;
+    width:110px;
+    margin-top: -10px;
+}
+.hrUnderStylevKey{
+    margin-left: 11px;
+    width:84px;
+    margin-top: -10px;
+}
+.iContainerInfo{
+    max-width: 80%;
+    margin-left: 13.5%;
+    padding-top: 20px;
+    padding-left:20px;
+    padding-bottom: 40px;
+    height:225px;
+}
+.setFontColor{
+    color:black;
+}
+#ratingHead{
+    margin-top: -24px;
+    margin-left: 35px;
+}
+.stars{
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #047cf3;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.selectColor{
+    background-color: #044cc4;
+    color: white;
+    border:1px solid#044cc4;
+    border-radius: 5px;
+    height: 35px;
+}
+.contactBtns{
+    margin-left: -70px;
+    margin-top: 140px;
+}
+.firstBtn{
+    margin-bottom: -120px;
+}
+.numVal{
+    color:#047cf3;
+    display: block;
+    margin-left: 13%;
+    font-weight: bold;
+}
+#contactDBtn{
+    width:160px;
+}
+#viewCBtn{
+    width:220;
+}
+.secBtn{
+    margin-left: 25px;
+}
+/*
+.setMaxChar{
+    display:inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20ch;
+}*/
+.addMarginTopX{
+    margin-top: 10px;
+}
+.addMarginTopY{
+    margin-top: 5px;
+}
+.dealershipListing,
+.locationListing,
+.timingListing{
+    display: block;
+}
+.dealershipDetail{
+    display: inline-block;
+    width:100%;
+}
+.infoContent{
+    margin-left: 30px;
+}
+.iContainerOverview, .iContainerKey{
+    max-width: 80%;
+    margin-left: 15%;
+}
+/* First Table*/
+.firstTable{
+    margin-left: 7px;
+}
+
+/* Second Table*/
+.secondTable{
+    margin-left: 20px;
+}
+/* Third Table*/
+.thirdTable{
+    margin-left: 5px;
+}
+.thirdTable>td{
+    margin-left: 3px;
+}
+.setTD{
+    float: left;
+    margin-left:-25px;
+}
+tr {
+    border-style:hidden;
 }
 @media (max-width:575px){
     .wrapper{
@@ -207,5 +333,56 @@ strong{
     .timing{    
         margin-left: 10px;
         display: block;
+    }
+    .styleFavIcon{
+        position: absolute;
+        top:4%;
+        left:99%;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .iContainerOverview, .iContainerKey{
+        max-width: 80%;
+        margin-left: 9%;
+    }
+    .secondTable,.thirdTable{
+        margin-left: -1px;
+    }
+    .setTD{
+        margin-left: 0px;
+        justify-content:space-evenly;
+    }
+    .setTDT{
+        margin-left: 30px;
+        justify-content:space-evenly;
+    }
+    #ratingHead{
+        margin-top: 10px;
+        margin-left: 35px;
+    }
+    .contactBtns{
+        margin-left: 0px;
+    }
+    #contactDBtn,#viewCBtn{
+        width:auto;
+    }
+    .secBtn{
+        margin-left: 10px;
+    }
+    .iContainerInfo{
+        max-width: 80%;
+        margin-left: 7.5%;
+        padding-top: 20px;
+        padding-left:30px;
+        padding-bottom: 40px;
+        height:510px;
+    }
+    #noCarFound
+    {
+        text-align:center;
+        color:red;
+        margin-top:10px; 
+        margin-bottom:80px;
+        margin-right:2%;
     }
 }

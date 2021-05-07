@@ -127,6 +127,13 @@ strong{
     border-radius:8px;
     
 }
+.styleFavIcon{
+    position: absolute;
+    top:4%;
+    left:81%;
+    cursor: pointer;
+    text-decoration: none;
+}
 #noCarFound
 {
     text-align:center;
@@ -171,5 +178,12 @@ strong{
     .wrapper{
         top:131px;
         position: relative;
+    }
+    .styleFavIcon{
+        position: absolute;
+        top:4%;
+        left:99%;
+        cursor: pointer;
+        text-decoration: none;
     }
 }
