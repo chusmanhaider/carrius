@@ -1,17 +1,180 @@
 .wrapper{
-    top:95px;
+    top:82px;
     position: relative;
     color: white;
 }
 
-.iContainer{
-    max-width: 80%;
-    margin-left: 8%;
+.iContainer,.imgArea{
+    max-width: 90%;
+    margin-left: 14%;
+    margin-top: 3%;
+}
+.favIcon{
+    position: absolute;
+    top:10px;
+    left:90%;
+    cursor: pointer;
+}
+#displayCar{
+    width:620px; 
+    height:350px;
+}
+.msgDealer{
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.vidCall{
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+.recommendedText{
+    width: 200px;
+}
+.msgDealerBtn{
+    width:295px;
+    color:white;
+    background-color: #047cf3;
+    height: 38px;
+    font-weight: bold;
+    border: 1px solid #047cf3;
+}
+.vidCallBtn{
+    width:295px;
+    color:white;
+    background-color: #044cc4;
+    height: 38px;
+    font-weight: bold;
+    border: 1px solid #044cc4;
+}
+.emailBtn{
+    width:295px;
+    background-color:white;
+    color: black;
+    height: 38px;
+    font-weight: bold;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px; 
+}
+.infoSetUpper{
+    color:black;
+    font-weight: bold;
+    font-size:16px;
+    margin-top: -10px;
 }
 
+.smallText{
+    color:black;
+}
+strong{
+    color: #135fd7;
+    font-weight: bold;
+    font-size:18px;
+    margin-top: -10px;
+}
+.viewCarBtn{
+    float:right;
+    background-color:#044cc4;
+    color:white;
+    width:115px;
+    display:inline-block;
+    padding:1px;
+    margin-right:55px;
+    font-weight:bold;
+    border:2px solid white;
+    border-radius:8px;
+    
+}
+.setFontSize{
+    margin-left: 3px;
+}
+/*
+.detailUnder{
+    /*background-color: #999999;
+    color: grey;
+    height: 20px;
+    margin-top: 5px;
+    background-color:#eaeaea;
+    width:100%;
+    border-radius:5px;
+    margin-bottom: 20px;
+    padding:8px;
+}*/
+.dealership{
+    margin-left: 5px;
+    width: 30%;
+    display: inline-block;
+}
+.location{
+    width: 25%;
+    display: inline-block;
+}
+.timing{    
+    
+    display: inline-block;
+}
+.detailUnder{
+    /*background-color: #999999;*/
+    color: grey;
+    background-color:#eaeaea;
+    width:100%;
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    height: 30px;
+    line-height: 30px;
+}
 @media (max-width:575px){
     .wrapper{
         top:131px;
         position: relative;
+    }
+    .iContainer,.imgArea{
+        max-width: 88%;
+        margin-top: 4%;
+        margin-left: 6%;
+    }
+    #displayCar{
+        width:438px; 
+        height:250px;
+        margin-top:1%;
+    }
+    .favIcon{
+        position: absolute;
+        top:20px;
+        left:87%;
+        cursor: pointer;
+    }
+    .setFontSize{
+        margin-left: 3px;
+        font-size: 14px;
+    }
+    .detailUnder{
+        /*background-color: #999999;*/
+        color: grey;
+        background-color:#eaeaea;
+        width:100%;
+        display: block;
+        height: 100px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        padding:3px;
+
+    }
+    .dealership{
+        margin-left: 10px;
+        display: block;
+        width: 100%;
+    }
+    .location{
+        display: block;
+        margin-left: 10px;
+        width: 100%;
+    }
+    .timing{    
+        margin-left: 10px;
+        display: block;
     }
 }
