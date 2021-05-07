@@ -136,7 +136,7 @@
                                 }
                                 else
                                 {
-                                    echo "<h3 style='' id='noCarFound'> No new car found..</h3>";
+                                    echo "<h3 style='' id='noCarFound'> No car found..</h3>";
                                 }
                             ?>
                         </span>

@@ -74,6 +74,24 @@ strong{
     font-size:18px;
     margin-top: -10px;
 }
+.infoSet{
+    color:grey;
+    font-weight: bold;
+    font-size:14px;
+}
+.loctionInfo{
+    color:#135fd7;
+    font-size:14px;
+    text-transform:capitalize;
+}
+#noCarFound
+{
+    text-align:center;
+    color:red;
+    margin-top:20px; 
+    margin-bottom:40px;
+    margin-right:2%;
+}
 .viewCarBtn{
     float:right;
     background-color:#044cc4;
@@ -90,18 +108,6 @@ strong{
 .setFontSize{
     margin-left: 3px;
 }
-/*
-.detailUnder{
-    /*background-color: #999999;
-    color: grey;
-    height: 20px;
-    margin-top: 5px;
-    background-color:#eaeaea;
-    width:100%;
-    border-radius:5px;
-    margin-bottom: 20px;
-    padding:8px;
-}*/
 .dealership{
     margin-left: 5px;
     width: 30%;
@@ -126,10 +132,35 @@ strong{
     height: 30px;
     line-height: 30px;
 }
+.alignHeading{
+    color:black;
+    margin-top: 30px;
+}
+.hrUnderStyle{
+    margin-left:39%;
+    width:260px;
+}
+.eachBlock{
+    height:50%;
+    margin-top:20px;
+    margin-bottom:130px;
+    display: grid;
+    max-width: 300px;
+    margin-left: 35px;
+}
+.infoSet{
+    color:grey;
+    font-weight: bold;
+    font-size:14px;
+}
 @media (max-width:575px){
     .wrapper{
         top:131px;
         position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:23%;
+        width:260px;
     }
     .iContainer,.imgArea{
         max-width: 88%;
