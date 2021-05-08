@@ -1,0 +1,155 @@
+.wrapper{
+    top:82px;
+    position: relative;
+    color: white;
+}
+.iContainer{
+    max-width: 90%;
+    margin-left: 12%;
+    margin-top: 4%;
+}
+.leftMenuU{
+    width:80%;
+    height:540px; /*Change it later to 400px*/
+    border-radius: 5px;
+    background-color: grey;
+    padding: 5px;
+}
+.styleDBusiness{
+    margin-top: 10px;
+    margin-left:5px;
+    display:block;
+}
+.contactDSpan{
+    margin-top: 10px;
+}
+#contactDBTn{
+    margin-left: 10%;
+    background-color: #044cc4;
+    color:white;
+    margin-top: 10px;
+    width: fit-content;
+    border:1px solid #044cc4;
+    border-radius: 5px;
+    height: 30px;
+    width:80%;
+    margin-bottom: 15px;
+}
+.activeLink{
+    background-color: #d8d4d4;
+    color:black;
+}
+.activeLink:after{
+    background-color: #044cc4;
+    border-color: #044cc4;
+    content: "";
+    display: inline-block;
+    float: right;
+    margin-right: -15px;
+    width: 7px;
+    height: 40px;
+    position: relative;
+    top: 0px;
+    border: 1px solid #044cc4;
+    margin-top: -10px;
+    
+}
+#headerImg{
+    width:90%;
+    height:350px;
+    border-radius: 5px;
+}
+.sinceYear{
+    text-align: center;
+    margin-top: 5px;
+}
+.logoImg{
+    margin-left: 65px;
+}
+#firstStar{
+    margin-left: 5px;
+}
+#firstStar, #secStar, #thirdStar, #fourthStar, #fiveStar{
+    margin-top:10px;
+}
+.sinceYear{
+    display: block;
+}
+.stars{
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #047cf3;
+    margin-left: 3px;
+    cursor: pointer;
+}
+.styleNavBtns{
+    width:113%;
+    margin-left:-6.6%;
+}
+
+@media (max-width:575px){
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+    .iContainer{
+        max-width: 90%;
+        margin-left: 5%;
+        margin-top: 4%;
+    }
+    .leftMenuU{
+        width:80%;
+        height:520px;
+        border-radius: 5px;
+        background-color: grey;
+        padding: 5px;
+    }
+    .logoImg{
+        margin-left: 155px;
+    }
+    .stars{
+        -webkit-text-fill-color: white;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #047cf3;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+    #firstStar{
+        margin-left: 90px;
+    }
+    .styleDBusiness{
+        margin-top: 10px;
+        margin-left:65px;
+        display:block;
+    }
+    #headerImg{
+        width:107%;
+        height:280px;
+        margin-left: -14px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    #side-menu{
+        margin-top: 9.5%;
+    }
+    .styleNavBtns{
+        width:107%;
+        margin-top: 5%;
+        margin-left:-3.3%;
+    }
+    .activeLink:after{
+        background-color: #044cc4;
+        border-color: #044cc4;
+        content: "";
+        display: inline-block;
+        float: right;
+        margin-right: -15px;
+        width: 7px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+        border: 1px solid #044cc4;
+        margin-top: -10px;
+        
+    }
+}

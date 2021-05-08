@@ -151,11 +151,84 @@
                 <div class="iContainerKey">
                     <h4 style="color:black">Key Features</h4>
                     <hr class="hrUnderStylevKey" style="border: 1px solid #047cf3;stroke: #047cf3; fill: #047cf3;margin-top:-7px;">
-
+                    <span class="row">
+                        <div class="col col-lg-4">
+                            <table class="table firstTable">
+                                <tr>
+                                    <th>Year</th>
+                                    <td class="setTD" style="border-style:hidden;">2020</td>
+                                </tr>
+                                <tr>
+                                    <th>Body Type</th>
+                                    <td class="setTD" style="border-style:hidden;">Sedan</td>
+                                </tr>
+                                <tr>
+                                    <th>Colour</th>
+                                    <td class="setTD" style="border-style:hidden;">Red</td>
+                                </tr>
+                                <tr>
+                                    <th>Doors</th>
+                                    <td class="setTD" style="border-style:hidden;">5</td>
+                                </tr>
+                                <tr>
+                                    <th>Seats</th>
+                                    <td class="setTD" style="border-style:hidden;">5</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col col-lg-4">
+                            <table class="table secondTable">
+                                <tr>
+                                    <th>Fuel Type</th>
+                                    <td class="setTDT">2020</td>
+                                </tr>
+                                <tr>
+                                    <th>CO<sub>2</sub> emissions</th>
+                                    <td class="setTDT">98 Grams/kg</td>
+                                </tr>
+                                <tr>
+                                    <th>No of Gears</th>
+                                    <td class="setTDT">4</td>
+                                </tr>
+                                <tr>
+                                    <th>Tank capacity</th>
+                                    <td class="setTDT">n/a</td>
+                                </tr>
+                                <tr>
+                                    <th>Horsepower</th>
+                                    <td class="setTDT">480 Hp</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col col-lg-4">
+                            <table class="table thirdTable">
+                                <tr>
+                                    <th>Condition</th>
+                                    <td class="setTDT">Used</td>
+                                </tr>
+                                <tr>
+                                    <th>Mileage</th>
+                                    <td class="setTDT">25000 Miles</td>
+                                </tr>
+                                <tr>
+                                    <th>Owner</th>
+                                    <td class="setTDT">1</td>
+                                </tr>
+                                <tr>
+                                    <th>Drivetrain</th>
+                                    <td class="setTDT">4WD</td>
+                                </tr>
+                                <tr>
+                                    <th>Engine Type</th>
+                                    <td class="setTDT">Automatic</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </span>
                 </div>
             </div>
             <!--Third Middle Row (Dealership Information)-->
-            <?php include_once 'Dealership-Info.php';?>
+            <?php include_once 'DealerInfo.php';?>
             <!--Last Row-->
             <h3 class="text-center alignHeading"><b>You might be interested in</b></h3>
                 <hr class="hrUnderStyle" style="border: 2px solid #047cf3;stroke: #047cf3; fill: #047cf3;margin-top:-3px;">
@@ -219,6 +292,36 @@
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
+            /*
+            $('#firstStar').on('click',function(){
+                $('#firstStar').css('-webkit-text-fill-color','#047cf3');
+                $('#starsVal').html("1");
+            });
+            $('#secStar').on('click',function(){
+                $('#firstStar').css('-webkit-text-fill-color','#047cf3');
+                $('#secStar').css('-webkit-text-fill-color','#047cf3');
+                $('#starsVal').html("2");
+            });
+            $('#thirdStar').on('click',function(){
+                $('#firstStar').css('-webkit-text-fill-color','#047cf3');
+                $('#secStar').css('-webkit-text-fill-color','#047cf3');
+                $('#thirdStar').css('-webkit-text-fill-color','#047cf3');
+                $('#starsVal').html("3");
+            });
+            $('#fourthStar').on('click',function(){
+                $('#firstStar').css('-webkit-text-fill-color','#047cf3');
+                $('#secStar').css('-webkit-text-fill-color','#047cf3');
+                $('#thirdStar').css('-webkit-text-fill-color','#047cf3');
+                $('#fourthStar').css('-webkit-text-fill-color','#047cf3');
+                $('#starsVal').html("4");
+            });*/
+            
+                $('#firstStar').css('-webkit-text-fill-color','#047cf3');
+                $('#secStar').css('-webkit-text-fill-color','#047cf3');
+                $('#thirdStar').css('-webkit-text-fill-color','#047cf3');
+                $('#fourthStar').css('-webkit-text-fill-color','#047cf3');
+                $('#fiveStar').css('-webkit-text-fill-color','#047cf3');
+                $('#starsVal').html("5");
         });
     </script>
 </body>
