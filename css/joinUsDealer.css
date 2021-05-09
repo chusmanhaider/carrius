@@ -1,0 +1,114 @@
+.wrapper{
+    top:82px;
+    position: relative;
+    color: white;
+}
+.iContainer{
+    max-width: 86%;
+    margin-left: 15%;
+    margin-top:22px;
+}
+.textIndentFirst{
+    margin-left: 60px;
+    
+}
+.imgTop{
+    margin-top: 20px;
+    margin-left: -40px;
+}
+.textIndentSec{
+    margin-left: 80px;
+    margin-top: -120px;
+}
+.textSize{
+    font-size: 34px;
+}
+.hrUnderStyleA{
+    width:136px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+.hrUnderStyleB{
+    width:216px;
+    margin-left: 175px;
+    margin-bottom: 0px;
+}
+.hrUnderStyleC{
+    width:207px;
+    margin-left: 245px;
+}
+#joinCarrius{
+    width:150px;
+    height: 30px;
+    color: white;
+    background-color: #044cc4;
+    border-radius:5px;
+    border: 1px solid #044cc4;
+}
+.changeColor{
+    color:black;
+}
+.addUpperSpace{
+    margin-top: 28px;
+    margin-left: -10px;
+}
+.textLight{
+    color:#044cc4;
+    font-size: 16px;
+    margin-left: 5px;
+    line-height: 10px;
+    display: inline-block;
+}
+.oneBlockF{
+    margin-left: -10px;
+}
+.oneBlock{
+    margin-left: -40px;
+}
+.hrUnderStyle{
+    width:266px;
+    margin-left: 24px;
+}
+.marginLeft{
+    margin-left: 15px;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:131px;
+        position: relative;
+    }
+    .textSize{
+        font-size: 24px;
+    }
+    .hrUnderStyleA{
+        width:96px;
+        margin-left: 5px;
+    }
+    .hrUnderStyleB{
+        width:144px;
+        margin-left: 145px;
+    }
+    .hrUnderStyleC{
+        width:137px;
+        margin-left: 196px;
+    }
+    .hrUnderStyle{
+        width:274px;
+        margin-left: 20px;
+    }
+    .imgTop{
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+    .shortViewA{
+        margin-top: 20px;
+        margin-left:-8px;
+    }
+    .shortViewB{
+        margin-top: 20px;
+        margin-left:-43px;
+        margin-right: 20px;
+        display: inline-block;
+        max-width: 200px;
+    }
+}

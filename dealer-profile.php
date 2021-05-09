@@ -77,9 +77,8 @@
                 </div>
             </div>
         </div> 
-        <div style="background-color: white;"></div>
         <?php
-        echo "<br><br><br><br>";
+        echo "";
         include_once "footer.php";
     ?>
         <script src="Bootstrap/js/jquery.min.js"></script>
