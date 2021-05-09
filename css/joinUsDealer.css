@@ -8,10 +8,16 @@
     margin-left: 15%;
     margin-top:22px;
 }
+.iContainerInner{
+    max-width: 70%;
+    margin-left: 15%;
+    margin-top:22px;
+}
 .textIndentFirst{
     margin-left: 60px;
     
 }
+
 .imgTop{
     margin-top: 20px;
     margin-left: -40px;
@@ -72,6 +78,75 @@
 .marginLeft{
     margin-left: 15px;
 }
+.colorGrey{
+    color:grey;
+}
+.headMargin{
+    margin-left: 60px;
+    margin-top:5px;
+}
+#paraSet{
+    max-width: 370px;
+    margin-left:70px;
+    margin-top: -10px;
+}
+.headMarginEven{
+    float:right;
+    margin-right:260px;
+    margin-top:5px;
+}
+/*
+#paraSetEven{
+    float:right;
+    max-width: 370px;
+    margin-top: -10px;
+}*/
+.addMarginTop{
+    margin-top:20px;
+}
+.marTop{
+    margin-top: 25px;
+}
+.headMarginRight{
+    float:right;
+    margin-right:100px;
+    margin-top:5px;
+    margin-bottom: 60px;
+}
+.alignRightImg{
+    margin-top: 25px;
+    margin-left: 165px;
+}
+#paraSetRight{
+    max-width: 450px;
+    margin-left:-40px;
+    margin-top: 39px;
+}
+.textCenter{
+    margin-left: 20%;
+    font-size:22px;
+    font-weight:bolder;
+}
+.textCenterT{
+    margin-left: 10%;
+    font-size:22px;
+    font-weight:bolder;
+}
+.hrUnderStyleBrand{
+    width:370px;
+    margin-left: 21%;
+}
+#joinCarriusBtn{
+    color:white;
+    background-color: #044cc4;
+    border-radius: 5px;
+    border:1px solid #044cc4;
+    height:35px;
+    width:235px;
+    margin-top:20px;
+    margin-left:29%;
+    margin-bottom: 30px;
+}
 @media (max-width:575px){
     .wrapper{
         top:131px;
@@ -110,5 +185,36 @@
         margin-right: 20px;
         display: inline-block;
         max-width: 200px;
+    }
+    .headMargin{
+        margin-left: 0px;
+        margin-top:5px;
+    }
+    #paraSet{
+        max-width: 350px;
+        margin-left:0px;
+        margin-top: -10px;
+    }
+    .textCenter{
+        margin-left: -6%;
+    }
+    .hrUnderStyleBrand{
+        width:370px;
+        margin-left: -4%;
+    }
+    .textCenterT{
+        margin-left: 4%;
+        font-weight: bold;
+    }
+    #joinCarriusBtn{
+        color:white;
+        background-color: #044cc4;
+        border-radius: 5px;
+        border:1px solid #044cc4;
+        height:35px;
+        width:235px;
+        margin-top:30px;
+        margin-left:15%;
+        margin-bottom: 40px;
     }
 }

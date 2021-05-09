@@ -56,9 +56,9 @@
                     </div>
                 </div>
             </div>
-            <div class="container-fluid" style="background-color: #f7f7f7;margin-top:30px">
+            <div class="container-fluid" style="background-color: #f7f7f7;margin-top:30px;padding-bottom:30px">
                 <div class="container">
-                    <div class="iContainer">
+                    <div class="iContainerInner">
                         <div class="row">
                             <div class="">
                                 <h3 class="changeColor marginLeft">What it takes to join carrius</h3>
@@ -69,7 +69,12 @@
                         <!-- Odd-->
                         <div class="row">
                             <div class="col col-lg-7 col-xs-12">
-
+                                <h1 class="changeColor headMargin">1.</h1>
+                                <p id="paraSet" style="color:grey">
+                                    Joining us much more easier and faster than you think. You
+                                    will be directly to an online form that you will need to submit and 
+                                    wait for a follow up.
+                                </p>
                             </div>
                             <div class="col col-lg-5 col-xs-12">
                                 <span class="rightImg">
@@ -78,42 +83,65 @@
                             </div>
                         </div>
                         <!-- Even -->
-                        <div class="row">
+                        <div class="row addMarginTop">
                             <div class="col col-lg-5 col-xs-12">
                                 <span class="rightImg">
-                                    <img src="resources/Updated Icons/check (2).png" width="" height="">
+                                    <img class="alignRightImg" src="resources/Updated Icons/check (2).png" width="" height="">
                                 </span>
                             </div>
                             <div class="col col-lg-7 col-xs-12">
-
+                                <h1 class="changeColor headMarginRight">2.</h1>
+                                <p id="paraSetRight" style="color:grey">
+                                    Within days, you will be provided with a log in to access
+                                    our platform online for your salespeople/dealership to
+                                    access the live video function, emails, and reports of 
+                                    customer.
+                                </p>
                             </div>
                         </div>
                         <!-- Odd-->
-                        <div class="row">
+                        <div class="row addMarginTop">
                             <div class="col col-lg-7 col-xs-12">
-
+                                <h1 class="changeColor headMargin">3.</h1>
+                                <p id="paraSet" style="color:grey">
+                                    Our simple straight forward interface make it easier to collect
+                                    potential customer information. Any live video calls, email reports,
+                                    comments are forwarded directly to the dealership to convert
+                                    leads into sales.
+                                </p>
                             </div>
                             <div class="col col-lg-5 col-xs-12">
                                 <span class="rightImg">
-                                    <img src="resources/Updated Icons/content.png" width="" height="">
+                                    <img class="marTop" src="resources/Updated Icons/content.png" width="" height="">
                                 </span>
                             </div>
                         </div>
                         <!-- Even -->
-                        <div class="row">
+                        <div class="row addMarginTop">
                             <div class="col col-lg-5 col-xs-12">
                                 <span class="rightImg">
-                                    <img src="resources/Updated Icons/device.png" width="" height="">
+                                    <img class="alignRightImg" src="resources/Updated Icons/device.png" width="" height="">
                                 </span>
                             </div>
                             <div class="col col-lg-7 col-xs-12">
-
+                                <h1 class="changeColor headMarginRight">4.</h1>
+                                <p id="paraSetRight" style="color:grey">
+                                    The platform is easy and user-friendly for sales agents to access
+                                    and most importantly they can use any device as long as they
+                                    have an internet connection and carrius notifies you that you
+                                    have someone looking for a live video call with Dealership.
+                                </p>
                             </div>
                         </div>
                         <!-- Odd-->
-                        <div class="row">
+                        <div class="row addMarginTop">
                             <div class="col col-lg-7 col-xs-12">
-
+                                <h1 class="changeColor headMargin">5.</h1>
+                                <p id="paraSet" style="color:grey">
+                                    And this is pretty much how you can join carrius and how it works.
+                                    If you have any technical support, we will be available to hear
+                                    you concern and fix appropriately. Welcome on board!
+                                </p>
                             </div>
                             <div class="col col-lg-5 col-xs-12">
                                 <span class="rightImg">
@@ -124,9 +152,27 @@
                     </div>
                 </div>
             </div>
+            <div class="container" style="background-color: white;">
+                <div class="iContainer">
+                    <div class="row">
+                        <span class="changeColor textCenter">Brands that form part of carrius family</span>
+                        <hr class="hrUnderStyleBrand" style="border: 2px solid #047cf3;stroke: #047cf3; fill: #047cf3;margin-top:-3px;">
+                                
+                    </div>
+
+                    <div class="row">
+                        <span class="changeColor textCenterT">We would be glad to have your dealership listed on carrius!</span>
+                                
+                    </div>
+
+                    <div class="row">
+                        <input type="button" value="Join Carrius" id="joinCarriusBtn">        
+                    </div>
+                </div>
+            </div>
         </div>
         <?php
-            echo "<br><br><br>";
+            echo "";
             include_once "footer.php";
         ?>
         <script src="Bootstrap/js/jquery.min.js"></script>
