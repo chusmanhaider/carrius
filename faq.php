@@ -8,6 +8,103 @@
     <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
     <link href="css/scrollbar.css" rel="stylesheet">
     <link href="css/faq.css" rel="stylesheet">
+    <style>
+      .iContainer{
+          max-width:70%;
+          margin-left: 15%;
+      }
+      .collapseMenu{
+        font-size:22px;
+        background-color: #f7f7f7;
+        cursor: pointer;
+      }
+      .firstMenu{
+        padding:7px 60% 7px 20px;
+        display: grid;
+      }
+      .secMenu{
+        padding:7px 65.3% 7px 20px;
+        display: grid;
+      }
+      .thirdMenu{
+        padding:7px 62% 7px 20px;
+        margin-bottom: 20px;
+        display: grid;
+      }
+      
+      /*
+      .firstMenu:after{
+        content: '+';
+        display: inline-block;
+        float: right;
+        margin-right: 75px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        top:0px;
+        margin-top: -40px;
+        position: relative;
+      }
+      .secMenu:after{
+        content: '+';
+        display: inline-block;
+        float: right;
+        margin-right: -10px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        top:0px;
+        margin-top: -40px;
+        position: relative;
+      }
+      .thirdMenu:after{
+        content: '+';
+        display: inline-block;
+        float: right;
+        margin-right: 75px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        top:0px;
+        margin-top: -40px;
+        position: relative;
+      }
+      .fourthMenu:after{
+        content: '+';
+        float: right;
+        margin-right: 75px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        top:0px;
+        margin-top: -40px;
+        position: relative;
+      }*/
+      .fourthMenu{
+        padding:7px 67% 7px 20px;
+        float: left;
+        display: grid;
+        margin-top: -20px;
+      }
+      .cMenuB{
+        margin-top: 20px;
+      }
+      .rightAlignTo{
+        display: block;
+        float:right;
+        margin-right:60px;
+        margin-top: 60px;
+        margin-bottom: 25px;
+      }
+      #sendEmail{
+        float:right;
+        margin-right: 60px;
+        width:210px;
+        height: 29px;
+        color:white;
+        border:1px solid #044cc4;
+        border-radius: 5px;
+        background-color: #044cc4;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
 </head>
 <body>
     <?php
@@ -22,61 +119,71 @@
                     We have the answers some of the most popular question you might have...
                 </p>
             </div>
-            <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="iContainer">
+              <span class="cMenuA">
+                <span class="firstMenu collapseMenu" data-toggle="collapse" data-target="#firstMenu">What is carrius.net?</span>
+                <div id="firstMenu" class="collapse hideFirst">
+                    <?php include_once 'carriusNetQ.php';?>
+                </div>
+              </span><br>
+              <span class="cMenuB">
+                <span class="secMenu collapseMenu" data-toggle="collapse" data-target="#secMenu">Live Video Call</span>
+                <div id="secMenu" class="collapse hideSec">
+                  <?php include_once 'liveVidQ.php';?>
+                </div>
+              </span><br>
+              <span class="cMenuC">
+                <span class="thirdMenu collapseMenu" data-toggle="collapse" data-target="#thirdMenu">Dealership Issues</span>
+                <div id="thirdMenu" class="collapse hideThird">
+                  <?php include_once 'dealerIssueQ.php';?>
+                </div>
+              </span><br>
+              <span class="cMenuD">
+                <span class="fourthMenu collapseMenu" data-toggle="collapse" data-target="#fourthMenu">Dealership/Salesagents</span>
+                <div id="fourthMenu" class="collapse hideFour">
+                  <?php include_once 'dealerSalesAgentQ.php';?>
+                </div>
+              </span>
+              <!-- First Menu-->
+              
+              <!-- Second Menu-->
+             
+              <!--Third Menu-->
+              
+              <!--Fourth Menu-->
+              
+            </div>
+            <div class="rightAlignTo">
+                <h4 class="changeColor"><b>Have any other question?</b></h4>
+                <input type="button" value="Send Us an Email" id="sendEmail">
+            </div>
         </div>
     
     </div> <!-- End of Wrapper-->
     <?php
-        echo "<br><br><br><br><br><br><br>";
+        echo "<br><br><br><br>";
         include_once "footer.php";
     ?>
     <script src="Bootstrap/js/jquery.min.js"></script>
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.firstMenu').on('click',function() {
+          $('.hideFirst').toggle('collapse');
+        });
+        $('.secMenu').on('click',function() {
+          $('.hideSec').toggle('collapse');
+        });
+        $('.thirdMenu').on('click',function() {
+          $('.hideThird').toggle('collapse');
+        });
+        $('.fourthMenu').on('click',function() {
+          $('.hideFour').toggle('collapse');
+        });
+      });
+    </script>
+
 </body>
 </html>
