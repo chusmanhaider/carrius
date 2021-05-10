@@ -32,12 +32,15 @@
                             <hr style="border: 2px solid #047cf3;width:170px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;float:left;margin-left:14px">
                             <div class="browseByCar">
                                 <span><img src="resources/car type/hatchback x.jpg"> <p class="textBrowseCar"><a href="search-car.php?type=Hatchback" class="noUnderline" style="color: grey;">Hatchback</a></p></span>
-                                <span><img src="resources/car type/convertible x.jpg"> <p class="textBrowseCar">Convertible</p></span>
-                                <span><img src="resources/car type/Electric x.jpg"> <p class="textBrowseCar">Electric</p></span>
+                                <span><img src="resources/car type/suv x.jpg" alt="SUV"> <p class="textBrowseCar">SUV</p></span>
+                                <span><img id="specificCarImg" src="resources/car type/Electric x.jpg"> <p class="textBrowseCar">Electric</p></span>
                                 <span><img src="resources/car type/mini van x.jpg"> <p class="textBrowseCar">Minivan</p></span>
                                 <span><img src="resources/car type/pick up x.jpg"> <p class="textBrowseCar">Pickup</p></span>
                                 <span><img src="resources/car type/sedan x.jpg"> <p class="textBrowseCar">Sedan</p></span>
-                                <span><img src="resources/car type/suv x.jpg" alt="SUV"> <p class="textBrowseCar">SUV</p></span>
+                                <span><img src="resources/car type/jeep.png"> <p class="textBrowseCar">Jeep</p></span>
+                            
+                                <span><img id="specificCarImgTwo" src="resources/car type/convertible x.jpg"> <p class="textBrowseCar">Convertible</p></span>
+                                
                             </div>
                         </div>
                     </div>
@@ -52,14 +55,14 @@
                     <div class="worksContent">
                         <div class="firstWorkContent col-lg-3 col-sm-5 col-xs-5">
                             <h3 style="font-weight:bold">How it Works</h3>
-                            <img src="resources/Icons png/click.png" alt="Car Rent" width="120px" height="120px">
-                            <p style="font-size:11px;color:#135fd7;font-weight:bold;line-height:13px">*Drive Away your Car Buying<br>
+                            <img src="resources/Updated Icons/Group-2x.png" style="margin-left: 20px;" alt="Car Rent" width="120px" height="120px">
+                            <p style="font-size:11px;color:#135fd7;font-weight:bold;line-height:13px">*Drive Away your Car Shopping<br>
                                 Stress in Three Simple Steps</p>
                                         
                         </div>
                         <div class="secondWorkContent col-lg-3 col-sm-5 col-xs-5">
                             <h5 class="isBold">STEP 1</h5>
-                            <p style="text-align: center"><img src="resources/Icons png/car-rent.png" alt="Car Rent" width="120px" height="120px"></p>
+                            <p style="text-align: center"><img src="resources/Updated Icons/car-rent@2x.png" alt="Car Rent" width="120px" height="120px"></p>
                             <ul id="ulList">
                                 <li style="font-size:14px;color:#135fd7;font-weight:bold">Choose the Right car</li>
                                 <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Wide range of cars</li>
@@ -70,7 +73,7 @@
                         </div>
                         <div class="thirdWorkContent col-lg-3 col-sm-5 col-xs-5">
                             <h5 class="isBold">STEP 2</h5>
-                            <p style="text-align: center"><img src="resources/Icons png/video-conference.png" alt="Video Conference" width="120px" height="120px"></p>
+                            <p style="text-align: center"><img src="resources/Updated Icons/video-conference@2x.png" alt="Video Conference" width="120px" height="120px"></p>
                             <ul id="ulList">
                                 <li style="font-size:14px;color:#135fd7;font-weight:bold">One-click Contact</li>
                                 <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Connect by ANY device</li>
@@ -82,7 +85,7 @@
                         <div class="clearMe"></div>
                         <div class="fourthWorkContent col-lg-3 col-sm-5 col-xs-5">
                             <h5 class="isBold">STEP 3</h5>
-                            <p style="text-align: center"><img src="resources/Icons png/content.png" alt="Content" width="120px" height="120px"></p>
+                            <p style="text-align: center"><img src="resources/Updated Icons/Group 1339@2x.png" alt="Content" width="120px" height="120px"></p>
                             <ul id="ulList">
                                 <li style="font-size:14px;color:#135fd7;font-weight:bold">Quick Online Form</li>
                                 <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Contact sale form</li>
