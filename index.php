@@ -49,78 +49,192 @@
         </div>
         
         <br><br>
+        <!-- Deleted
         <div class="jumbotron jumboo" style="margin-top: 10px;background-color:#F2F2F2">
             <div class="howItWorks">
                 <div class="works">
                     <div class="worksContent">
                         <div class="firstWorkContent col-lg-3 col-sm-5 col-xs-5">
                             <h3 style="font-weight:bold">How it Works</h3>
+                            <hr style="border: 2px solid #047cf3;width:120px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;float:left;margin-left:10px">
+                            
                             <img src="resources/Updated Icons/Group-2x.png" style="margin-left: 20px;" alt="Car Rent" width="120px" height="120px">
                             <p style="font-size:11px;color:#135fd7;font-weight:bold;line-height:13px">*Drive Away your Car Shopping<br>
                                 Stress in Three Simple Steps</p>
                                         
                         </div>
                         <div class="secondWorkContent col-lg-3 col-sm-5 col-xs-5">
-                            <h5 class="isBold">STEP 1</h5>
-                            <p style="text-align: center"><img src="resources/Updated Icons/car-rent@2x.png" alt="Car Rent" width="120px" height="120px"></p>
-                            <ul id="ulList">
-                                <li style="font-size:14px;color:#135fd7;font-weight:bold">Choose the Right car</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Wide range of cars</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Easy sorting system</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Location based Dealer</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Detailed car information</li>
-                            </ul>
+                            <img src="resources/Updated Icons/choose-right-car.png" alt="Car Rent">
+                            <img src="resources/Updated Icons/right-arrow.png" alt="Car Rent">
                         </div>
                         <div class="thirdWorkContent col-lg-3 col-sm-5 col-xs-5">
-                            <h5 class="isBold">STEP 2</h5>
-                            <p style="text-align: center"><img src="resources/Updated Icons/video-conference@2x.png" alt="Video Conference" width="120px" height="120px"></p>
-                            <ul id="ulList">
-                                <li style="font-size:14px;color:#135fd7;font-weight:bold">One-click Contact</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Connect by ANY device</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">NO APP needed</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Live Video Call</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Message Dealer easily</li>
-                            </ul>
+                            <img src="resources/Updated Icons/one-click-contact.png" alt="Video Conference">
+                            
                         </div>
                         <div class="clearMe"></div>
                         <div class="fourthWorkContent col-lg-3 col-sm-5 col-xs-5">
-                            <h5 class="isBold">STEP 3</h5>
-                            <p style="text-align: center"><img src="resources/Updated Icons/Group 1339@2x.png" alt="Content" width="120px" height="120px"></p>
-                            <ul id="ulList">
-                                <li style="font-size:14px;color:#135fd7;font-weight:bold">Quick Online Form</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Contact sale form</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Car evaluation report</li>
-                                <li style="font-size:14px;"><img src="resources/Icons png/checked.png" class="isCheckedLogo">Information sent Securely.</li>
-                            </ul>
+                            <img src="resources/Updated Icons/Online-Form.png" alt="Content">
                         </div>
                     </div>
                 </div>      
             </div>
         </div>
-        <!--What are you looking for-->
+        -->
+        <div class="container-fluid" style="margin-top: 10px;background-color:#F2F2F2;padding-top:15px;padding-bottom: 20px;">
+            <div class="container">
+                <div class="custom-padding markNewHeight">
+                    <div class="row">
+                        <div class="col col-lg-3 col-xs-6" style="padding-bottom: -10px;">
+                            <h3><b>How it works?</b></h3>
+                            <hr style="border: 2px solid #047cf3;width:125px;stroke: #047cf3; fill: #047cf3;margin-top:-10px;margin-left:10px">
+                            <img src="resources/Updated Icons/Group-2x.png" class="marginMe" width="150px" height="120px">
+                            <p style="font-size:11px;font-weight:bold;line-height:13px;margin-top:5px;">*Drive Away your Car Shopping<br>
+                                Stress in Three Simple Steps</p>
+                        </div>
+                        <div class="col col-lg-3 col-xs-6" style="padding-bottom: -10px;">
+                            <img src="resources/Updated Icons/car-rent@2x.png" style="align-content:center" class="marginMe" width="120px" height="100px">
+                            <h4><b>Choose the right car</b></h4>
+                            <p class="text-center" style="color:grey;font-size:14px;">
+                                We provide a great sorting
+                                system to easily choose from our
+                                wide range of cars from location
+                                based certified Dealerships.
+                            </p>
+                        </div>
+                        <div class="col col-lg-3 col-xs-6" style="padding-bottom: -10px;">
+                            <img src="resources/Updated Icons/video-conference@2x.png" class="marginMe" width="120px" height="100px">
+                            <h4><b>One Click-contact</b></h4>
+                            <p class="text-center" style="color:grey;font-size:14px;">
+                                Once you got your car, we
+                                connect you with a Salesman
+                                within minutes using ANY devices.
+                                NO APP needed, through carrius
+                                Live Video Call Room. 
+                            </p>
+                        </div>
+                        <div class="col col-lg-3 col-xs-6" style="padding-bottom: -10px;">
+                            <img src="resources/Updated Icons/Group 1339@2x.png" class="marginMe" width="120px" height="100px">
+                            <h4><b>Quick Online Form</b></h4>
+                            <p class="text-center" style="color:grey;font-size:14px;">
+                                If you have a deal, you just have
+                                to fill in a simple contact sale
+                                form and you will be few steps
+                                away from driving your car home!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--What drivetrain fits your need-->
         <div style="background-color: white;">
             <div class="container">
                 <div class="row">
                     <div class="custom-padding">
                         <div class="browseType">
-                            <h2 style="text-align: center;"><b>What are you looking for?</b></h2>
-                            <hr style="border: 2px solid #047cf3;width:220px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;align-content:center">
-                            <div class="browseByCar">
-                                <span><img src="resources/car type/hatchback x.jpg"> <p class="textBrowseCar"><a href="search-car.php?type=Hatchback" class="noUnderline" style="color: grey;">Hatchback</a></p></span>
-                                <span><img src="resources/car type/convertible x.jpg"> <p class="textBrowseCar">Convertible</p></span>
-                                <span><img src="resources/car type/Electric x.jpg"> <p class="textBrowseCar">Electric</p></span>
-                                <span><img src="resources/car type/mini van x.jpg"> <p class="textBrowseCar">Minivan</p></span>
-                                <span><img src="resources/car type/pick up x.jpg"> <p class="textBrowseCar">Pickup</p></span>
-                                <span><img src="resources/car type/sedan x.jpg"> <p class="textBrowseCar">Sedan</p></span>
-                                <span><img src="resources/car type/suv x.jpg" alt="SUV"> <p class="textBrowseCar">SUV</p></span>
+                            <h2 style="text-align: center;"><b>What Drivetrain fits your need?</b></h2>
+                            <hr style="border: 2px solid #047cf3;width:390px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;align-content:center">
+                            <div class="row">
+                                <div class="col col-lg-3 col-xs-6">
+                                    <span class="imgPortion">
+                                        <img src="resources/Updated Icons/fwd.png" style="margin-bottom: 20px;">
+                                    </span>
+                                    <span class="imgSecPortion addNegMar">
+                                        <h4><b>Front Wheel Drive</b></h4>
+                                        <span class="alignText">
+                                            <p class="colorGrey fontSize">Great Efficient Fuel</p>
+                                            <p class="colorGrey fontSize">Light Snow/Rain</p>
+                                            <p class="colorGrey fontSize">Good Traction</p>
+                                            <p class="colorGrey fontSize">Easy to Control Car <br>(New Driver)</p>
+                                        </span>
+                                        
+                                    </span>
+                                    <span class="lowerBtn">
+                                        <input type="button" value="Select FWD" id="selectFWD">
+                                    </span>
+                                </div>
+                                <div class="col col-lg-3 col-xs-6">
+                                    <span class="imgPortion addMar">
+                                        <img src="resources/Updated Icons/rwd.png" style="margin-bottom: 20px;">
+                                    </span>
+                                    <span class="imgSecPortion addNegMar">
+                                        <h4><b>Rear Wheel Drive</b></h4>
+                                        <span class="alignText">
+                                            <p class="colorGrey fontSize">Fuel Efficient</p>
+                                            <p class="colorGrey fontSize">Light Rain/Dry Climate</p>
+                                            <p class="colorGrey fontSize">Average Traction</p>
+                                            <p class="colorGrey fontSize">High Performance</p>
+                                        </span>
+                                        
+                                    </span>
+                                    <span class="lowerBtn addMar">
+                                        <input type="button" value="Select RWD" id="selectRWD">
+                                    </span>
+                                </div>
+                                <div class="col col-lg-3 col-xs-6">
+                                    <span class="imgPortion addMar">
+                                        <img src="resources/Updated Icons/awd.png" style="margin-bottom: 20px;">
+                                    </span>
+                                    <span class="imgSecPortion addNegMar">
+                                        <h4><b>All Wheel Drive</b></h4>
+                                        <span class="alignText">
+                                            <p class="colorGrey fontSize">Poor Fuel Efficient</p>
+                                            <p class="colorGrey fontSize">Light Snow/Rain</p>
+                                            <p class="colorGrey fontSize">Great Traction</p>
+                                            <p class="colorGrey fontSize">Precide Balance</p>
+                                        </span>
+                                        
+                                    </span>
+                                    <span class="lowerBtn addMar">
+                                        <input type="button" value="Select AWD" id="selectAWD">
+                                    </span>
+                                </div>
+                                <div class="col col-lg-3 col-xs-6">
+                                    <span class="imgPortion addMar">
+                                        <img src="resources/Updated Icons/4wd.png" style="margin-bottom: 20px;">
+                                    </span>
+                                    <span class="imgSecPortion addNegMar">
+                                        <h4><b>Four Wheel Drive</b></h4>
+                                        <span class="alignText">
+                                            <p class="colorGrey fontSize">Poor Fuel Efficient</p>
+                                            <p class="colorGrey fontSize">Off Road/Rough Terrain</p>
+                                            <p class="colorGrey fontSize">Great Traction</p>
+                                            <p class="colorGrey fontSize">2WD/4WD Selector</p>
+                                        </span>
+                                        
+                                    </span>
+                                    <span class="lowerBtn addMar">
+                                        <input type="button" value="Select 4WD" id="selectFourWD">
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--What are you looking for?-->
+        <div class="container-fluid" style="background-color: #f7f7f7;">
+            <div class="container">
+                <div class="custom-padding markHeight">
+                    <h2 style="text-align: center;" id="changeFontSize"><b>What are you looking for?</b></h2>
+                    <hr style="border: 2px solid #047cf3;width:390px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;align-content:center">
+                    <div class="row">
+                        <span class="addPad">
+                            <img src="resources/Updated Icons/Group 1367@2x.png" style="width:71px;height:100px;margin-left:30px">
+                            <img src="resources/Updated Icons/Group 1368@2x.png" class="marginLeftImg" style="width:95px;height:100px;margin-left:33px">
+                            <img src="resources/Updated Icons/Group 1369@2x.png" class="marginLeftImg" style="width:82px;height:100px;margin-left:33px">
+                            <img src="resources/Updated Icons/Group 1370@2x.png" class="marginLeftImg" style="width:82px;height:100px;margin-left:33px">
+                            <img src="resources/Updated Icons/Group 1371@2x.png" class="marginLeftImg" style="width:90px;height:100px;margin-left:33px">
+                            <img src="resources/Updated Icons/Group 1372@2x.png" class="marginLeftImg" style="width:82px;height:100px;margin-left:33px">
+                            <img src="resources/Updated Icons/Group 1373@2x.png" class="marginLeftImg" style="width:90px;height:100px;margin-left:33px">
+                        </span>
+                    </div> 
+                </div>
+            </div>
+        </div>
         <!-- Are You -->
-        <div class="container-fluid joining" style="margin-top: 30px;color:white">
+        <div class="container-fluid joining" style="color:white">
             <div class="row">
                 <div class="col col-lg-6 col-sm-6 joinBuyer" style="background-color: #0087FF;">
                     <h3 class="leftHeading"><b>Are you a buyer?</b></h3>

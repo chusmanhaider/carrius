@@ -44,6 +44,14 @@
     width: 80%;
     margin-left: 12%;
 }
+.markNewHeight{
+    padding-bottom: -10px;
+}
+
+.markHeight{
+    height: 200px;
+}
+
 .browseByCar >span > img{
     width:70px;
     height:40px;
@@ -62,6 +70,57 @@
     margin-top:25px;
     margin-left:45px;
 }
+.lowerBtn{
+    position: relative;
+    bottom: 0px;
+    margin-left: 10px;
+}
+.addMar{
+    margin-left: 10px;
+}
+.addNegMar{
+    margin-left: -30px;
+    margin-top: 200px;
+}
+.colorGrey{
+    color:grey;
+}
+.fontSize{
+    font-size:16px;
+}
+.alignText{
+    float: left;
+    margin-left: 0px;
+
+    text-align: center;
+}
+#selectFWD{
+    color:#044cc4;
+    border:2px solid #044cc4;
+    background-color:white;
+    margin-top: 15px;
+    width:145px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 35px;
+    display: block;
+    margin-bottom: 25px;
+}
+#selectRWD,
+#selectAWD,
+#selectFourWD{
+    color:#044cc4;
+    border:2px solid #044cc4;
+    background-color:white;
+    margin-top: 160px;
+    width:145px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 35px;
+    display: block;
+    margin-bottom: 25px;
+}
+
 .browseByCar{
     display:flex;
     flex-wrap: wrap;
@@ -79,11 +138,25 @@
     margin-top:10px;
     cursor:pointer;
 }
+.marginMe{
+    margin-top: 20px;
+    margin-left: 30px;
+}
 @media (max-width:575px){
     .browseByCar{
         display:flex;
         flex-wrap: wrap;
         justify-content:center;
+    }
+    .hrStyle{
+        width:20px;
+    }
+    #changeFontSize{
+        font-size: 22px;
+    }
+    .markHeight{
+        height: 410px;
+        padding-left: 8px;
     }
     .browseByCar >span > img{
       width:80px;
@@ -153,7 +226,7 @@
         width:200px;
     }
     .firstWorkContent{
-        margin-left:-80px;
+        margin-top: 100px;
     }
     .thirdWorkContent{
         margin-left:-1px;
@@ -240,10 +313,7 @@
     padding-left: 5%;
     
 }
-.works{
-    width:90%;
-    height:290px;   
-}
+
 .isCheckedLogo{
     width:12px;
     height:12px;
