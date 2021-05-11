@@ -21,11 +21,29 @@
                             <span class="leftMenu">
                                 <h4 style="color:black">Dealership</h4> <hr style="border: 1px solid grey; margin-top:-4px; stroke: grey; fill: grey;opacity:0.3">
                             </span>
+                            <?php
+                                include_once 'db_connect.php';
+                                $d_id = $_GET['url'];
+                                $sql_car = "SELECT * FROM cars 
+                                INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+                                WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' 
+                                AND cars.car_AutoStatus = 'Active' AND dealer.dealer_ID = '$d_id'";
+                                
+                                $res = mysqli_query($connect, $sql_car);
+                                while($row = mysqli_fetch_assoc($res))
+                                {
+                            ?>
                             <span class="logoImgSpan">
                                 <img src="resources/Updated Icons/test.png" class="logoImg" width="100px" height="100px" style="border-radius: 50%;">
                             </span>
                             <span class="sinceYearSpan">
-                                <small class="sinceYear" style="color:grey">Since 2004</small>
+                                <small class="sinceYear" style="color:grey">
+                                    Since 
+                                    <?php 
+                                        $time=$row['dealer_tStamp'];
+                                        echo $date = date("Y", strtotime($time));
+                                    ?>
+                                </small>
                             </span>
                             <span class="rating">
                                 <span class="fa fa-star fa-2x stars" id="firstStar"></span>
@@ -35,15 +53,17 @@
                                 <span class="fa fa-star fa-2x stars" id="fiveStar"></span>
                             </span>
                             <span class="styleDBusiness">
-                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo" style="color:black;margin-top:10px"><?php echo "<span style='font-weight:normal'>ABC Dealership LTD</span>";?></span>
+                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo" style="color:black;margin-top:10px"><?php echo "<span style='font-weight:normal'>".$row['dealer_Dealership']."</span>";?></span>
                             </span>
                             <span class="styleDBusiness">
-                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo" style="color:black"><?php echo "<span style='font-weight:normal'>Khanewal</span>";?></span>
+                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo" style="color:black"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
                             </span>
                             <span class="contactDSpan">
                                 <input type="button" value="Contact Dealership" id="contactDBTn">
                             </span>
-                            
+                            <?php
+                                }
+                            ?>
                             <hr style="border: 1px solid grey;stroke: grey; fill: grey;opacity:0.3">
                             <div class="sidebar-nav styleNavBtns">
                                 <ul class="nav" id="side-menu">
@@ -73,6 +93,7 @@
                                 <?php include_once 'teamMember.php';?>
                             </span>
                         </span>
+                        
                     </div>
                 </div>
             </div>

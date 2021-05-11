@@ -49,6 +49,9 @@
     margin-right: 200px;
     margin-bottom:5%;
 }
+modal-backdrop {
+    background-color: transparent !important;
+  }
 @media (max-width:575px){
     .wrapper{
         top:132px;

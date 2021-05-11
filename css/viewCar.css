@@ -217,10 +217,10 @@ strong{
     margin-left: 13%;
     font-weight: bold;
 }
-#contactDBtn{
+.contactDBtn{
     width:160px;
 }
-#viewCBtn{
+.viewCBtn{
     width:220;
 }
 .secBtn{

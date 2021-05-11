@@ -229,5 +229,16 @@
         <script src="Bootstrap/js/metisMenu.min.js"></script>
         <script src="Bootstrap/js/bootstrap.min.js"></script>
         <script src="Bootstrap/js/startmin.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.newCond').attr('checked', true);
+                //$('.noElectric').attr('disabled', true);
+                //$('.changeColor').attr('disabled', true);attr('disabled', true);
+                $('.usedCond').attr('disabled', true);
+                //$('.changeColor').css('background-color','#dddddd');
+                //$('.changeColor').css('cursor','none');
+
+            });
+        </script>
     </body>
 </html>

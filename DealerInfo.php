@@ -1,3 +1,14 @@
+<?php
+    require_once ("db_connect.php");
+    $carId=$_GET['id'];
+    $sql_car= "SELECT * FROM cars 
+    INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+    WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+    cars.car_AutoStatus = 'Active' AND cars.car_ID='$carId'";
+    $result = mysqli_query($connect, $sql_car);
+    while($row = mysqli_fetch_assoc($result))
+    {
+?>
 <div class="row">
     <div class="iContainerInfo" style="background-color: #f7f7f7;">
         <span class="infoContent">
@@ -10,11 +21,11 @@
                 <div class="dealershipDetail col col-lg-7">
                     <span class="dealershipListing addMarginTopY">
                         <img src="resources/icons png/user (1).png" width="14px" height="14px">
-                        <span class="setFontColor">XYZ Dealership Ltd</span>
+                        <span class="setFontColor"><?php echo $row['dealer_Dealership'];?></span>
                     </span>
                     <span class="locationListing addMarginTopX">
                         <img src="resources/icons png/pin.png" width="16px" height="16px">
-                        <span class="setFontColor">Ontario, Sydney</span>
+                        <span class="setFontColor"><?php echo $row['dealer_Location'];?></span>
                     </span>
                     <span class="timingListing addMarginTopX">
                         <img src="resources/icons png/hour.png" width="16px" height="16px">
@@ -36,13 +47,16 @@
                 <span class="addSpaceX"><br></span>
                 <span class="contactBtns">
                     <span class="firstBtn">
-                        <input type="button" id="contactDBtn" class="selectColor" name="selectColor" value="Contact Dealership">
+                        <input type="button" class="contactDBtn selectColor" id="" name="contactDealerBtn" value="Contact Dealership">
                     </span>
                     <span class="secBtn">
-                        <a href="#"><input type="button" id="viewCBtn" class="selectColor" name="selectColor" value="View all cars from dealership"></a>
+                        <a href="dealer-profile.php?url=<?php echo $row['dealer_ID'];?>"><input type="button" class="viewCBtn selectColor" id="" name="viewAllCars" value="View all cars from dealership"></a>
                     </span>
                 </span>
             </span>
         </span>
     </div>
 </div>
+<?php
+    }
+?>

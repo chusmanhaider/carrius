@@ -152,7 +152,7 @@
                         </p>
                     </span>
                     <span class="col col-lg-12 col-xs-12" style="margin-bottom: 30px;">
-                        <button class="browseBtn">Browse Cars</button>
+                        <a href="all-cars-model.php"><button class="browseBtn">Browse Cars</button></a>
                     </span>
                 </div>
             </div>

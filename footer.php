@@ -249,7 +249,7 @@
                     <hr style="border: 2px solid #047cf3;width:90px;stroke: #047cf3; fill: #047cf3;margin-top:-8px;margin-bottom:10px">
                     <div class="linkDiv alignContent setAlignQL">
                         <span class="linkContent">
-                            <a href="#!" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Browse all cars</a>
+                            <a href="all-cars-model.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Browse all cars</a>
                         </span>
                         <span class="linkContent">
                             <a href="used-cars.php" class="textWhite noUnderLine"><img src="resources/icons png/right-arrow.png" width="10px" height="8px"> Used cars</a>

@@ -23,14 +23,27 @@
                         <!--<img src="resources/a.jpg" class="img-responsive" id="displayCar">-->
                         <?php include_once 'slider.php';?>
                         <i class="fa fa-heart fa-2x favIcon"></i>
+                        <?php
+                            require_once ("db_connect.php");
+                            $carId=$_GET['id'];
+                            $sql_car= "SELECT * FROM cars 
+                                INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+                                INNER JOIN vehicle_overview ON vehicle_overview.carId = cars.car_ID
+                                INNER JOIN key_feature ON key_feature.carId = cars.car_ID
+                                WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                                cars.car_AutoStatus = 'Active' AND cars.car_ID='$carId'";
+                                $result = mysqli_query($connect, $sql_car);
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                        ?>
                         <span class="detailUnder">
                             <span class="dealership">
                                 <img src="resources/icons png/user (1).png" width="14px" height="14px">
-                                <span class="setFontSize">XYZ Dealership Ltd</span>
+                                <span class="setFontSize"><?php echo $row['dealer_Dealership'];?></span>
                             </span>
                             <span class="location">
                                 <img src="resources/icons png/pin.png" width="16px" height="16px">
-                                <span class="setFontSize">Ontario, Sydney</span>
+                                <span class="setFontSize"><?php echo $row['dealer_Location'];?></span>
                             </span>
                             <span class="timing">
                                 <img src="resources/icons png/hour.png" width="16px" height="16px">
@@ -39,28 +52,28 @@
                         </span>
                     </span>
                     <span class="col col-lg-5 col-xs-12 addSmallMargin" style="margin-top:-19px">
-                        <h3 style="color:black">Name</h3>
-                        <p class="infoSetUpper">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                        <p class="infoSetUpper">Condition : <?php echo "<span style='font-weight:normal'>Used</span>";?></p>
-                        <p class="infoSetUpper">Mileage : <?php echo "<span style='font-weight:normal'>98 Miles</span>";?></p>
+                        <h3 style="color:black"><?php echo $row['car_Name'];?></h3>
+                        <p class="infoSetUpper">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
+                        <p class="infoSetUpper">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
+                        <p class="infoSetUpper">Mileage : <?php echo "<span style='font-weight:normal'>".$row['car_Mileage']." Miles</span>";?></p>
                         <p class="infoSetUpper">Average CO<sub>2</sub> Emissions : </p>
                         <img style="margin-top:-7px" src="resources/Updated Icons/co2 bar.png" width="200px">
                         <p style="margin-top:5px;margin-bottom:-4px;" class="infoSetUpper">Price:</p>
                         <span class="priceAlign">
-                            <strong> <?php echo "<span style='font-size:25px;font-weight:bold;margin-top:-15px'>$ 750000 </span>";?></strong>
+                            <strong> <?php echo "<span style='font-size:25px;font-weight:bold;margin-top:-15px'>$ ".$row['car_Price']."</span>";?></strong>
                         </span>
                         <span class="msgDealer">
-                            <input type="button" class="msgDealerBtn" value="Message Dealer">
+                            <input type="button" id="<?php echo $row['car_ID'];?>" class="msgDealerBtn" value="Message Dealer">
                         </span>
                         <span class="vidCall">
-                            <input type="button" class="vidCallBtn" value="Video Call Dealer">
+                            <input type="button" id="<?php echo $row['car_ID'];?>" class="vidCallBtn" value="Video Call Dealer">
                         </span>
                         <span class="recommendedText">
                             <small class="smallText" style="font-size:11px">Recommended! Only available during <b>Dealership Business
                             <br>hours</b></small><br>
                         </span>
                         <span class="emailYourself">
-                            <input type="button" class="emailBtn" value="Email car info to Yourself">
+                            <input type="button" class="emailBtn" id="<?php echo $row['car_ID'];?>" value="Email car info to Yourself">
                         </span>
                     </span>
                 </div>
@@ -75,23 +88,23 @@
                             <table class="table firstTable">
                                 <tr>
                                     <th>Year</th>
-                                    <td class="setTD" style="border-style:hidden;">2020</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['car_Year'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Body Type</th>
-                                    <td class="setTD" style="border-style:hidden;">Sedan</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['vehOver_BType'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Colour</th>
-                                    <td class="setTD" style="border-style:hidden;">Red</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['vehOver_Color'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Doors</th>
-                                    <td class="setTD" style="border-style:hidden;">5</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['vehOver_NumDoor'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Seats</th>
-                                    <td class="setTD" style="border-style:hidden;">5</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['vehOver_NumSeats'];?></td>
                                 </tr>
                             </table>
                         </div>
@@ -99,23 +112,30 @@
                             <table class="table secondTable">
                                 <tr>
                                     <th>Fuel Type</th>
-                                    <td class="setTDT">2020</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_fuelType'];?></td>
                                 </tr>
                                 <tr>
                                     <th>CO<sub>2</sub> emissions</th>
-                                    <td class="setTDT">98 Grams/kg</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_Emission'];?> Grams/kg</td>
                                 </tr>
                                 <tr>
                                     <th>No of Gears</th>
-                                    <td class="setTDT">4</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_BType'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Tank capacity</th>
-                                    <td class="setTDT">n/a</td>
+                                    <td class="setTDT">
+                                        <?php 
+                                            if($row['vehOver_TCapacity']!='')
+                                                echo $row['vehOver_TCapacity'];
+                                            else
+                                                echo "n/a";
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Horsepower</th>
-                                    <td class="setTDT">480 Hp</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_TCapacity'];?> Hp</td>
                                 </tr>
                             </table>
                         </div>
@@ -123,23 +143,23 @@
                             <table class="table thirdTable">
                                 <tr>
                                     <th>Condition</th>
-                                    <td class="setTDT">Used</td>
+                                    <td class="setTDT"><?php echo $row['car_NewUsed'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Mileage</th>
-                                    <td class="setTDT">25000 Miles</td>
+                                    <td class="setTDT"><?php echo $row['car_Mileage'];?> Miles</td>
                                 </tr>
                                 <tr>
                                     <th>Owner</th>
-                                    <td class="setTDT">1</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_NumOwner'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Drivetrain</th>
-                                    <td class="setTDT">4WD</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_DTrain'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Engine Type</th>
-                                    <td class="setTDT">Automatic</td>
+                                    <td class="setTDT"><?php echo $row['vehOver_EType'];?></td>
                                 </tr>
                             </table>
                         </div>
@@ -156,7 +176,7 @@
                             <table class="table firstTable">
                                 <tr>
                                     <th>Year</th>
-                                    <td class="setTD" style="border-style:hidden;">2020</td>
+                                    <td class="setTD" style="border-style:hidden;"><?php echo $row['vehOver_BType'];?></td>
                                 </tr>
                                 <tr>
                                     <th>Body Type</th>
@@ -227,6 +247,9 @@
                     </span>
                 </div>
             </div>
+            <?php
+                                }
+            ?>
             <!--Third Middle Row (Dealership Information)-->
             <?php include_once 'DealerInfo.php';?>
             <!--Last Row-->
@@ -236,7 +259,9 @@
                         <span class="row">
                             <?php
                                 include('db_connect.php');
-                                $sql="Select * from cars INNER JOIN dealer ON dealer.dealer_ID=cars.DealerId where cars.car_NewUsed='New' AND cars.car_Status='Available' AND cars.car_AutoStatus!='Pending'";
+                                $curr_id = $_GET['id'];
+                                $sql="Select * from cars INNER JOIN dealer ON dealer.dealer_ID=cars.DealerId 
+                                where cars.car_ID!='$curr_id' AND cars.car_NewUsed='New' AND cars.car_Status='Available' AND cars.car_AutoStatus!='Pending'";
                                 $result=mysqli_query($connect,$sql);
                                 if(mysqli_num_rows($result)>0)
                                 {
