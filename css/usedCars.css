@@ -1,0 +1,119 @@
+.wrapper{
+    top:84px;
+    position: relative;
+}
+.iContainer{
+    max-width: 86%;
+    margin-left: 11%;
+    margin-top: 35px;
+}
+.hrUnderStyle{
+    width: 332px;
+    margin-left: 1px;
+}
+.lowerPart{
+    max-width: 100%;
+    margin-top: 25px;
+}
+.sortingMenuSide{
+    max-width: 30%;
+    margin-left: 0%;
+}
+.contentArea{
+    max-width: 70%;
+    margin-left: 20px;
+    display: inline-block;
+}
+.eachBlock{
+    display: grid;
+    height:65%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.topMargin{
+    margin-top: 20px;
+}
+.alignCenter{
+    margin-left: 300px;
+    margin-top:-10px;
+}
+.usedCarDetail,.innerBlock{
+    margin-left: 0%;
+}
+.infoSet{
+    color:grey;
+    font-weight: bold;
+    font-size:14px;
+}
+.loctionInfo{
+    color:#135fd7;
+    font-size:14px;
+    text-transform:capitalize;
+}
+strong{
+    color: #135fd7;
+    font-weight: bold;
+    font-size:18px;
+}
+.viewCarBtn{
+    float:right;
+    background-color:#044cc4;
+    color:white;
+    width:115px;
+    display:inline-block;
+    padding:1px;
+    margin-right:-130px;
+    font-weight:bold;
+    border:2px solid white;
+    border-radius:8px;
+}
+.hrUnderCarBlock{
+    width:175px;
+    margin: 12px 0px 10px 10px;
+}
+.addBlockTop{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.alignHeading{
+    margin-top: 225px;
+}
+.styleFavIcon{
+    position: absolute;
+    top:3%;
+    left:76%;
+    cursor: pointer;
+    text-decoration: none;
+}
+.noCarFound{
+    margin-top:80px;
+    margin-left: 200px;
+}
+@media (max-width:575px){
+    .wrapper{
+        top:132px;
+        position: relative;
+    }
+    .hrUnderStyle{
+        margin-left:20%;
+        width:120px;
+    }
+    .alignCenter{
+        margin-left:-30px;
+        margin-top:10px;
+    }
+    .usedCarDetail,.innerBlock{
+        margin-left: 22%;
+    }
+    .eachBlock{
+        margin-left:-3px;
+    }
+    .styleFavIcon{
+        position: absolute;
+        top:4%;
+        left:99%;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}

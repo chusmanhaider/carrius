@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Carrius - Electric Cars</title>
+        <title>Carrius - Used Cars</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
@@ -8,12 +8,6 @@
         <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
         <link href="css/usedCars.css" rel="stylesheet">
         <link href="css/scrollbar.css" rel="stylesheet">
-        <style>
-            .hrUnderStyle{
-                width: 352px;
-                margin-left: 5px;
-            }
-        </style>
     </head>
     <body>
         <?php
@@ -22,7 +16,7 @@
         <div class="wrapper" style="background-color: white;">
             <div class="container">
                 <div class="iContainer">
-                    <h4>Browse all <b>Electric Car</b> models ready for Sale</h4>
+                    <h4>Browse All Used car models ready for Sale</h4>
                     <hr class="hrUnderStyle" style="border: 1px solid #047cf3;stroke: #047cf3; fill: #047cf3;margin-top:-8px;">
                     <div class="sortingMenuUpper">
                         <div class="row">
@@ -83,50 +77,6 @@
                         <div class="col col-lg-9" style="margin-left:20px">
                             <div class="contentBlock">
                                 <div class="row">
-                                    <?php
-                                        require_once ("db_connect.php");
-                                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
-                                        dealer.dealer_ID = cars.DealerId
-                                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
-                                        cars.car_AutoStatus = 'Active' AND cars.car_isElectric='Yes'";
-                                        $result = mysqli_query($connect, $sql_used);
-                                        $numRows_cars = mysqli_num_rows($result);
-                                        if($numRows_cars > 0)
-                                        {
-                                            while($row = mysqli_fetch_assoc($result))
-                                            {
-                                    ?>
-                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
-                                        <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
-                                            <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
-                                            </p>
-                                            <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
-                                            </p>
-                                            <p class="infoSet">Price:</p>
-                                            <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
-                                            </span>
-                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
-                                        </span>
-                                    </div>
-                                    <?php
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Electric Car Available</span>";
-                                        }
-                                    ?>
-                                <!--
                                     <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
                                         <span class="eachBlockCar">
                                             <i class="fa fa-heart fa-lg styleFavIcon"></i>
@@ -215,7 +165,28 @@
                                             <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
                                         </span>
                                     </div>
-                                -->
+                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
+                                        <span class="eachBlockCar">
+                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
+                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
+                                            <h4>Car Names</h4>
+                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
+                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
+                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
+                                            <p>
+                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
+                                            </p>
+                                            <p>
+                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
+                                            </p>
+                                            <p class="infoSet">Price:</p>
+                                            <span style="display:inline-block">
+                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
+                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
+                                            </span>
+                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
+                                        </span>
+                                    </div>
                                 </div>
                                 
                             </div>
