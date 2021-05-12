@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Carrius - New Cars</title>
+        <title>Carrius - All Cars Model</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
@@ -70,7 +70,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-1 col-xs-4 allFilters" id="filterResult">
-                                        <button type="submit" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button> 
+                                        <a href="all-cars-model.php"><button type="button" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-refresh"></i> Clear</button></a> 
                                     </div> 
                                 <!--</form>-->
                             </span>

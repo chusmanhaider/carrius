@@ -9,6 +9,12 @@
             <div class="col col-md-6 col-xs-12">                				
                 <div class="list-group">
                     <h4>Drivertain</h4>
+                    <?php
+                        require_once ("db_connect.php");
+                        
+                        if(!isset($_GET['wheelDrive']))
+                        {
+                    ?>
                     <div class="list-group-item checkbox">
                         <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
                     </div>
@@ -21,6 +27,80 @@
                     <div class="list-group-item checkbox">
                         <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
                     </div>
+                    <?php
+                        }
+                        else
+                        {
+                            if($_GET['wheelDrive']=='awd')
+                            {
+                    ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" checked="checked" class="common_selector awd" value="AWD"  > AWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                </div>
+                    <?php
+                            }
+                            else if($_GET['wheelDrive']=='fwd')
+                            {
+                    ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" checked="checked" class="common_selector fwd" value="FWD"  > FWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                </div>
+                    <?php
+                            }
+                            else if($_GET['wheelDrive']=='rwd')
+                            {
+                    ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" checked="checked" class="common_selector rwd" value="RWD"  > RWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                </div>
+                    <?php
+                            }
+                            else if($_GET['wheelDrive']=='4wd')
+                            {
+                    ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                </div>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" checked="checked" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                </div>
+                    <?php
+                            }
+                        }
+                    ?>
                 </div>
                 <div class="list-group">
                     <h4>Condition</h4>

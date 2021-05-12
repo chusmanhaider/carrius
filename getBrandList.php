@@ -1,17 +1,42 @@
 <?php
     require_once ("db_connect.php");
+    $selectedBrand = $_GET ['brand'];
     $sql="Select * from cars_brand Where carBrand_Status='Available'";
     $result=mysqli_query($connect, $sql);
     $numRows=mysqli_num_rows($result);
-    if($numRows>0)
+    if($selectedBrand=='')
     {
-        while($row=mysqli_fetch_assoc($result))
+        if($numRows>0)
         {
-            echo "<option id='$row[carBrand_ID]' value='$row[carBrand_Name]'>".$row['carBrand_Name']."</option>";
+            while($row=mysqli_fetch_assoc($result))
+            {
+                echo "<option id='$row[carBrand_ID]' value='$row[carBrand_Name]'>".$row['carBrand_Name']."</option>";
+            }
+        }
+        else
+        {
+            echo "";
         }
     }
     else
     {
-        echo "";
+        if($numRows>0)
+        {
+            while($rw=mysqli_fetch_assoc($result))
+            {
+                if($selectedBrand==$rw['carBrand_Name'])
+                {
+                    echo "<option id='$rw[carBrand_ID]' selected='selected' value='$rw[carBrand_Name]'>".$rw['carBrand_Name']."</option>";
+                }
+                else
+                {
+                    echo "<option id='$rw[carBrand_ID]' value='$rw[carBrand_Name]'>".$rw['carBrand_Name']."</option>";
+                }
+            }
+        }
+        else
+        {
+            echo "";
+        }
     }
 ?>

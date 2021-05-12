@@ -31,15 +31,15 @@
                             <h3><b>Browse by Car Type</b></h3>
                             <hr style="border: 2px solid #047cf3;width:170px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;float:left;margin-left:14px">
                             <div class="browseByCar">
-                                <span><img src="resources/car type/hatchback x.jpg"> <p class="textBrowseCar"><a href="search-car.php?type=Hatchback" class="noUnderline" style="color: grey;">Hatchback</a></p></span>
-                                <span><img src="resources/car type/suv x.jpg" alt="SUV"> <p class="textBrowseCar">SUV</p></span>
-                                <span><img id="specificCarImg" src="resources/car type/Electric x.jpg"> <p class="textBrowseCar">Electric</p></span>
-                                <span><img src="resources/car type/mini van x.jpg"> <p class="textBrowseCar">Minivan</p></span>
-                                <span><img src="resources/car type/pick up x.jpg"> <p class="textBrowseCar">Pickup</p></span>
-                                <span><img src="resources/car type/sedan x.jpg"> <p class="textBrowseCar">Sedan</p></span>
-                                <span><img src="resources/car type/jeep.png"> <p class="textBrowseCar">Jeep</p></span>
+                                <span><img src="resources/car type/hatchback x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Hatchback" class="noUnderline" style="color: grey;">Hatchback</a></p></span>
+                                <span><img src="resources/car type/suv x.jpg" alt="SUV"> <p class="textBrowseCar"><a href="all-cars-model.php?type=SUV" class="noUnderline" style="color: grey;">SUV</a></p></span>
+                                <span><img id="specificCarImg" src="resources/car type/Electric x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Electric" class="noUnderline" style="color: grey;">Electric</a></p></span>
+                                <span><img src="resources/car type/mini van x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Minivan" class="noUnderline" style="color: grey;">Minivan</a></p></span>
+                                <span><img src="resources/car type/pick up x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Pickup" class="noUnderline" style="color: grey;">Pickup</a></p></span>
+                                <span><img src="resources/car type/sedan x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Sedan" class="noUnderline" style="color: grey;">Sedan</a></p></span>
+                                <span><img src="resources/car type/jeep.png"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Jeep" class="noUnderline" style="color: grey;">Jeep</a></p></span>
                             
-                                <span><img id="specificCarImgTwo" src="resources/car type/convertible x.jpg"> <p class="textBrowseCar">Convertible</p></span>
+                                <span><img id="specificCarImgTwo" src="resources/car type/convertible x.jpg"> <p class="textBrowseCar"><a href="all-cars-model.php?type=Convertible" class="noUnderline" style="color: grey;">Convertible</a></p></span>
                                 
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                                         
                                     </span>
                                     <span class="lowerBtn">
-                                        <input type="button" value="Select FWD" id="selectFWD">
+                                        <a style="text-decoration:none" target="_blank" href="all-cars-model.php?wheelDrive=fwd"><input type="button" value="Select FWD" id="selectFWD"></a>
                                     </span>
                                 </div>
                                 <div class="col col-lg-3 col-xs-6">
@@ -168,7 +168,7 @@
                                         
                                     </span>
                                     <span class="lowerBtn addMar">
-                                        <input type="button" value="Select RWD" id="selectRWD">
+                                        <a style="text-decoration:none" target="_blank" href="all-cars-model.php?wheelDrive=rwd"><input type="button" value="Select RWD" id="selectRWD"></a>
                                     </span>
                                 </div>
                                 <div class="col col-lg-3 col-xs-6">
@@ -186,7 +186,7 @@
                                         
                                     </span>
                                     <span class="lowerBtn addMar">
-                                        <input type="button" value="Select AWD" id="selectAWD">
+                                        <a style="text-decoration:none" target="_blank"  href="all-cars-model.php?wheelDrive=awd"><input type="button" value="Select AWD" id="selectAWD"></a>
                                     </span>
                                 </div>
                                 <div class="col col-lg-3 col-xs-6">
@@ -204,7 +204,7 @@
                                         
                                     </span>
                                     <span class="lowerBtn addMar">
-                                        <input type="button" value="Select 4WD" id="selectFourWD">
+                                        <a style="text-decoration:none" target="_blank" href="all-cars-model.php?wheelDrive=4wd"><input type="button" value="Select 4WD" id="selectFourWD"></a>
                                     </span>
                                 </div>
                             </div>
@@ -276,7 +276,7 @@
                                         while($var=mysqli_fetch_array($result))
                                         { 	
                                         echo "
-                                        <dd class='browseCarDD'><a class='carBrands noUnderline' style=text-decoration:none;' href='All Cars.php?brand=".$var['carBrand_Name']."'>".$var['carBrand_Name']."</a></dd>";
+                                        <dd class='browseCarDD'><a class='carBrands noUnderline' style=text-decoration:none;' href='all-cars-model.php?brand=".$var['carBrand_Name']."'>".$var['carBrand_Name']."</a></dd>";
                                         }
                                         }
                                         else
