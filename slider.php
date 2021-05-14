@@ -8,6 +8,15 @@
             }
         </style>
     </head>
+<?php
+    include_once 'db_connect.php';
+    $car_Id = $_GET['id'];
+    $sql = "SELECT * from car_gallery where CarId = $car_Id AND carGallery_Status='Available'";
+    $res = mysqli_query($connect, $sql);
+    /*while($row = mysqli_fetch_assoc())
+    {
+    */
+?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
      <ol class="carousel-indicators">
@@ -41,3 +50,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<?php
+    //}
+?>
