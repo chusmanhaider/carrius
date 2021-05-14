@@ -63,17 +63,17 @@
                             <strong> <?php echo "<span style='font-size:25px;font-weight:bold;margin-top:-15px'>$ ".$row['car_Price']."</span>";?></strong>
                         </span>
                         <span class="msgDealer">
-                            <input type="button" id="<?php echo $row['car_ID'];?>" class="msgDealerBtn" value="Message Dealer">
+                            <input type="button" data-toggle="modal" data-target="#msgDealerModal" id="<?php echo $row['car_ID'];?>" class="msgDealerBtn" value="Message Dealer">
                         </span>
                         <span class="vidCall">
-                            <input type="button" id="<?php echo $row['car_ID'];?>" class="vidCallBtn" value="Video Call Dealer">
+                            <input type="button" data-toggle="modal" data-target="#emailCarMsg" id="<?php echo $row['car_ID'];?>" class="vidCallBtn" value="Video Call Dealer">
                         </span>
                         <span class="recommendedText">
                             <small class="smallText" style="font-size:11px">Recommended! Only available during <b>Dealership Business
                             <br>hours</b></small><br>
                         </span>
                         <span class="emailYourself">
-                            <input type="button" class="emailBtn" id="<?php echo $row['car_ID'];?>" value="Email car info to Yourself">
+                            <input type="button" class="emailBtn" data-toggle="modal" data-target="#emailCar" id="<?php echo $row['car_ID'];?>" value="Email car info to Yourself">
                         </span>
                     </span>
                 </div>
@@ -120,7 +120,14 @@
                                 </tr>
                                 <tr>
                                     <th>No of Gears</th>
-                                    <td class="setTDT"><?php echo $row['vehOver_BType'];?></td>
+                                    <td class="setTDT">
+                                    <?php 
+                                        if($row['vehOver_NumGear']!='')
+                                            echo $row['vehOver_NumGear'];
+                                        else
+                                            echo "n/a";
+                                    ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Tank capacity</th>
@@ -306,6 +313,11 @@
         
         </div> <!--Container-->
     </div><!-- End or Wrapper -->
+    <!--Contact Dealer Modal-->
+    <?php include_once 'contactDealerModal.php';?>
+    <?php include_once 'emailCarModal.php';?>
+    <?php include_once 'emailCarMessage.php';?>
+    <?php include_once 'msgDealer.php';?>
     <?php
         echo "<br><br><br><br>";
         include_once "footer.php";

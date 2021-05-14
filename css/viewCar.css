@@ -5,7 +5,7 @@
 }
 
 .iContainer,.imgArea{
-    max-width: 90%;
+    max-width: 88%;
     margin-left: 12%;
     margin-top: 3%;
 }
@@ -226,6 +226,44 @@ strong{
 .secBtn{
     margin-left: 25px;
 }
+.closeModalIcon{
+    color: #044cc4;
+    width:45px;
+    fill:#044cc4;
+    stroke: #044cc4;
+    opacity: 1;
+}
+.modalContainer{
+    width: 90%;
+    padding: 5% 0px 5% 10%;
+}
+.iconArea{
+    background-color: #044cc4;
+    width: 4%;
+    display: inline-block;
+}
+.clearMe{
+    clear:both;
+}
+.firstRow{
+    margin-top: 20px;
+}
+.markBorder{
+   border:3px solid #f7f7f7;
+}
+.paraText{
+    background-color:#f7f7f7;
+    height:29px;
+    line-height: 30px;
+    width: 117%;
+    margin-left: -31px;
+    padding-left:10px;
+    font-size:14px;
+    display: inline-block;
+}
+.setMe{
+    margin-top: 16px;
+}
 /*
 .setMaxChar{
     display:inline-block;
@@ -384,5 +422,15 @@ tr {
         margin-top:10px; 
         margin-bottom:80px;
         margin-right:2%;
+    }
+    .setMe{
+        margin-top: 45px;
+    }
+    .paraText{
+        background-color:#f7f7f7;
+        height:102px;
+        margin-left: -31px;
+        padding:10px;
+        font-size:14px;
     }
 }

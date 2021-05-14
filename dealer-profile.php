@@ -59,7 +59,7 @@
                                 <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo" style="color:black"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
                             </span>
                             <span class="contactDSpan">
-                                <input type="button" value="Contact Dealership" id="contactDBTn">
+                                <input type="button" data-toggle="modal" data-target="#contactDealership" value="Contact Dealership" id="contactDBTn">
                             </span>
                             <?php
                                 }
@@ -98,6 +98,8 @@
                 </div>
             </div>
         </div> 
+        <!--Contact Dealer Modal-->
+        <?php include_once 'contactDealerModal.php';?>
         <?php
         echo "";
         include_once "footer.php";

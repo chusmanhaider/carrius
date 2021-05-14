@@ -47,7 +47,7 @@
                 <span class="addSpaceX"><br></span>
                 <span class="contactBtns">
                     <span class="firstBtn">
-                        <input type="button" class="contactDBtn selectColor" id="" name="contactDealerBtn" value="Contact Dealership">
+                        <input type="button" data-toggle="modal" data-target="#contactDealership" class="contactDBtn selectColor" id="<?php echo $row['dealer_ID']; ?>" name="contactDealerBtn" value="Contact Dealership">
                     </span>
                     <span class="secBtn">
                         <a href="dealer-profile.php?url=<?php echo $row['dealer_ID'];?>"><input type="button" class="viewCBtn selectColor" id="" name="viewAllCars" value="View all cars from dealership"></a>
