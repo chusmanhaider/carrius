@@ -188,11 +188,11 @@
                                         <span style="display:inline-block;margin-top:10px">
                                             <input type="radio" style="width: 13px;height:13px;display:inline-block" class="form-control" id="phoneCallRadio" name="phoneCallRadio"><label style="display: inline-block;">&nbsp;&nbsp;I would prefer a phone call</label><br>
                                         </span>
-                                        <input type="text" style="width:80%;margin-left:10%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="+19292000299" maxlength="20" class="form-control" name="phoneNumber">
+                                        <input type="text" style="width:80%;margin-left:4%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="+19292000299" maxlength="20" class="form-control" name="phoneNumber">
                                     </span>
                                     <span>
                                         <label style="color:black;margin-top:18px">What is your ZIP code?</label>
-                                        <input type="text" style="width:45%;margin-left:10%;margin-bottom:17px;height: 30px; background-color:#f7f7f7;border-radius:3px" maxlength="22" placeholder="M3J1K7" class="form-control" name="zipCode">
+                                        <input type="text" style="width:45%;margin-left:4%;margin-bottom:17px;height: 30px; background-color:#f7f7f7;border-radius:3px" maxlength="22" placeholder="M3J1K7" class="form-control" name="zipCode">
                                     </span>
                             </span>
                         </span>
