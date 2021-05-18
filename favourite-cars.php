@@ -6,6 +6,7 @@
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
         <link href="Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
+        <link href="Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
         <link href="css/usedCars.css" rel="stylesheet">
         <link href="css/scrollbar.css" rel="stylesheet">
         <style>
@@ -116,10 +117,13 @@
                                 <div class="row">
                                     <?php
                                         require_once ("db_connect.php");
+                                        include_once 'temp_session.php';
                                         $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
-                                        dealer.dealer_ID = cars.DealerId
+                                        dealer.dealer_ID = cars.DealerId INNER JOIN fav_cars ON 
+                                        fav_cars.favCar_CarId=cars.car_ID
                                         WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
-                                        cars.car_AutoStatus = 'Active' AND cars.car_NewUsed='New'";
+                                        cars.car_AutoStatus = 'Active' AND fav_cars.favCar_MarkedBy='NonRegisteredUser' AND 
+                                        fav_cars.favCar_tmpUser='$tmpUser'";
                                         $result = mysqli_query($connect, $sql_used);
                                         $numRows_cars = mysqli_num_rows($result);
                                         if($numRows_cars > 0)
@@ -129,8 +133,43 @@
                                     ?>
                                     <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
                                         <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
+                                        <?php
+                                                $selected_car=$row['car_ID'];
+                                                $sql_images="Select * from car_gallery where carGallery_Status='Available' AND CarId='$selected_car'";
+                                                $res = mysqli_query($connect, $sql_images);
+                                                $tw = mysqli_fetch_assoc($res);
+                                                $link=$tw['carGallery_Image'];
+
+                                                //
+                                                    //$carId=$_GET['id'];
+                                                    $q_ry="Select * from fav_cars Where
+                                                    favCar_tmpUser='$tmpUser'";
+                                                    $re_qry=mysqli_query($connect, $q_ry);
+                                                    $line_favCar=mysqli_fetch_assoc($re_qry);
+                                                    $markFav=$line_favCar['favCar_MarkFav'];
+                                                    $markStatus=$line_favCar['favCar_Status'];
+                                                    if($markFav!="Yes" && $markStatus!="Marked")
+                                                    {
+                                            ?>
+                                            <span class="markFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:white"></i></span>
+                                            <?php
+                                                    }
+                                                    else{
+                                            ?>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#047cf3"></i></span>
+                                            <?php
+                                                    }
+                                            ?>
+                                            <img src="<?php 
+                                                    //$link_active=$row['carGallery_Image'];
+                                                    $substr=substr($tw['carGallery_Image'],0,3);
+                                                    if($substr!='../')
+                                                        echo "Dashboard/".$tw['carGallery_Image'];
+                                                    else
+                                                    {
+                                                        $newlink_active=substr($link,3);
+                                                        echo "Dashboard/".$newlink_active;
+                                                    }?>" alt="<?php echo $tw['carGallery_Caption'];?>" width="200px" height="120px">
                                             <h4><?php echo $row['car_Name'];?></h4>
                                             <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
                                             <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
@@ -265,5 +304,66 @@
         <script src="Bootstrap/js/metisMenu.min.js"></script>
         <script src="Bootstrap/js/bootstrap.min.js"></script>
         <script src="Bootstrap/js/startmin.js"></script>
+        <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            function redirect(){
+				location= "favourite-cars.php";
+			}
+            $(document).on('click', '.markFav', function(){  
+                //var dealer_id = $(this).attr("id"); 
+                    var car_id = $(this).attr("name");
+                    var tmpuser_id=$(this).attr("id");
+                    //alert(tmpuser_id);
+                    $.ajax({  
+                        url:"carFav.php",  
+                        method:"POST",  
+                        data:{car_id:car_id,tmpuser_id:tmpuser_id},  
+                        success:function(data){
+                             
+                                Swal.fire({
+                                    position: 'center',
+                                    type: 'success',
+                                    showCloseButton: true,
+                                    title: 'Car Favourite',
+                                    text:'Car marked as favourite',
+                                    customClass: 'animated tada',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            setTimeout(function() { redirect(); }, 3000);
+                        }  
+                    });
+            }); 
+            $(document).on('click', '.unMarkFav', function(){  
+                                var car_u_id = $(this).attr("name");
+                                var buyer_u_id=$(this).attr("id");
+                                //alert(car_u_id);
+                            
+                                $.ajax({  
+                                        url:"carNotFav.php",  
+                                        method:"POST",  
+                                        data:{car_u_id:car_u_id,buyer_u_id:buyer_u_id},  
+                                        success:function(data){
+                                        
+                                            Swal.fire({
+                                                position: 'center',
+                                                type: 'success',
+                                                showCloseButton: true,
+                                                title: 'Car Not Favourite',
+                                                text:'Car unmarked as favourite',
+                                                customClass: 'animated tada',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            });
+                                        
+                                        setTimeout(function() { redirect(); }, 3000);
+                                        }  
+                                    }); 
+                                
+                                    
+            });
+        });
+        </script>
     </body>
 </html>

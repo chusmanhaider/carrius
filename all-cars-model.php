@@ -126,7 +126,16 @@
                                             <?php
                                                     }
                                             ?>
-                                            <img src="<?php echo "Dashboard/".$link;?>" alt="<?php echo $tw['carGallery_Caption'];?>" width="200px" height="120px">
+                                            <img src="<?php 
+                                                    //$link_active=$row['carGallery_Image'];
+                                                    $substr=substr($tw['carGallery_Image'],0,3);
+                                                    if($substr!='../')
+                                                        echo "Dashboard/".$tw['carGallery_Image'];
+                                                    else
+                                                    {
+                                                        $newlink_active=substr($link,3);
+                                                        echo "Dashboard/".$newlink_active;
+                                                    }?>" alt="<?php echo $tw['carGallery_Caption'];?>" alt="<?php echo $tw['carGallery_Caption'];?>" width="200px" height="120px">
                                             <h4><?php echo $row['car_Name'];?></h4>
                                             <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
                                             <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
