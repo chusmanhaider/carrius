@@ -211,210 +211,69 @@ $username=$result['dealer_Username'];
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <i class="fa fa-users"></i> Manage Team Members
-								<?php
-								$count=0;
-								$sql = "SELECT * FROM cars_brand INNER JOIN cars ON cars_brand.carBrand_ID = cars.CarBrandId WHERE cars.car_Status='Terminated' ORDER BY cars.car_tStamp DESC";
-								$res=mysqli_query($connect,$sql);
-								while($row=mysqli_fetch_assoc($res))
-								{
-									if($row['car_Status']=="Terminated")
-									{
-										$count=$count+1;
-									}
-								}
 								
-								if($count>0)
-								{
-								?>
-								<div class="pull pull-right" style="margin-top:-5px">
-									<button class="btn btn-sm btn-danger removedCar" id="<?php echo $Id;?>"><span data-toggle='tooltip' title="Terminated Car List"><i class="fa fa-trash fa-lg"></i></span></button>
-								</div>
-								<?php
-								}
-								?>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-								<div class="remove-messages">
-								<?php
-									if(isset($_GET['msg']))
-									{
-										echo "<div class='alert alert-success alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-check'></i> <strong>Success !!</strong> Car has added
-										</div>";
-									}
-									else if(isset($_GET['msgError']))
-									{
-										echo "<div class='alert alert-danger alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-warning'></i> <strong>Error !!</strong> While adding car
-										</div>";
-									}
-									else if(isset($_GET['msgOther']))
-									{
-										echo "<div class='alert alert-danger alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-warning'></i> <strong>Error !!</strong> While adding other details
-										</div>";
-									}
-								?>
-								</div>
-							<div class="row">
-								<div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
-									<button class="btn btn-primary button1" data-toggle="modal" id="addCategoryModalBtn" data-target="#addMyCarModal"> <i class="fa fa-plus fa-faw"></i> Add Car</button>
-								</div>
-								<div class="pull pull-left" style="margin-left:20px;">
-									<a href="Teams.php" class="btn btn-info">
-										<span class="glyphicon glyphicon-refresh" data-toggle="tooltip" title="Refresh"></span>
-									</a>
-								</div>
-							</div>
+								
+							
                             <div class="dataTable_wrapper">
 								<div class="category_table">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
-												<th class="text-center">Car Name</th>
-												<th class="text-center">Brand</th>
-                                                <th class="text-center">Year</th>
-												<th class="text-center noDisplay">Mileage</th>
-												<th class="text-center noDisplay">Price</th>
+												<th class="text-center">#</th>
+                                                <th class="text-center">Team Name</th>
 												<th class="text-center">Status</th>
 												<th class="text-center" style="width:20%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-											<?php  
-												/*$sql = "SELECT * FROM cars_brand 
-												JOIN cars ON cars_brand.carBrand_ID = cars.CarBrandId 
-												JOIN cars ON dealercars.CarId=cars.car_ID
-												WHERE cars.car_Status!='Terminated'  ORDER BY cars.car_Name ASC";*/
-												
-												/*$sql="SELECT * FROM cars INNER JOIN dealercars ON cars.car_ID=dealercars.CarId 
-												WHERE cars.car_Status!='Terminated'";
-												*/
-
-												$sql= "SELECT * 
-												FROM cars
-												INNER JOIN dealer
-												ON dealer.dealer_ID=cars.DealerId
-												INNER JOIN cars_brand
-												ON cars_brand.carBrand_ID=cars.CarBrandId
-												WHERE (cars.car_Status!='Terminated' AND cars.car_Status!='Deleted') AND dealer.dealer_ID='$Id' AND dealer.dealer_Status!='Terminated' ORDER BY cars.car_Name asc
-												";
-
-												$counter=1;
-												$result = mysqli_query($connect, $sql);
-												$res = mysqli_query($connect, $sql_t);
-												if (mysqli_num_rows($result) > 0) 
-												{
-													while($var=mysqli_fetch_array($result))
-													{ 	
-											?>	
-													<tr id="<?php echo $var["car_ID"]; ?>">
-														<td class="text-center text-capitalize carField" style="width:12%"><?php echo $var["car_Name"]?></td>
-														<td class="text-center text-capitalize carField" style="width:12%"><?php echo $var["carBrand_Name"]?></td>
-														<td class="text-center text-capitalize" style="width:12%"><?php echo $var["car_Year"]?></td>
-														<td class="text-center text-capitalize noDisplay" style="width:12%"><?php echo $var["car_Mileage"]." Miles";?></td>
-														<td class="text-center text-capitalize noDisplay"><?php echo "<small style='font-size:13px;color:#004BB4'>".$var["car_Price"]." $</small>"?></td>
-														<td class="text-center">
-															<?php
-															if($var["car_AutoStatus"]=="Active")
-															{
-																if($var["car_Status"]=="Available")
-																{
-																	echo "<label class='label label-success'>Available</label>";
-																}
-																else if($var["car_Status"]=="Pending")
-																{
-																	echo "<label class='label label-info'>Pending</label>";
-																}
-																else if($var["car_Status"]=="Rejected")
-																{
-																	echo "<label class='label label-danger'>Rejected</label>";
-																}
-																else if($var["car_Status"]=="Not Available")
-																{
-																	echo "<label class='label label-warning'>Not Available</label>";
-																}
-																else if($var["car_Status"]=="Sold")
-																{
-																	echo "<label class='label label-primary'>Sold</label>";
-																}
-															} 
-															else if($var["car_AutoStatus"]=="Pending")
-															{
-																if($var["car_Status"]=="Available")
-																{
-																	echo "<label class='label label-success'>Available</label><span data-toggle='tooltip' title='Admin approval required'><i style='margin-left:2px;color:red;' class='fa fa-question-circle'></i></span>";
-																}
-																else if($var["car_Status"]=="Pending")
-																{
-																	echo "<label class='label label-info'>Pending</label><span data-toggle='tooltip' title='Admin approval required'><i style='margin-left:2px;color:red;' class='fa fa-question-circle'></i></span>";
-																}
-																else if($var["car_Status"]=="Rejected")
-																{
-																	echo "<label class='label label-danger'>Rejected</label><span data-toggle='tooltip' title='Admin approval required'><i style='margin-left:2px;color:red;' class='fa fa-question-circle'></i></span>";
-																}
-																else if($var["car_Status"]=="Not Available")
-																{
-																	echo "<label class='label label-warning'>Not Available</label><span data-toggle='tooltip' title='Admin approval required'><i style='margin-left:2px;color:red;' class='fa fa-question-circle'></i></span>";
-																}
-																else if($var["car_Status"]=="Sold")
-																{
-																	echo "<label class='label label-primary'>Sold</label>";
-																}
-															}	
-															else
-															{
-																if($var["car_Status"]=="Available")
-																{
-																	echo "<label class='label label-success'>Available</label>";
-																}
-																else if($var["car_Status"]=="Pending")
-																{
-																	echo "<label class='label label-info'>Pending</label>";
-																}
-																else if($var["car_Status"]=="Rejected")
-																{
-																	echo "<label class='label label-danger'>Rejected</label>";
-																}
-																else if($var["car_Status"]=="Not Available")
-																{
-																	echo "<label class='label label-warning'>Not Available</label>";
-																}
-																else if($var["car_Status"]=="Sold")
-																{
-																	echo "<label class='label label-primary'>Sold</label>";
-																}
-															}
-															?>
-														</td>
-														
-														<td class="text-center">
-															<button class="btn btn-sm btn-circle btn-info view_car_gallery" id="<?php echo $var["car_ID"]; ?>">
-																<span data-toggle='tooltip' title="Car Images Gallery"><i class='fa fa-picture-o fa-lg'></i></span>
-															</button>
-															<button class="btn btn-sm btn-circle btn-primary view_car" id="<?php echo $var["car_ID"]; ?>">
-																<span data-toggle='tooltip' title="View Car"><i class='fa fa-eye fa-lg'></i></span>
-															</button>
-															<button class="btn btn-sm btn-circle btn-warning update_car" id="<?php echo $var["car_ID"]; ?>">
-																<span data-toggle='tooltip' title="Edit Car Record"><i class='fa fa-edit fa-lg'></i></span>
-															</button>
-															<button class="btn btn-sm btn-circle btn-danger remove_car" id="<?php echo $var["car_ID"]; ?>">
-																<span data-toggle='tooltip' title="Remove Car"><i class='fa fa-remove fa-lg'></i></span>
-															</button>
-															<button class="btn btn-sm btn-circle btn-secondary complete_image_gallery" id="<?php echo $var["car_ID"]; ?>">
-																<span data-toggle='tooltip' title="Complete Gallery"><i class='fa fa-arrow-right fa-lg'></i></span>
-															</button>
-														</td>
-													</tr>
-												<?php
-													$counter=$counter+1;
-													}
-												}
-											?>	
+                                            <tr id="<?php echo $Id;?>">
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">Administration Department</td>
+                                                <td class="text-center">Available</td>
+                                                <td class="text-center">
+															
+                                                    <button class="btn btn-sm btn-circle btn-warning update_car" name="admin_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Edit Status Only"><i class='fa fa-edit fa-lg'></i></span>
+													</button>		
+													
+													<button style="margin-left:10px;" class="btn btn-sm btn-circle btn-secondary admin_dept_detail" name="admin_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Complete List"><i class='fa fa-list fa-lg'></i></span>
+													</button>
+												</td>
+                                            </tr>
+                                            <tr id="<?php echo $Id;?>">
+                                                <td class="text-center">2</td>
+                                                <td class="text-center">Finance Department</td>
+                                                <td class="text-center">Available</td>
+                                                <td class="text-center">
+															
+                                                    <button class="btn btn-sm btn-circle btn-warning update_car" name="finance_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Edit Status Only"><i class='fa fa-edit fa-lg'></i></span>
+													</button>		
+													
+													<button style="margin-left:10px;" class="btn btn-sm btn-circle btn-secondary finance_dept_detail" name="finance_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Complete List"><i class='fa fa-list fa-lg'></i></span>
+													</button>
+												</td>
+                                            </tr>	
+                                            <tr id="<?php echo $Id;?>">
+                                                <td class="text-center">3</td>
+                                                <td class="text-center">Sales Department</td>
+                                                <td class="text-center">Available</td>
+                                                <td class="text-center">
+															
+                                                    <button class="btn btn-sm btn-circle btn-warning update_car" name="sales_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Edit Status Only"><i class='fa fa-edit fa-lg'></i></span>
+													</button>		
+													
+													<button style="margin-left:10px;" class="btn btn-sm btn-circle btn-secondary sales_dept_detail" name="sales_Dept" id="<?php echo $Id; ?>">
+														<span data-toggle='tooltip' title="Complete List"><i class='fa fa-list fa-lg'></i></span>
+													</button>
+												</td>
+                                            </tr>		
                                         </tbody>
                                     </table>
 									</div>
@@ -1358,7 +1217,7 @@ $username=$result['dealer_Username'];
     <script src="../Bootstrap/js/dataTables/jquery.dataTables.min.js"></script>
     <script src="../Bootstrap/js/dataTables/dataTables.bootstrap.min.js"></script>
 	<script src="../Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
-	<script type="text/javascript" src="../js/My Car.js"></script>
+	<script type="text/javascript" src="../js/teams.js"></script>
 	
     </body>
 </html>
