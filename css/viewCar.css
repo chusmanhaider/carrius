@@ -404,8 +404,15 @@ tr {
     #contactDBtn,#viewCBtn{
         width:auto;
     }
+    #viewCBtn{
+        margin-top: 20px;
+    }
+    .firstBtn::after{
+        margin-bottom: 20px;
+    }
     .secBtn{
-        margin-left: 10px;
+        margin-left: 0px;
+        margin-top: 50px;
     }
     .iContainerInfo{
         max-width: 80%;
@@ -413,7 +420,7 @@ tr {
         padding-top: 20px;
         padding-left:30px;
         padding-bottom: 40px;
-        height:510px;
+        height:570px;
     }
     #noCarFound
     {

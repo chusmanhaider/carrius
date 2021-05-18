@@ -1,12 +1,13 @@
 <?php
 	require_once '../db_connect.php';
 	error_reporting(0);
-	if(isset($_POST["car_id"],$_POST["buyer_id"]))  
+	if(isset($_POST["car_id"],$_POST["tmpuser_id"]))  
 	{
         $car_id=$_POST["car_id"];
-        $buyer_id=$_POST["buyer_id"];
-
-        $sql_getFav="Select * from fav_cars WHERE favCar_CarId='$car_id' AND favCar_BuyerId='$buyer_id'";
+        $tmpuser=$_POST["tmpuser_id"];
+        $open_car=$_GET['id'];
+        $sql_getFav="Select * from fav_cars WHERE favCar_CarId='$car_id' 
+        AND favCar_MarkedBy='NonRegisteredUser' AND favCar_tmpUser='$tmpuser'";
         $res=mysqli_query($connect, $sql_getFav); 
         //$line=mysqli_fetch_assoc($res);
         $numRows=mysqli_num_rows($res);
@@ -14,23 +15,23 @@
         {
             $markFav="Yes";
             $status="Marked";
-			$markedBy="RegisteredUser";
-            $sql_insert="INSERT INTO fav_cars (favCar_Status, favCar_CarId, favCar_MarkedBy, favCar_BuyerId, favCar_MarkFav) 
-            VALUES ('$status', '$car_id', '$markedBy', '$buyer_id', '$markFav')";
+			$markedBy="NonRegisteredUser";
+            $sql_insert="INSERT INTO fav_cars (favCar_Status, favCar_CarId, favCar_MarkedBy, favCar_tmpUser, favCar_MarkFav) 
+            VALUES ('$status', '$car_id', '$markedBy', '$tmpuser', '$markFav')";
             if(mysqli_query($connect, $sql_insert))
             {
-                header('location: All-Cars.php?msg=SuccessAvailable');
+                header('location: view-car.php?id='.$open_car.'msg=SuccessAvailable');
             }
             else
             {
-                header('location: All-Cars.php?msgError=Error');
+                header('location: view-car.php?id='.$open_car.'msgError=Error');
             }
         }
         else if($numRows==1)
         {
             $markFav="Yes";
             $status="Marked";
-			$markedBy="RegisteredUser";
+			$markedBy="NonRegisteredUser";
             $sql_update="UPDATE fav_cars SET
                 favCar_Status='$status',
 				favCar_MarkedBy='$markedBy',
@@ -38,11 +39,11 @@
                 WHERE favCar_CarId='$car_id' AND favCar_BuyerId='$buyer_id'";
             if(mysqli_query($connect, $sql_update))
             {
-                header('location: All-Cars.php?msg=SuccessAvailable');
+                header('location: view-car.php?id='.$open_car.'msg=SuccessAvailable');
             }
             else
             {
-                header('location: All-Cars.php?msgError=Error');
+                header('location: view-car.php?id='.$open_car.'msgError=Error');
             }
         }
         

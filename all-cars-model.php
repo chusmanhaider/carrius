@@ -95,9 +95,16 @@
                                         {
                                             while($row = mysqli_fetch_assoc($result))
                                             {
+                                                $selected_car=$row['car_ID'];
                                     ?>
                                     <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
                                         <span class="eachBlockCar">
+                                            <?php
+                                                $sql_images="Select * from car_gallery where car_gallery='Available' AND CarId='$selected_car'";
+                                                $res=mysqli_query($connect,$sql_images);
+                                                $tw=mysqli_fetch_assoc($res);
+                                                $link=$tw[''];
+                                            ?>
                                             <i class="fa fa-heart fa-lg styleFavIcon"></i>
                                             <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
                                             <h4><?php echo $row['car_Name'];?></h4>

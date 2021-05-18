@@ -1,3 +1,4 @@
+<?php include_once 'temp_session.php';?>
 <html>
 <head>
     <title>Carrius - View Dealership</title>
@@ -143,8 +144,15 @@
 
            <ul class="nav navbar-right navbar-top-links">
 				<li class="dropdown navbar-inverse" style="background-color: #044cc4;border-color:#044cc4;">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-heart fa-fw"></i> 0
+                    <a href="favourite-cars.php">
+                        <i class="fa fa-heart fa-fw"></i> 
+                        <?php
+                            include_once 'db_connect.php';
+                            $sql="Select * from fav_cars where favCar_MarkedBy='NonRegisteredUser' AND favCar_tmpUser='$tmpUser'";
+                            $line=mysqli_query($connect, $sql);
+                            $numRows=mysqli_num_rows($line);
+                            echo $numRows;
+                        ?>
                     </a>
                 </li>
                 <li class="dropdown">

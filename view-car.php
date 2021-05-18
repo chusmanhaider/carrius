@@ -1,3 +1,4 @@
+<?php include_once 'temp_session.php';?>
 <html>
 <head>
     <title>Carrius - View Car</title>
@@ -6,6 +7,7 @@
     <link href="Bootstrap/css/startmin.css" rel="stylesheet">
     <link href="Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
+    <link href="Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="css/scrollbar.css" rel="stylesheet">
     <link href="css/viewCar.css" rel="stylesheet">
     
@@ -22,9 +24,9 @@
                     <span class="col col-lg-7 col-xs-12">
                         <!--<img src="resources/a.jpg" class="img-responsive" id="displayCar">-->
                         <?php include_once 'slider.php';?>
-                        <i class="fa fa-heart fa-2x favIcon"></i>
                         <?php
                             require_once ("db_connect.php");
+                            include_once 'temp_session.php';
                             $carId=$_GET['id'];
                             $sql_car= "SELECT * FROM cars 
                                 INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
@@ -35,7 +37,28 @@
                                 $result = mysqli_query($connect, $sql_car);
                                 while($row = mysqli_fetch_assoc($result))
                                 {
+                                    $carId=$_GET['id'];
+                                    $q_ry="Select * from fav_cars Where favCar_CarId='$carId' AND 
+                                    favCar_tmpUser='$tmpUser'";
+                                    $re_qry=mysqli_query($connect, $q_ry);
+                                    $line_favCar=mysqli_fetch_assoc($re_qry);
+                                    $markFav=$line_favCar['favCar_MarkFav'];
+                                    $markStatus=$line_favCar['favCar_Status'];
+                                    if($markFav!="Yes" && $markStatus!="Marked")
+                                    {
                         ?>
+                                        <span class="markFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i style="color:white" class="fa fa-heart fa-2x favIcon"></i></span>
+                                <?php
+                                    }
+                                    else{
+                                        ?>
+                                        <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i style="color:#047cf3" class="fa fa-heart fa-2x favIcon"></i></span>
+                                
+                                
+                                <?php
+                                    }
+                                
+                                ?>
                         <span class="detailUnder">
                             <span class="dealership">
                                 <img src="resources/icons png/user (1).png" width="14px" height="14px">
@@ -275,7 +298,7 @@
                                     while($row=mysqli_fetch_assoc($result))
                                     {
                                         $car_id=$row['car_ID'];
-                                        $t="Select * from car_gallery where CarId='$car_id' LIMIT 1";
+                                        $t="Select * from car_gallery where CarId='$car_id' AND carGallery_Status='Available' LIMIT 1";
                                         $res=mysqli_query($connect, $t);
                                         while($rw=mysqli_fetch_assoc($res))
                                         {
@@ -326,9 +349,14 @@
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
+    <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+		
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
+            function redirect(){
+				location= "view-car.php?id=<?php echo $_GET['id'];?>";
+			}
             /*
             $('#firstStar').on('click',function(){
                 $('#firstStar').css('-webkit-text-fill-color','#047cf3');
@@ -359,7 +387,63 @@
                 $('#fourthStar').css('-webkit-text-fill-color','#047cf3');
                 $('#fiveStar').css('-webkit-text-fill-color','#047cf3');
                 $('#starsVal').html("5");
-        });
+
+                $(document).on('click', '.markFav', function(){  
+                //var dealer_id = $(this).attr("id"); 
+                    var car_id = $(this).attr("name");
+                    var tmpuser_id=$(this).attr("id");
+                    //alert(tmpuser_id);
+                    $.ajax({  
+                        url:"carFav.php",  
+                        method:"POST",  
+                        data:{car_id:car_id,tmpuser_id:tmpuser_id},  
+                        success:function(data){
+                             
+                                Swal.fire({
+                                    position: 'center',
+                                    type: 'success',
+                                    showCloseButton: true,
+                                    title: 'Car Favourite',
+                                    text:'Car marked as favourite',
+                                    customClass: 'animated tada',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+//$(".markFav").css("color","red");
+                            setTimeout(function() { redirect(); }, 3000);
+                        }  
+                    });
+                }); 
+                $(document).on('click', '.unMarkFav', function(){  
+                    var car_u_id = $(this).attr("name");
+                    var buyer_u_id=$(this).attr("id");
+                    //alert(car_u_id);
+                 
+                    $.ajax({  
+                            url:"carNotFav.php",  
+                            method:"POST",  
+                            data:{car_u_id:car_u_id,buyer_u_id:buyer_u_id},  
+                            success:function(data){
+                             
+                                Swal.fire({
+                                    position: 'center',
+                                    type: 'success',
+                                    showCloseButton: true,
+                                    title: 'Car Not Favourite',
+                                    text:'Car unmarked as favourite',
+                                    customClass: 'animated tada',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                });
+                            
+                            setTimeout(function() { redirect(); }, 3000);
+                            }  
+                        }); 
+                    
+                        
+                });
+               
+            });
     </script>
 </body>
 </html>
