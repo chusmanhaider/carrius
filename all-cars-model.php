@@ -100,13 +100,13 @@
                                     <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
                                         <span class="eachBlockCar">
                                             <?php
-                                                $sql_images="Select * from car_gallery where car_gallery='Available' AND CarId='$selected_car'";
-                                                $res=mysqli_query($connect,$sql_images);
-                                                $tw=mysqli_fetch_assoc($res);
-                                                $link=$tw[''];
+                                                $sql_images="Select * from car_gallery where carGallery_Status='Available' AND CarId='$selected_car'";
+                                                $res = mysqli_query($connect, $sql_images);
+                                                $tw = mysqli_fetch_assoc($res);
+                                                $link=$tw['carGallery_Image'];
                                             ?>
                                             <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
+                                            <img src="<?php echo "Dashboard/".$link;?>" alt="<?php echo $tw['carGallery_Caption'];?>" width="200px" height="120px">
                                             <h4><?php echo $row['car_Name'];?></h4>
                                             <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
                                             <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
