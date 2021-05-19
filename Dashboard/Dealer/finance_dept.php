@@ -222,14 +222,14 @@ $dealer_id=$_GET['url'];
 									{
 										echo "<div class='alert alert-success alert-dismissible fade in'>
 												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-check'></i> <strong>Success !!</strong> Car has added
+											<i class='fa fa-check'></i> <strong>Success !!</strong> Member has added
 										</div>";
 									}
 									else if(isset($_GET['msgError']))
 									{
 										echo "<div class='alert alert-danger alert-dismissible fade in'>
 												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-warning'></i> <strong>Error !!</strong> While adding car
+											<i class='fa fa-warning'></i> <strong>Error !!</strong> While adding member
 										</div>";
 									}
 									else if(isset($_GET['msgOther']))
@@ -275,7 +275,13 @@ $dealer_id=$_GET['url'];
                                             <tr id="<?php echo $line['finDept_ID']; ?>">
                                                 <td class="text-center"><?php echo $line['finDept_MemberName'];?></td>
                                                 <td class="text-center"><?php echo $line['finDept_Designation'];?></td>
-                                                <td class="text-center"><?php echo $line['finDept_MemberSince'];?></td>
+                                                <td class="text-center">
+												<?php 
+													$originalDate=$line['finDept_MemberSince'];
+													$newDate = date("d-M-Y", strtotime($originalDate));
+													echo $newDate;
+												?>
+												</td>
                                                 <td class="text-center">
                                                 <?php 
                                                     if($line['finDept_Status']=="Active")
@@ -288,11 +294,11 @@ $dealer_id=$_GET['url'];
                                                 <td class="text-center">
                                                     
                                                     <button class="btn btn-sm btn-circle btn-warning update_finance_person" name="<?php echo $dealer_id;?>" id="<?php echo $line['finDept_ID']; ?>">
-														<span data-toggle='tooltip' title="Edit Status Only"><i class='fa fa-edit fa-lg'></i></span>
+														<span data-toggle='tooltip' title="Edit Member"><i class='fa fa-edit fa-lg'></i></span>
 													</button>		
 													
 													<button style="margin-left:10px;" class="btn btn-sm btn-circle btn-danger remove_finance_person" name="<?php echo $dealer_id;?>" id="<?php echo $line['finDept_ID']; ?>">
-														<span data-toggle='tooltip' title="Complete List"><i class='fa fa-list fa-lg'></i></span>
+														<span data-toggle='tooltip' title="Remove Member"><i class='fa fa-remove fa-lg'></i></span>
 													</button>
 												</td>
                                             </tr>
@@ -348,10 +354,73 @@ $dealer_id=$_GET['url'];
 								<input type="date" class="form-control text-capitalize" required id="memberSinceD" name="memberSinceD" autocomplete="off">
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="categoryName" class="col-sm-3 control-label">Status </label>
+							<div class="col-sm-8">
+								<select class="form-control" id="status" name="status" required>
+									<option value="">Select Status</option>
+									<option value="Active">Active</option>
+									<option value="Suspended">Suspended</option>
+								</select>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" id="user_id" value="<?php echo $Id;?>" name="dealer_id">
+						<input type="hidden" id="user_id" value="<?php echo $dealer_id;?>" name="dealer_id">
 						<button type="submit" class="btn btn-success" id="createFinanceMemberBtn" autocomplete="off"> Confirm</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal"> Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Update member modal -->
+	<div class="modal fade" id="updateMemberModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" style="width:40%;margin-top:4%">
+			<div class="modal-content">
+				<form class="form-horizontal" id="updateMemberForm" method="POST" enctype="multipart/form-data">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title"><i class="fa fa-edit"></i> Update Finance Department Member</h4>
+					</div>
+					<div class="modal-body" id="recar_detail" style="max-height:450px; overflow:auto;">
+						<div class="form-group">
+							<label for="categoryName" class="col-sm-3 control-label">Member Name </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control text-capitalize" maxlength="50" required id="upmemberName" placeholder="Member Name" name="upmemberName" autocomplete="off">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="categoryName" class="col-sm-3 control-label">Desgination </label>
+							<div class="col-sm-8">
+								<select class="form-control" id="updesignation" name="updesignation" required>
+									<option value="">Select Desgination</option>
+									<option value="Billing Manager">Billing Manager</option>
+									<option value="Financial Consultant">Financial Consultant</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="categoryName" class="col-sm-3 control-label">Member Since </label>
+							<div class="col-sm-8">
+								<input type="date" class="form-control text-capitalize" required id="upmemberSinceD" name="upmemberSinceD" autocomplete="off">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="categoryName" class="col-sm-3 control-label">Status </label>
+							<div class="col-sm-8">
+								<select class="form-control" id="upstatus" name="upstatus" required>
+									<option value="">Select Status</option>
+									<option value="Active">Active</option>
+									<option value="Suspended">Suspended</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" id="dealer_id" value="<?php echo $dealer_id;?>" name="dealer_id">
+						<input type="hidden" id="member_id" name="member_id">
+						<button type="submit" class="btn btn-success" name="updateFinanceMemberBtn" id="updateFinanceMemberBtn" autocomplete="off"> Confirm</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal"> Close</button>
 					</div>
 				</form>
@@ -401,6 +470,107 @@ $dealer_id=$_GET['url'];
     <script src="../Bootstrap/js/dataTables/dataTables.bootstrap.min.js"></script>
 	<script src="../Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
 	<script type="text/javascript" src="../js/teams.js"></script>
-	
+	<script>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+			function redirect_finance(){
+				location= "finance_dept.php?url=<?php echo $Id;?>";
+			}
+			$(".alert-warning").delay(500).show(10, function() {
+				$(this).delay(2000).hide(10, function() {
+					$(this).remove();
+					redirect_finance();
+				});
+			});
+			$(".alert-success").delay(500).show(10, function() {
+				$(this).delay(2000).hide(10, function() {
+					$(this).remove();
+					redirect_finance();
+				});
+			});
+			$(document).on('click','.remove_finance_person',function(){
+				var finance_id=$(this).parents("tr").attr("id");
+				//alert(id);
+				if(confirm('Are you sure to remove this record ?'))
+				{
+					$.ajax({
+						url: 'removeFMember.php',
+						type: 'POST',
+						data: {finance_id: finance_id},
+						error: function() {
+							alert('Something is wrong');
+						},
+						success: function(data) {
+							$("#"+finance_id).remove();
+							Swal.fire({
+								position: 'center',
+								type: 'warning',
+								showCloseButton: true,
+								title: 'Member Deleted',
+								text:'Member deleted permanently ...!!',
+								customClass: 'animated tada',
+								showConfirmButton: false,
+								timer: 3000
+							});
+							setTimeout(function() { redirect_finance(); }, 2000);
+						}
+					});
+				}
+			});
+			$(document).on('click','.update_finance_person',function(){
+				var finance_update_id=$(this).parents("tr").attr("id");
+				//alert(ad_update_id);
+				$.ajax({  
+					url:"fetchMember.php",  
+					method:"POST",  
+					data:{finance_update_id:finance_update_id},  
+					dataType:"json",  
+					success:function(data)
+					{  
+						//$('#updateProductImage').attr('src', ''+data.Product_Image);
+						$('#upmemberName').val(data.finDept_MemberName);
+						$('#updesignation').val(data.finDept_Designation);
+						$('#upmemberSinceD').val(data.finDept_MemberSince);
+						$('#upstatus').val(data.finDept_Status);
+						var d_id=data.DealerId;
+						var mem_id=data.finDept_ID;
+						$('#dealer_id').val(d_id);
+						$('#member_id').val(mem_id);
+						//alert(data.DealerId);
+						
+						$('#updateMemberModal').modal('show');				
+					}  
+				});
+			});
+			$('#updateMemberForm').on('submit',function(){
+				event.preventDefault();
+				$.ajax({  
+					url:"updateMemberF.php",  
+					method:"POST",  
+					data:$('#updateMemberForm').serialize(),  
+					beforeSend:function(){  
+						$('#updateFinanceMemberBtn').val("Updating..");  
+					},  
+					success:function(data)
+					{  
+						$('#updateMemberForm')[0].reset();  
+						$('#updateMemberModal').modal('hide');  
+						//$('.category_table').html(data);
+						
+						Swal.fire({
+							position: 'center',
+							type: 'success',
+							showCloseButton: true,
+							title: 'Member has been updated',
+							customClass: 'animated tada',
+							showConfirmButton: false,
+							timer: 3000
+						});
+						setTimeout(function() { redirect_finance(); }, 1000);
+					}  
+				});
+			});
+		});
+	</script>
     </body>
 </html>

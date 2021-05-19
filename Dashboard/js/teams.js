@@ -2,6 +2,7 @@ $(document).ready(function() {
     $('#dataTables-example').DataTable({
         responsive: true
     });
+	$('[data-toggle="tooltip"]').tooltip();
     function redirect(){
 		location= "Teams.php";
 	}
@@ -25,5 +26,7 @@ $(document).ready(function() {
         $('#memberName').val('');
         $('#designation').val('');
         $('#memberSinceD').val('');
+		$('#status').val('');
     });
+	
 });
