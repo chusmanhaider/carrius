@@ -35,20 +35,42 @@
 
             ?>
             <span class="adminDept">
+            <?php
+                $dealer_id=$_GET['url'];
+                $sql_admin="Select * from administration_dept where adDept_Status='Active' AND DealerId='$dealer_id' ORDER By adDept_DesignPriority ASC";
+                $result_admin=mysqli_query($connect, $sql_admin);
+                $numRows_admin=mysqli_num_rows($result_admin);
+                if($numRows_admin>0)
+                {
+                    while($row_admin=mysqli_fetch_assoc($result_admin))
+                    {
+            ?>
                 <div class="row">
                     <span class="dailyRoutine">
                         <span class="col col-sm-4">
                             <span class="days daysRoutineEl">
-                                <span style="color:black">Monday</span>
+                                <span style="color:black"><?php echo $row_admin['adDept_MemberName'];?></span>
                             </span>
                         </span>
                         <span class="col col-sm-6">
                             <span class="hours daysRoutineLabel">
-                                <b style="color:black">9:00 AM - 8:30 PM</b>
+                                <b style="color:black"><?php echo $row_admin['adDept_Designation'];?></b>
                             </span>
                         </span>
                     </span> 
                 </div>
+                <?php
+                    }
+                }
+                else
+                {
+                ?>
+                <div class="row">
+                    <span style="font-size:14px;color:red;margin-left:45px">No Administration Staff Added yet</span>
+                </div>
+                <?php
+                }
+                ?>
             </span>
             <!-- Finance Dept-->
             <h4 class="changeColor alignLeftHead">Finance Department</h4>
@@ -64,20 +86,42 @@
 
             ?>
             <span class="financeDept">
+            <?php
+                $dealer_id=$_GET['url'];
+                $sql_fin="Select * from finance_dept where finDept_Status='Active' AND DealerId='$dealer_id' ORDER By finDept_DesignPriority ASC";
+                $result_fin=mysqli_query($connect, $sql_fin);
+                $numRows_fin=mysqli_num_rows($result_fin);
+                if($numRows_fin>0)
+                {
+                    while($row_fin=mysqli_fetch_assoc($result_fin))
+                    {
+            ?>
                 <div class="row">
                     <span class="dailyRoutine">
                         <span class="col col-sm-4">
                             <span class="days daysRoutineEl">
-                                <span style="color:black">Monday</span>
+                                <span style="color:black"><?php echo $row_fin['finDept_MemberName'];?></span>
                             </span>
                         </span>
                         <span class="col col-sm-6">
                             <span class="hours daysRoutineLabel">
-                                <b style="color:black">9:00 AM - 8:30 PM</b>
+                                <b style="color:black"><?php echo $row_fin['finDept_Designation'];?></b>
                             </span>
                         </span>
                     </span> 
                 </div>
+                <?php
+                    }
+                }
+                else
+                {
+                ?>
+                <div class="row">
+                    <span style="font-size:14px;color:red;margin-left:45px">No Finance Staff Added yet</span>
+                </div>
+                <?php
+                }
+                ?>
             </span>
         </div>
         <!-- Sales Department-->
@@ -94,20 +138,42 @@
 
             ?>
             <span class="salesDept">
+            <?php
+                $dealer_id=$_GET['url'];
+                $sql_sales="Select * from sales_dept where sales_Status='Active' AND DealerId='$dealer_id' ORDER By sales_DesignPriority ASC";
+                $result_sales=mysqli_query($connect, $sql_sales);
+                $numRows_sales=mysqli_num_rows($result_sales);
+                if($numRows_sales>0)
+                {
+                    while($row_sales=mysqli_fetch_assoc($result_sales))
+                    {
+            ?>
                 <div class="row">
                     <span class="dailyRoutine">
                         <span class="col col-sm-4">
                             <span class="days daysRoutineEl">
-                                <span style="color:black">Monday</span>
+                                <span style="color:black"><?php echo $row_fin['sales_MemberName'];?></span>
                             </span>
                         </span>
                         <span class="col col-sm-6">
                             <span class="hours daysRoutineLabel">
-                                <b style="color:black">9:00 AM - 8:30 PM</b>
+                                <b style="color:black"><?php echo $row_fin['sales_Designation'];?><</b>
                             </span>
                         </span>
                     </span> 
                 </div>
+                <?php
+                    }
+                }
+                else
+                {
+                ?>
+                <div class="row">
+                    <span style="font-size:14px;color:red;margin-left:45px">No Sales Staff Added yet</span>
+                </div>
+                <?php
+                }
+                ?>
             </span>
     </body>
 </html>

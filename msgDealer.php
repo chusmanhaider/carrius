@@ -1,3 +1,13 @@
+<?php
+    include_once 'db_connect.php';
+    $car_id=$_GET['id'];
+    $sql="Select * from cars Inner Join dealer ON cars.DealerId=dealer.dealer_ID
+    Inner join car_gallery on car_gallery.CarId=cars.car_ID
+    where cars.car_ID='$car_id' AND cars.car_Status='Available' AND cars.car_AutoStatus='Active' 
+    AND dealer.dealer_Status='Active' AND car_gallery.carGallery_Status='Available'";
+    $result=mysqli_query($connect,$sql);
+    $row=mysqli_fetch_assoc($result);
+?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -105,37 +115,55 @@
                         <span class="secondRow">
                             <span class="col col-lg-6 col-xs-12">
                                 <span>
+                                <?php
+                                    $substr=substr($row['carGallery_Image'],0,3);
+                                    $link=$row['carGallery_Image'];
+                                    $newlink=substr($row['carGallery_Image'],3);
+                                    if($substr!='../')
+                                    {
+                                ?>
                                     <span class="imgSpan">
-                                        <img src="resources/a.jpg" class="imgS" width="101.5%" height="auto">
+                                        <img src="<?php echo "Dashboard/".$link;?>" class="imgS" width="101.5%" height="auto">
                                     </span>
+                                <?php
+                                    }
+                                    else
+                                    {
+                                ?>
+                                    <span class="imgSpan">
+                                        <img src="<?php echo "Dashboard/".$newlink;?>" class="imgS" width="101.5%" height="auto">
+                                    </span>
+                                <?php
+                                    }
+                                ?>
                                 </span>
                             </span>
                             <span class="col col-lg-6 col-xs-12 upLiftRow">
                                 <span class="row">
-                                    <h3><b>Name</b></h3>
+                                    <h3><b><?php echo $row['car_Name']; ?></b></h3>
                                 </span>
                                 <span class="row addMarBot">
                                     <p style="margin-top:2px;margin-bottom:-4px;color:grey" class="infoSetUpper">Price:</p>
                                     <span class="priceAlign">
-                                        <strong> <?php echo "<span style='font-size:25px;font-weight:bold;margin-bottom:20px;margin-top:-15px;margin-left:10px'>$ 750000</span>";?></strong>
+                                        <strong> <?php echo "<span style='font-size:25px;font-weight:bold;margin-bottom:20px;margin-top:-15px;margin-left:10px'>$ ".$row['car_Price']."</span>";?></strong>
                                     </span>
                                 </span>
                                 <span class="row">
                                     <span class="dealershipMsgD">
                                         <img src="resources/updated icons/user.png" width="16px" height="17px">
-                                        <span class="setFontSizeMsgDD">Location</span>
+                                        <span class="setFontSizeMsgDD"><?php echo $row['dealer_Dealership']; ?></span>
                                     </span>
                                 </span>
                                 <span class="row">
                                     <span class="locationMsgD">
                                         <img src="resources/updated icons/location.png" class="alignIconLoc" width="12px" height="18px">
-                                        <span class="setFontSizeMsgDL">Location</span>
+                                        <span class="setFontSizeMsgDL"><?php echo $row['dealer_Location']; ?></span>
                                     </span>
                                 </span>
                             </span>
                         </span>
                     </span>
-                    <form action="" method="POST">
+                    <form action="#" method="POST" enctype="multipart/form-data">
                         <span class="row">
                             <span class="col col-lg-6 col-xs-12">
                                 <div class="form-group">
@@ -197,6 +225,8 @@
                             </span>
                         </span>
                         <span class="row">
+                            <input type="hidden" id="dealer_id" name="dealer_id" value="<?php echo $row['dealer_ID'];?>">
+                            <input type="hidden" id="car_id" name="car_id" value="<?php echo $row['car_ID'];?>">
                             <input type="submit" value="Message Dealership" id="msgDealerBtn" name="msgDealerBtn">
                         </span>
                     </form>
@@ -222,6 +252,45 @@
 			</div>
 	</div>
 </div>
+<?php
+    if(isset($_POST['msgDealerBtn']))
+    {
+        $name=mysqli_real_escape_string($connect,$_POST['yourName']);
+        $email=mysqli_real_escape_string($connect,$_POST['email']);
+        $msg=mysqli_real_escape_string($connect,$_POST['message']);
+        $notify=mysqli_real_escape_string($connect,$_POST['notifyMe']);
+
+        $vidCall=mysqli_real_escape_string($connect,$_POST['liveVideoCall']);
+        $date=mysqli_real_escape_string($connect,$_POST['dateSetFor']);
+        $specificTime=mysqli_real_escape_string($connect,$_POST['specifcTime']);
+        $cellNum=mysqli_real_escape_string($connect,$_POST['phoneNumber']);
+        $zipCode=mysqli_real_escape_string($connect,$_POST['zipCode']);
+
+        $dealer_id=mysqli_real_escape_string($connect,$_POST['dealer_id']);
+
+        $sql_msg="INSERT INTO msg_dealer (msgD_fName, msgD_Email, msgD_Msg, msgD_vidCallFlag, 
+        msgD_Date, msgD_SpecificTime, msgD_PhoneNum, msgD_ZipCode, DealerId) VALUES 
+        ('$name','$email','$msg','$vidCall','$date','$specificTime','$cellNum','$zipCode','$dealer_id')";
+
+        if(mysqli_query($connect,$sql_msg))
+        {
+            $last_id = mysqli_insert_id($connect);
+            if($last_id!='')
+            {
+                $sql_notify="INSERT INTO notifyforoffers (notifyOffer_Email, notifyOffer_Status) VALUES ('$email','$notify')";
+                if(mysqli_query($connect,$sql_notify))
+                {
+                    header("location:view-car.php?id=".$row['car_ID']);
+                }
+            }
+            
+        }
+        else
+        {
+            header("location:view-car.php?id=".$row['car_ID']);
+        }
+    }
+?>
 <script src="Bootstrap/js/jquery.min.js"></script>
 <script src="Bootstrap/js/metisMenu.min.js"></script>
 <script src="Bootstrap/js/bootstrap.min.js"></script>

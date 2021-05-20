@@ -132,19 +132,19 @@
                                                         echo "Dashboard/".$newlink_active;
                                                     }?>" alt="<?php echo "";?>" width="200px" height="120px">
                                             <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
+                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
+                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
+                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'>".$row['car_Mileage']." Miles</span>";?></p>
                                             <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
+                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Dealership']."</span>";?></span>
                                             </p>
                                             <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
+                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
                                             </p>
                                             <p class="infoSet">Price:</p>
                                             <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
+                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'>".$row['car_Price']."</span>";?></strong>
+                                                <a class="noUnderline" style="color:white" href="view-car.php?id=<?php echo $row['car_ID'];?>"><button class="viewCarBtn">View the car</button></a>
                                             </span>
                                             <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
                                         </span>
