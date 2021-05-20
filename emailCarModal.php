@@ -21,6 +21,7 @@
         font-weight: bold;
     }
 </style>
+
 <div class="modal fade" id="emailCar" tabindex="-1" role="dialog">
 	<div class="modal-dialog" class="setDialogStyle" style="border-radius:25px;margin-top:3%;">
 		<div class="modal-content" style="white;">
@@ -53,17 +54,21 @@
                         <div class="row" style="margin-top: -28px;margin-left:0px">
                             <h4><?php echo $row['car_Name'];?></h4>
                         </div>
-                        <form method="POST" action="#">
+                        <form method="POST" action="sent_email.php">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col col-lg-12">
                                         <label>Email*</label>
-                                        <input type="text" required style="height:28px;border-radius:2px;background-color:#f7f7f7;" autocomplete="off" name="getSubEmail" id="getSubEmail" class="form-control">
+                                        <input type="email" required style="height:28px;border-radius:2px;background-color:#f7f7f7;" autocomplete="off" name="getSubEmail" id="getSubEmail" class="form-control">
                                     </div>
                                 </div>
+                                
                                 <div class="row" style="margin-top: 8px;">
                                     <input type="checkbox" style="height: 12px;width:12px;margin-left:14px;display:inline-block" id="notifyMe" class="form-control" name="notifyMe">
-                                    <p style="display: inline-block;font-size:12px">Notify Me with the latest car offers, advice and news!</>
+                                    <p style="display: inline-block;font-size:12px">Notify Me with the latest car offers, advice and news!</p>
+                                </div>
+                                <div class="row custom-msg" style="margin-top: -2px;">
+                                    <p style="display: inline-block;font-size:14px;color:red;margin-left:14px">Email length is too short</p>
                                 </div>
                                 <div class="row">
                                     <input type="submit" value="Email Me" name="emailMe" id="emailMe">
@@ -71,49 +76,62 @@
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php include_once 'emailCarMessage.php'; ?>
 <?php
-    if(isset($_POST['emailMe']))
-    {
-        $email=mysqli_real_escape_string($connect,$_POST['getSubEmail']);
-        $msg=mysqli_real_escape_string($connect,$_POST['message']);
-
-        $notify=mysqli_real_escape_string($connect,$_POST['notifyMe']);
-
-        $dealer_id=mysqli_real_escape_string($connect,$_POST['dealer_id']);
-
-        $sql_email="INSERT INTO emailCar (emailCar_Email, CarId) VALUES 
-        ('$email','$car_id')";
-
-        if(mysqli_query($connect, $sql_email))
-        {
-            $last_id = mysqli_insert_id($connect);
-            if($last_id!='')
-            {
-                $sql_notify="INSERT INTO notifyforoffers (notifyOffer_Email, notifyOffer_Status) VALUES ('$email','$notify')";
-                if(mysqli_query($connect,$sql_notify))
-                {
-                    header("location:view-car.php?id=".$row['car_ID']);
-                }
-                else
-                {
-                    header("location:view-car.php?id=".$row['car_ID']);
-                }
-            }
-            else
-            {
-                header("location:view-car.php?id=".$row['car_ID']);
-            }
-        }
-        else
-        {
-            header("location:view-car.php?id=".$row['car_ID']);
-        }
-
+    if($_GET['msg'] == 'Success'){ ?>
+        <script>
+                 $(function(){
+                     $('#emailCarMsg').modal('show');
+                 });
+        </script>
+<?php         
     }
 ?>
+<script>
+    $(document).ready(function(){
+        $('#emailMe').attr('disabled',true);
+        $('#emailMe').css({"background-color": "#8bb2f3", "border-color": "#8bb2f3"});
+        $('.custom-msg').hide();
+        
+        
+
+        $(document).on('blur','#getSubEmail',function(){
+            var email=$('#getSubEmail').val();
+            var emailTrimmed=email.replace(/ /g,'');
+            var split_Str=emailTrimmed.split('@', 1)[0];
+            var split_len=split_Str.length;
+            if(split_len>=5)
+            {
+                $('#emailMe').attr('disabled',false);
+                $('.custom-msg').hide();
+                $('#emailMe').css({"background-color": "#044cc4", "border-color": "#044cc4"});
+
+                $(document).on('click','#emailMe',function(){
+                    //$('#btnSub').removeAttr("data-target","#viewNoModal");
+                    var myInterval = setInterval(function () {
+                    $('#emailMe').attr("data-target","#emailCarMsg");
+                    $('#emailCarMsg').modal('show');
+                },3000);
+
+                    myInterval();
+                    
+                }); 
+
+            } 
+            else
+            {
+                $('#emailMe').attr('disabled',true);
+                $('.custom-msg').show();
+                $('#emailMe').css({"background-color": "#8bb2f3", "border-color": "#8bb2f3"});
+            }
+        });
+        
+    });
+</script>
