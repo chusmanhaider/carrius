@@ -15,6 +15,9 @@
         </style>
     </head>
     <body>
+        <?php
+            include_once "header.php";
+        ?>
         <div class="col col-lg-9 specificInfo" style="margin-left:20px">
             <div class="contentBlock">
                 <div class="row">
@@ -163,7 +166,7 @@
                         }
                         else
                         {
-                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available between this range</span>";
+                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available between this price range</span>";
                         }
                     ?>
                                 
@@ -171,10 +174,11 @@
                                 
             </div>
         </div>
-    </body>
+  
 
     <script src="Bootstrap/js/jquery.min.js"></script>
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
     <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+    </body>

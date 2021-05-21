@@ -24,14 +24,14 @@
                 <?php
                     require_once ("db_connect.php");
                     include_once 'temp_session.php';
-                    if(isset($_POST["brand_id"])) 
+                    if(isset($_POST["brand_name"])) 
                     {
-                        $brand_id=$_POST['brand_id'];
+                        $brand_name=$_POST['brand_name'];
                         $sql_used = "SELECT * FROM cars 
                         INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
                         INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
                         WHERE dealer.dealer_Status='Active' AND cars_brand.carBrand_Status='Available' AND cars.car_Status = 'Available' AND
-                        cars.car_AutoStatus = 'Active' AND cars_brand.carBrand_ID='$brand_id'";
+                        cars.car_AutoStatus = 'Active' AND cars_brand.carBrand_Name='$brand_name'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
                         //echo $numRows_cars;

@@ -1,20 +1,24 @@
-<head>
+<html>
+    <head>
         <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
         <link href="Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
         <link href="Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
         <style>
-        .styleFavIconName{
-            position: absolute;
-            top:3%;
-            left:73%;
-            cursor: pointer;
-            text-decoration: none;
-        }
+            .styleFavIconName{
+                position: absolute;
+                top:3%;
+                left:73%;
+                cursor: pointer;
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
+        <?php
+            include_once "header.php";
+        ?>
         <div class="col col-lg-9 specificInfo" style="margin-left:20px">
             <div class="contentBlock">
                 <div class="row">
@@ -114,10 +118,10 @@
                                 
             </div>
         </div>
+        <script src="Bootstrap/js/jquery.min.js"></script>
+        <script src="Bootstrap/js/metisMenu.min.js"></script>
+        <script src="Bootstrap/js/bootstrap.min.js"></script>
+        <script src="Bootstrap/js/startmin.js"></script>
+        <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
     </body>
-
-    <script src="Bootstrap/js/jquery.min.js"></script>
-    <script src="Bootstrap/js/metisMenu.min.js"></script>
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
-    <script src="Bootstrap/js/startmin.js"></script>
-    <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+</html>

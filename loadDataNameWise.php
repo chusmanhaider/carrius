@@ -15,6 +15,9 @@
         </style>
     </head>
     <body>
+        <?php
+            include_once "header.php";
+        ?>
         <div class="col col-lg-9 specificInfo" style="margin-left:20px">
             <div class="contentBlock">
                 <div class="row">
@@ -30,6 +33,57 @@
                         cars.car_AutoStatus = 'Active' AND cars.car_Name='$car_name'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
+                        $count=1;
+
+                    }
+                    else if(isset($_POST["val"])) 
+                    {
+                        $val=$_POST['val'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_NewUsed='$val'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=2;
+
+                    }
+                    else if(isset($_POST["val_ele"])) 
+                    {
+                        $val_ele=$_POST['val_ele'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_isElectric='$val_ele'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=3;
+
+                    }
+                    else if(isset($_POST["val_drive"])) 
+                    {
+                        $val_drive=$_POST['val_drive'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId INNER JOIN vehicle_overview ON
+                        vehicle_overview.carId=cars.car_ID
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND vehicle_overview.vehOver_DTrain='$val_drive'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=4;
+
+                    }
+                    else if(isset($_POST["drive_name"])) 
+                    {
+                        $drive_name=$_POST['drive_name'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId INNER JOIN vehicle_overview ON
+                        vehicle_overview.carId=cars.car_ID
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND vehicle_overview.vehOver_DTrain='$drive_name'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=4;
 
                     }
                         if($numRows_cars > 0)
@@ -99,7 +153,14 @@
                         }
                         else
                         {
-                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this name</span>";
+                            if($count==1)
+                                echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this name</span>";
+                            else if($count==2)
+                                echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this condition</span>";
+                            else if($count==3)
+                                echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available</span>";
+                            else if($count==4)
+                                echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this drivetain</span>";
                         }
                     ?>
                                 
@@ -107,10 +168,11 @@
                                 
             </div>
         </div>
-    </body>
+    
 
     <script src="Bootstrap/js/jquery.min.js"></script>
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
     <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+    </body>

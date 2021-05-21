@@ -1,17 +1,18 @@
-<head>
+<html>
+    <head>
         <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
         <link href="Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
         <link href="Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
         <style>
-        .styleFavIconName{
-            position: absolute;
-            top:3%;
-            left:73%;
-            cursor: pointer;
-            text-decoration: none;
-        }
+            .styleFavIconName{
+                position: absolute;
+                top:3%;
+                left:73%;
+                cursor: pointer;
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
@@ -24,14 +25,19 @@
                 <?php
                     require_once ("db_connect.php");
                     include_once 'temp_session.php';
-                    if(isset($_POST["brand_id"])) 
+                    if(isset($_POST["type_name"])) 
                     {
-                        $brand_id=$_POST['brand_id'];
+                        $type_name=$_POST['type_name'];
                         $sql_used = "SELECT * FROM cars 
                         INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
+                        INNER JOIN cars_type ON cars_type.cType_ID=cars.CarTypeId
                         INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
-                        WHERE dealer.dealer_Status='Active' AND cars_brand.carBrand_Status='Available' AND cars.car_Status = 'Available' AND
-                        cars.car_AutoStatus = 'Active' AND cars_brand.carBrand_ID='$brand_id'";
+                        WHERE cars_type.cType_Status='Available' AND
+                        dealer.dealer_Status='Active' AND 
+                        cars_brand.carBrand_Status='Available' AND 
+                        cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND 
+                        cars_type.cType_Name='$type_name'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
                         //echo $numRows_cars;
@@ -45,7 +51,7 @@
                 ?>
                     <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
                         <span class="eachBlockCar">
-                                            <?php
+                        <?php
                                                 $sql_images="Select * from car_gallery where carGallery_Status='Available' AND CarId='$selected_car'";
                                                 $res = mysqli_query($connect, $sql_images);
                                                 $tw = mysqli_fetch_assoc($res);
@@ -104,7 +110,7 @@
                         }
                         else
                         {
-                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this brand</span>";
+                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this type</span>";
                         }
                     ?>
                                 
@@ -112,11 +118,10 @@
                                 
             </div>
         </div>
-   
-
-    <script src="Bootstrap/js/jquery.min.js"></script>
-    <script src="Bootstrap/js/metisMenu.min.js"></script>
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
-    <script src="Bootstrap/js/startmin.js"></script>
-    <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
-     </body>
+        <script src="Bootstrap/js/jquery.min.js"></script>
+        <script src="Bootstrap/js/metisMenu.min.js"></script>
+        <script src="Bootstrap/js/bootstrap.min.js"></script>
+        <script src="Bootstrap/js/startmin.js"></script>
+        <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+    </body>
+</html>

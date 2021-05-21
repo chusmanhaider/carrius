@@ -293,6 +293,75 @@
                     }
                 });
 
+                //
+                $.urlParam = function(name){
+                    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                    if (results==null){
+                    return null;
+                    }
+                    else{
+                    return results[1] || 0;
+                    }
+                }
+
+                //alert($.urlParam('brand'));
+                //alert($.urlParam('brand').length);
+                if($.urlParam('brand'))
+                {
+                    if($.urlParam('brand')!='' && $.urlParam('brand').length!=0)
+                    {
+                            $('.allInfo').hide();
+                            $('.specificInfo').show();
+                        var brand_name=$.urlParam('brand');
+                        //alert(brand_name);
+                        $.ajax({  
+                                url:"loadDataBrandWiseU.php",  
+                                method:"POST",  
+                                data:{brand_name:brand_name},  
+                                success:function(data){  
+                                    $('.specificInfo').html(data);  
+                                }  
+                        });
+                    }
+                }
+                else if ($.urlParam('type'))
+                {
+                    if($.urlParam('type')!='' && $.urlParam('type').length!=0)
+                    {
+                            $('.allInfo').hide();
+                            $('.specificInfo').show();
+                        var type_name=$.urlParam('type');
+                        //alert(type_name);
+                        $.ajax({  
+                                url:"loadDataTypeWiseU.php",  
+                                method:"POST",  
+                                data:{type_name:type_name},  
+                                success:function(data){  
+                                    $('.specificInfo').html(data);  
+                                }  
+                        });
+                    }
+                }
+                else if ($.urlParam('wheelDrive'))
+                {
+                    if($.urlParam('wheelDrive')!='' && $.urlParam('wheelDrive').length!=0)
+                    {
+                            $('.allInfo').hide();
+                            $('.specificInfo').show();
+                        var drive_name=$.urlParam('wheelDrive');
+                        //alert(drive_name);
+                        $.ajax({  
+                                url:"loadDataNameWise.php",  
+                                method:"POST",  
+                                data:{drive_name:drive_name},  
+                                success:function(data){  
+                                    $('.specificInfo').html(data);  
+                                }  
+                        });
+                    }
+                }
+                
+                
                 //Type wise
                 $(document).on('change','.typeSelect',function(){
                     var type_id=$(this).children('option:selected').attr("id");
@@ -338,6 +407,71 @@
                     else{
                         $('.allInfo').show();
 						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.common_selector',function(){
+                    var val=$(this).val();
+                    //alert(val);
+                    if(val!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{val:val},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+
+                $(document).on('change','.common_selector_ele',function(){
+                    var val_ele=$(this).val();
+                    //alert(val);
+                    if(val_ele!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{val_ele:val_ele},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.common_selector_drive:checked',function(){
+                    var val_drive=$(this).val();
+                    //alert(val_drive);
+                    if(val_drive!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{val_drive:val_drive},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                        redirect();
                     }
                 });
             });

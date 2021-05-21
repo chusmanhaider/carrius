@@ -16,16 +16,16 @@
                         {
                     ?>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                        <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                        <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                        <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                        <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
                     </div>
                     <?php
                         }
@@ -35,16 +35,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector awd" value="AWD"  > AWD</label>
+                                    <label><input type="checkbox" checked="checked" class="common_selector_drive awd" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -52,16 +52,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector fwd" value="FWD"  > FWD</label>
+                                    <label><input type="checkbox" checked="checked" class="common_selector_drive fwd" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -69,16 +69,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector rwd" value="RWD"  > RWD</label>
+                                    <label><input type="checkbox" checked="checked" class="common_selector_drive rwd" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -86,16 +86,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector awd" value="AWD"  > AWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector fwd" value="FWD"  > FWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector rwd" value="RWD"  > RWD</label>
+                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="checkbox" checked="checked" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -114,10 +114,10 @@
                 <div class="list-group">
                     <h4>Electric</h4>
                     <div class="list-group-item checkbox">
-                        <label><input type="radio" style="margin-left: -20px;" name="electRadio" class="common_selector yesElectric" value="Yes"  > Yes</label>
+                        <label><input type="radio" style="margin-left: -20px;" name="electRadio" class="common_selector_ele yesElectric" value="Yes"  > Yes</label>
                     </div>
                     <div class="list-group-item checkbox changeColor">
-                        <label><input type="radio" style="margin-left: -20px;" name="electRadio" class="common_selector noElectric" value="No"  > No</label>
+                        <label><input type="radio" style="margin-left: -20px;" name="electRadio" class="common_selector_ele noElectric" value="No"  > No</label>
                     </div>
                 </div>
             </div>
