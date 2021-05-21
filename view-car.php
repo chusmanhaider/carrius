@@ -1,4 +1,7 @@
-<?php include_once 'temp_session.php';?>
+<?php 
+    include_once 'temp_session.php';
+    error_reporting();
+?>
 <html>
 <head>
     <title>Carrius - View Car</title>
@@ -341,8 +344,9 @@
     <?php include_once 'emailCarModal.php';?>
     <?php include_once 'emailCarMessage.php';?>
     <?php include_once 'msgDealer.php';?>
+    
     <?php
-        echo "<br><br><br><br>";
+        echo "";
         include_once "footer.php";
     ?>
     <script src="Bootstrap/js/jquery.min.js"></script>

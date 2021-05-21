@@ -46,7 +46,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-2 col-xs-6" id="typeSelect">
-                                        <select class="form-control">
+                                        <select class="form-control typeSelect">
                                             <option value="">Select Type</option>
                                             <?php
                                                 include_once 'getTypeList.php';
@@ -54,7 +54,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-3 col-xs-4" id="priceSelect">
-                                        <select class="form-control">
+                                        <select class="form-control" class="priceSelect">
                                             <option value="">Select Maximum Price</option>
                                             <option value="5000">Below 5000 ($)</option>
                                             <option value="10000">5001 - 10,000 ($)</option>
@@ -81,7 +81,7 @@
                         <div class="sortingMenuSide">
                             <?php include_once 'sortingMenuSide.php'; ?>
                         </div>
-                        <div class="col col-lg-9" style="margin-left:20px">
+                        <div class="col col-lg-9 allInfo" style="margin-left:20px">
                             <div class="contentBlock">
                                 <div class="row">
                                     <?php
@@ -162,101 +162,14 @@
                                             echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available</span>";
                                         }
                                     ?>
-                                <!--
-                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
-                                        <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
-                                            <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
-                                            </p>
-                                            <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
-                                            </p>
-                                            <p class="infoSet">Price:</p>
-                                            <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
-                                            </span>
-                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
-                                        </span>
-                                    </div>
-                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
-                                        <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
-                                            <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
-                                            </p>
-                                            <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
-                                            </p>
-                                            <p class="infoSet">Price:</p>
-                                            <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
-                                            </span>
-                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
-                                        </span>
-                                    </div>
-                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
-                                        <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
-                                            <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
-                                            </p>
-                                            <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
-                                            </p>
-                                            <p class="infoSet">Price:</p>
-                                            <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
-                                            </span>
-                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
-                                        </span>
-                                    </div>
-                                    <div class="col col-lg-4 col-xs-6 addBlockTop eachBlock">
-                                        <span class="eachBlockCar">
-                                            <i class="fa fa-heart fa-lg styleFavIcon"></i>
-                                            <img src="<?php echo "";?>" alt="<?php echo "";?>" width="200px" height="120px">
-                                            <h4>Car Names</h4>
-                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>2019</span>";?></p>
-                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'></span>";?></p>
-                                            <p>
-                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Ltd</span>
-                                            </p>
-                                            <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'></span>";?>XYZ Dealership Lahore</span>
-                                            </p>
-                                            <p class="infoSet">Price:</p>
-                                            <span style="display:inline-block">
-                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'></span>";?>$ 75000</strong>
-                                                <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo "";?>"><button class="viewCarBtn">View the car</button></a>
-                                            </span>
-                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
-                                        </span>
-                                    </div>
-                                -->
+                                
                                 </div>
                                 
                             </div>
                         </div>
-                    
+                        <div class="row specificInfo">  
+										    
+						</div>
                     </div>
                     
                 </div>
@@ -329,6 +242,103 @@
                                     }); 
                                 
                                     
+                });
+                //Car-Name wise
+                $(document).on('change','#carSelect',function(){
+                    //var car_id=$(this).children('option:selected').attr("id");
+                    var car_name=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(car_name);
+                    if(car_name!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{car_name:car_name},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+
+                //Brand wise
+                $(document).on('change','#brandSelect',function(){
+                    var brand_id=$(this).children('option:selected').attr("id");
+                    //var car_name=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(brand_id);
+                    if(brand_id!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataBrandWise.php",  
+							method:"POST",  
+							data:{brand_id:brand_id},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+
+                //Type wise
+                $(document).on('change','.typeSelect',function(){
+                    var type_id=$(this).children('option:selected').attr("id");
+                    //var type_id=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(type_id);
+                    if(type_id!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataTypeWise.php",  
+							method:"POST",  
+							data:{type_id:type_id},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.priceSelect',function(){
+                    var price=$(this).children('option:selected').attr("id");
+                    //var type_id=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    alert(price);
+                    if(price!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataPriceWise.php",  
+							method:"POST",  
+							data:{price:price},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
                 });
             });
         </script>

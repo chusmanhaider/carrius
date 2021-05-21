@@ -1,3 +1,15 @@
+<?php
+    error_reporting();
+    include_once 'db_connect.php';
+    $car_id=$_GET['id'];
+    $sql="Select * from cars Inner Join dealer ON cars.DealerId=dealer.dealer_ID
+    Inner join car_gallery on car_gallery.CarId=cars.car_ID
+    where cars.car_ID='$car_id' AND cars.car_Status='Available' AND cars.car_AutoStatus='Active' 
+    AND dealer.dealer_Status='Active' AND car_gallery.carGallery_Status='Available'";
+    $result=mysqli_query($connect,$sql);
+    $row=mysqli_fetch_assoc($result);
+
+?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,34 +52,34 @@
                                 <p class="paraText">You will be contacted by either Email or Phone when the Dealership gets the message!</p>
                             </span>
                     </span>
-                    <form action="" method="POST">
+                    <form action="contactDAction.php" method="POST">
                         <span class="row">
                             <span class="col col-lg-6 col-xs-12">
                                 <div class="form-group">
-                                            <div class="row setMe">
-                                                <div class="col col-lg-12 col-xs-12">
-                                                    <label for="label" style="font-size: 14px;">Your Name*</label>
-                                                    <input type="text" placeholder="John Doe" maxlength="50" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control" required id="yourName" name="yourName">
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 24px;">
-                                                <div class="col col-lg-12 col-xs-12">
-                                                    <label for="label" style="font-size: 14px;">Email*</label>
-                                                    <input type="text" placeholder="johndoe@gmail.com" maxlength="60" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control" required id="email" name="email">
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 24px;">
-                                                <div class="col col-lg-12 col-xs-12">
-                                                    <label for="label" style="font-size: 14px;">Phone Number*</label>
-                                                    <input type="text" placeholder="+129087657" maxlength="20" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control cInput" required id="phoneNum" name="phoneNum">
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-top: 22px;">
-                                                <div class="col col-lg-12 col-xs-12">
-                                                    <label for="label" style="font-size: 14px;">Message</label>
-                                                    <textarea class="form-control" placeholder="Type your message here..." style=" background-color:#f7f7f7;border-radius:3px" id="message" name="message" rows="5"></textarea>
-                                                </div>
-                                            </div>
+                                    <div class="row setMe">
+                                        <div class="col col-lg-12 col-xs-12">
+                                            <label for="label" style="font-size: 14px;">Your Name*</label>
+                                            <input type="text" placeholder="John Doe" maxlength="50" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control" required id="yourName" name="yourName">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 24px;">
+                                        <div class="col col-lg-12 col-xs-12">
+                                            <label for="label" style="font-size: 14px;">Email*</label>
+                                            <input type="text" placeholder="johndoe@gmail.com" maxlength="60" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control" required id="email" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 24px;">
+                                        <div class="col col-lg-12 col-xs-12">
+                                            <label for="label" style="font-size: 14px;">Phone Number*</label>
+                                            <input type="text" placeholder="+129087657" maxlength="20" style="height: 30px; background-color:#f7f7f7;border-radius:3px" class="form-control cInput" required id="phoneNum" name="phoneNum">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 19px;">
+                                        <div class="col col-lg-12 col-xs-12">
+                                            <label for="label" style="font-size: 14px;">Message</label>
+                                            <textarea class="form-control" placeholder="Type your message here..." style=" background-color:#f7f7f7;border-radius:3px" id="message" name="message" rows="6"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                             </span>
@@ -83,16 +95,18 @@
                                     </span>
                                     <span>
                                         <label style="color:black;font-size:16px;margin-top:18px">2. How many Passenger/Family Members you have?</label>
-                                        <input type="text" style="width:80%;margin-left:10%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. 7, 5" class="form-control" name="numFamilyMem">
+                                        <input type="number" style="width:80%;margin-left:10%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. 7, 5" class="form-control" name="numFamilyMem">
                                     </span>
                                     <span>
                                         <label style="color:black;font-size:16px;margin-top:18px">3. What is weather condition in your area?</label>
-                                        <input type="text" style="width:80%;margin-left:10%;margin-bottom:17px;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. Heavy/Light Snow, Dry, Rainy..." class="form-control" name="weatherCond">
+                                        <input type="text" maxlength="60" style="width:80%;margin-left:10%;margin-bottom:17px;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. Heavy/Light Snow, Dry, Rainy..." class="form-control" name="weatherCond">
                                     </span>
                             </span>
                         </span>
                         <span class="row">
                             <input type="submit" value="Message Dealership" id="msgDealer" name="msgDealer">
+                            <input type="hidden" id="dealer_id" name="dealer_id" value="<?php echo $row['dealer_ID'];?>">
+                            <input type="hidden" id="car_id" name="car_id" value="<?php echo $row['car_ID'];?>">
                         </span>
                     </form>
                 </span>	
@@ -117,13 +131,44 @@
 			</div>
 	</div>
 </div>
+
+<?php
+    
+    if($_GET['msgR'] == 'SuccessR')
+    { ?>
+        <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
+                 $(function(){
+                     $('#viewMessage').modal('show');
+                     setTimeout(function() { redirect(); }, 10000);
+                 });
+        </script>
+<?php         
+    }
+    else if($_GET['msgErrR'] == 'ErrorR')
+    {
+?>
+        <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
+                 $(function(){
+                     $('#viewMessageError').modal('show');
+                     setTimeout(function() { redirect(); }, 10000);
+                 });
+        </script>
+
+<?php
+    }
+    else
+    {
+        
+    }
+
+?>
 <script src="Bootstrap/js/jquery.min.js"></script>
 <script src="Bootstrap/js/metisMenu.min.js"></script>
 <script src="Bootstrap/js/bootstrap.min.js"></script>
 <script src="Bootstrap/js/startmin.js"></script>
-<script>
-    $(document).ready(function(){
-        
-        
-    });
-</script>

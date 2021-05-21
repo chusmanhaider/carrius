@@ -83,6 +83,7 @@
         </div>
     </div>
 </div>
+
 <?php include_once 'emailCarMessage.php'; ?>
 <?php
     if($_GET['msg'] == 'Success')
@@ -93,7 +94,7 @@
             }
                  $(function(){
                      $('#emailCarMsg').modal('show');
-                     setTimeout(function() { redirect(); }, 7000);
+                     setTimeout(function() { redirect(); }, 10000);
                  });
         </script>
 <?php         
@@ -107,7 +108,7 @@
             }
                  $(function(){
                      $('#emailCarMsgError').modal('show');
-                     setTimeout(function() { redirect(); }, 7000);
+                     setTimeout(function() { redirect(); }, 10000);
                  });
         </script>
 

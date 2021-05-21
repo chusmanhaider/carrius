@@ -163,7 +163,7 @@
                             </span>
                         </span>
                     </span>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="msgDealerAction.php" enctype="multipart/form-data">
                         <span class="row">
                             <span class="col col-lg-6 col-xs-12">
                                 <div class="form-group">
@@ -235,62 +235,45 @@
 		</div>
 	</div>
 </div>
-<!--Message Modal-->
-<div class="modal fade" id="viewMessage" tabindex="-1" role="dialog">
-	<div class="modal-dialog" style="border-radius:15px;margin-top:3%;">
-			<div class="modal-content" style="background-color: #fcfcfc;">
-				
-				<div class="modal-body" id="car_detail" style="height:310px; overflow:auto;">
-					<span style="background-color: #044cc4;width:70px;height:70px;position:absolute;border-radius:50%;top:50px;left:45%"><img src="resources/logo png.png" style="margin-top:6px;margin-left:9px" width="50px" height="50px"></span>
-                    <img src="resources/carrius.png" style="fill:#044cc4;margin-top:120px;margin-left:180px" >
-                    <span style="display: block;margin-top:10px;margin-left:130px">
-                        <img src="resources/Bluetick.png"> <span style="font-size:14px;font-weight:bold;color:black">Your request has been successfully sent!</span><br>
-                        <span style="font-size:14px;font-weight:bold;color:black;text-align:center">Hang tight while we get back to you soon!</span>
-                    </span>
-                    <button type="button" style="color:white;font-weight:bold;height:30px;background-color: #044cc4;width:85px;margin-top:25px;border:1px solid #044cc4;border-radius:20px;margin-left:240px" data-dismiss="modal">Got it!</button>
-                </div>
-			</div>
-	</div>
-</div>
+
+<?php include_once 'msgDealerMsg.php'; ?>
 <?php
-    if(isset($_POST['msgDealerBtn']))
-    {
-        $name=mysqli_real_escape_string($connect,$_POST['yourName']);
-        $email=mysqli_real_escape_string($connect,$_POST['email']);
-        $msg=mysqli_real_escape_string($connect,$_POST['message']);
-        $notify=mysqli_real_escape_string($connect,$_POST['notifyMe']);
-
-        $vidCall=mysqli_real_escape_string($connect,$_POST['liveVideoCall']);
-        $date=mysqli_real_escape_string($connect,$_POST['dateSetFor']);
-        $specificTime=mysqli_real_escape_string($connect,$_POST['specifcTime']);
-        $cellNum=mysqli_real_escape_string($connect,$_POST['phoneNumber']);
-        $zipCode=mysqli_real_escape_string($connect,$_POST['zipCode']);
-
-        $dealer_id=mysqli_real_escape_string($connect,$_POST['dealer_id']);
-
-        $sql_msg="INSERT INTO msg_dealer (msgD_fName, msgD_Email, msgD_Msg, msgD_vidCallFlag, 
-        msgD_Date, msgD_SpecificTime, msgD_PhoneNum, msgD_ZipCode, DealerId) VALUES 
-        ('$name','$email','$msg','$vidCall','$date','$specificTime','$cellNum','$zipCode','$dealer_id')";
-
-        if(mysqli_query($connect,$sql_msg))
+    /*
+        if($_GET['msgD'] == 'Success')
         {
-            $last_id = mysqli_insert_id($connect);
-            if($last_id!='')
-            {
-                $sql_notify="INSERT INTO notifyforoffers (notifyOffer_Email, notifyOffer_Status) VALUES ('$email','$notify')";
-                if(mysqli_query($connect,$sql_notify))
-                {
-                    header("location:view-car.php?id=".$row['car_ID']);
-                }
-            }
-            
-        }
-        else
-        {
-            header("location:view-car.php?id=".$row['car_ID']);
-        }
-    }
 ?>
+        <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
+                 $(function(){
+                     $('#viewMessage').modal('show');
+                     setTimeout(function() { redirect(); }, 10000);
+                 });
+        </script>
+        
+<?php   
+        }      
+    
+        else if($_GET['msgDErr'] == 'Error')
+        {
+?>
+        <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
+                 $(function(){
+                     $('#viewMessageError').modal('show');
+                     setTimeout(function() { redirect(); }, 10000);
+                 });
+        </script>
+
+<?php
+        }   
+    */
+    
+?>
+
 <script src="Bootstrap/js/jquery.min.js"></script>
 <script src="Bootstrap/js/metisMenu.min.js"></script>
 <script src="Bootstrap/js/bootstrap.min.js"></script>
