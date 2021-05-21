@@ -54,7 +54,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-3 col-xs-4" id="priceSelect">
-                                        <select class="form-control" class="priceSelect">
+                                        <select class="form-control priceSelect">
                                             <option value="">Select Maximum Price</option>
                                             <option value="5000">Below 5000 ($)</option>
                                             <option value="10000">5001 - 10,000 ($)</option>
@@ -67,7 +67,7 @@
                                             <option value="80000">70,001 - 80,000 ($)</option>
                                             <option value="90000">80,001 - 90,000 ($)</option>
                                             <option value="100000">90,001 - 100,000 ($)</option>
-                                            <option value="Maximum">Above 100,000 ($)</option>       
+                                            <option value="100001">Above 100,000 ($)</option>       
                                         </select>
                                     </div>
                                     <div class="col col-lg-1 col-xs-4 allFilters" id="filterResult">
@@ -299,7 +299,7 @@
                     //var type_id=$(this).val();
                     //alert(car_id+'  '+car_name); loadDataNameWise
                     //alert(type_id);
-                    if(type_id!='')
+                    if(type_id!='' && typeof type_id!='undefined')
                     {
                         $('.allInfo').hide();
 						$('.specificInfo').show();
@@ -318,10 +318,10 @@
                     }
                 });
                 $(document).on('change','.priceSelect',function(){
-                    var price=$(this).children('option:selected').attr("id");
+                    var price=$(this).children('option:selected').attr("value");
                     //var type_id=$(this).val();
                     //alert(car_id+'  '+car_name); loadDataNameWise
-                    alert(price);
+                    //alert(price);
                     if(price!='')
                     {
                         $('.allInfo').hide();

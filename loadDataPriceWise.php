@@ -21,14 +21,76 @@
                 <?php
                     require_once ("db_connect.php");
                     include_once 'temp_session.php';
-                    if(isset($_POST["brand_id"])) 
+                    if(isset($_POST["price"])) 
                     {
-                        $brand_id=$_POST['brand_id'];
+                        $selected_price=$_POST['price'];
+                        $maxprice=0;
+                        $minprice=0;
+                        if($selected_price<=5000)
+                        {
+                            $minprice=0;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>5000 && $selected_price<=10000)
+                        {
+                            $minprice=5001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>10000 && $selected_price<=20000)
+                        {
+                            $minprice=10001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>20000 && $selected_price<=30000)
+                        {
+                            $minprice=20001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>30000 && $selected_price<=40000)
+                        {
+                            $minprice=30001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>40000 && $selected_price<=50000)
+                        {
+                            $minprice=40001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>50000 && $selected_price<=60000)
+                        {
+                            $minprice=50001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>60000 && $selected_price<=70000)
+                        {
+                            $minprice=60001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>70000 && $selected_price<=80000)
+                        {
+                            $minprice=70001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>80000 && $selected_price<=90000)
+                        {
+                            $minprice=80001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>90000 && $selected_price<=100000)
+                        {
+                            $minprice=90001;
+                            $maxprice=$selected_price;
+                        }
+                        else if($selected_price>100000)
+                        {
+                            $minprice=100001;
+                            $maxprice=9999999999;
+                        }
                         $sql_used = "SELECT * FROM cars 
                         INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
                         INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
                         WHERE dealer.dealer_Status='Active' AND cars_brand.carBrand_Status='Available' AND cars.car_Status = 'Available' AND
-                        cars.car_AutoStatus = 'Active' AND cars_brand.carBrand_ID='$brand_id'";
+                        cars.car_AutoStatus = 'Active' AND (cars.car_Price>='$minprice' AND cars.car_Price<='$maxprice')";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
                         //echo $numRows_cars;
@@ -101,7 +163,7 @@
                         }
                         else
                         {
-                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this brand</span>";
+                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available between this range</span>";
                         }
                     ?>
                                 
