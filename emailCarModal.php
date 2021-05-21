@@ -85,13 +85,33 @@
 </div>
 <?php include_once 'emailCarMessage.php'; ?>
 <?php
-    if($_GET['msg'] == 'Success'){ ?>
+    if($_GET['msg'] == 'Success')
+    { ?>
         <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
                  $(function(){
                      $('#emailCarMsg').modal('show');
+                     setTimeout(function() { redirect(); }, 7000);
                  });
         </script>
 <?php         
+    }
+    else if($_GET['msgErr'] == 'Error')
+    {
+?>
+        <script>
+            function redirect(){
+                location= "view-car.php?id=<?php echo $_GET['id'];?>";
+            }
+                 $(function(){
+                     $('#emailCarMsgError').modal('show');
+                     setTimeout(function() { redirect(); }, 7000);
+                 });
+        </script>
+
+<?php
     }
 ?>
 <script>
@@ -100,7 +120,12 @@
         $('#emailMe').css({"background-color": "#8bb2f3", "border-color": "#8bb2f3"});
         $('.custom-msg').hide();
         
-        
+        $(document).on('click','#emailCarMsg',function(){
+            location= "view-car.php?id=<?php echo $_GET['id'];?>";
+        });
+        $(document).on('click','#emailCarMsgErr',function(){
+            location= "view-car.php?id=<?php echo $_GET['id'];?>";
+        });
 
         $(document).on('blur','#getSubEmail',function(){
             var email=$('#getSubEmail').val();
@@ -113,6 +138,7 @@
                 $('.custom-msg').hide();
                 $('#emailMe').css({"background-color": "#044cc4", "border-color": "#044cc4"});
 
+                /*
                 $(document).on('click','#emailMe',function(){
                     //$('#btnSub').removeAttr("data-target","#viewNoModal");
                     var myInterval = setInterval(function () {
@@ -123,7 +149,7 @@
                     myInterval();
                     
                 }); 
-
+                */
             } 
             else
             {

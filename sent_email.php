@@ -24,17 +24,17 @@
                 }
                 else
                 {
-                    header("location:view-car.php?id=".$car_id);
+                    header("location:view-car.php?id=".$car_id."&msgErr=Error");
                 }
             }
             else
             {
-                header("location:view-car.php?id=".$car_id);
+                header("location:view-car.php?id=".$car_id."&msgErr=Error");
             }
         }
         else
         {
-            header("location:view-car.php?id=".$car_id);
+            header("location:view-car.php?id=".$car_id."&msgErr=Error");
         }
 
     }
