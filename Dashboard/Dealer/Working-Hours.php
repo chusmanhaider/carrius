@@ -35,7 +35,7 @@ $da=mysqli_query($connect,$s_query);
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Dealer Panel</title>
+        <title>Dealer Panel - Working Hours</title>
         <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../Bootstrap/css/startmin.css" rel="stylesheet">
         <link href="../Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -223,6 +223,164 @@ $da=mysqli_query($connect,$s_query);
 							</div> <!-- /panel-heading -->
 							
 							<div class="panel-body">
+                                <div class="row editBtn">
+                                    <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
+                                        <button class="btn btn-danger editFormBtn" id="editFormBtn"> <i class="fa fa-edit fa-faw"></i> Edit</button>
+                                    </div>
+                                    <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
+                                        <button class="btn btn-success addFormBtn" data-toggle="modal" data-target="#addScheduleModal" id="addFormBtn"> <i class="fa fa-plus fa-faw"></i>  Add</button>
+                                    </div>
+                                </div>
+                                <div class="row" id="ResultedInfo">
+                                    <table class="table table-bordered table-hover table-striped table-responsive workingHrsTable" style="margin-left:10%;width:80%">
+                                        <tr>
+                                            <th class="text-center">Days</th>
+                                            <th class="text-center">From (Time)</th>
+                                            <th class="text-center">To (Time)</th>
+                                        </tr>
+                                        <!-- Monday-->
+                                        <tr>
+                                            <td class="text-center">Monday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Tuesday-->
+                                        <tr>
+                                            <td class="text-center">Tuesday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Wednesday-->
+                                        <tr>
+                                            <td class="text-center">Wednesday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Thrusday-->
+                                        <tr>
+                                            <td class="text-center">Thrusday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Friday-->
+                                        <tr>
+                                            <td class="text-center">Friday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Saturday-->
+                                        <tr>
+                                            <td class="text-center">Saturday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+                                        <!-- Sunday-->
+                                        <tr>
+                                            <td class="text-center">Sunday</td>
+                                            <?php
+                                                if($isClosed=='No')
+                                                {
+                                            ?>
+                                                    <td class="text-center"></td>
+                                                    <td class="text-center"></td>
+                                            <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
+                                            <?php
+                                            
+                                                }
+                                            ?>
+                                        </tr>
+
+                                    </table>
+                                </div>
 								<?php
 									if(isset($_GET['updateMsg']))
 									{
@@ -253,20 +411,23 @@ $da=mysqli_query($connect,$s_query);
 										</div>";
 									}
 								?>
-								<form action="WorkingHours-Action.php" method="post" class="form-horizontal" id="changeUsernameForm">
+                                <div class="editAbleForm">
+                                    <form action="WorkingHours-Action.php" method="post" class="form-horizontal" id="changeUsernameForm">
 									<fieldset>
 										<div class="changeUsenrameMessages"></div>
                                         <?php
+                                            /*
                                             while($line=mysqli_fetch_assoc($da))
                                             {
+                                                */
                                         ?>
                                         <!-- Monday-->
 										<div class="form-group">
                                             <div class="col-sm-5" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Monday" name="checkMonday" id="checkMonday">
-                                                        <label class="form-check-label" for="inlineRadio3"><?php echo $line['day_Day'];?> <i>(Checked, if closed)</span></label>
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkMonday" id="checkMonday">
+                                                        <label class="form-check-label" for="inlineRadio3">Monday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
                                                 
@@ -275,23 +436,23 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_MonTime" name="WF_MonTime" value="<?php $from_Time=$line['bs_FromTime']; $formated_time = date("H:i", strtotime($from_Time)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control MondayTime" id="WF_MonTime" name="WF_MonTime" value="<?php $from_Time=$line['bs_FromTime']; $formated_time = date("H:i", strtotime($from_Time)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_MonTime" name="WT_MonTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control MondayTime" id="WT_MonTime" name="WT_MonTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
                                         <?php
-                                            }
+                                           // }
                                         ?>
                                         <!-- Tuesday -->
                                         <div class="form-group">
                                             <div class="col-sm-5" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Tuesday" name="checkTuesday" id="checkTuesday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkTuesday" id="checkTuesday">
                                                         <label class="form-check-label" for="inlineRadio3">Tuesday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -301,11 +462,11 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_TueTime" name="WF_TueTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control TuesdayTime" id="WF_TueTime" name="WF_TueTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_TueTime" name="WT_TueTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control TuesdayTime" id="WT_TueTime" name="WT_TueTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
@@ -314,7 +475,7 @@ $da=mysqli_query($connect,$s_query);
                                             <div class="col-sm-6" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Wednesday" name="checkWednesday" id="checkWednesday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkWednesday" id="checkWednesday">
                                                         <label class="form-check-label" for="inlineRadio3">Wednesday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -324,11 +485,11 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_WedTime" name="WF_WedTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control WednesdayTime" id="WF_WedTime" name="WF_WedTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_WedTime" name="WT_WedTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control WednesdayTime" id="WT_WedTime" name="WT_WedTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
@@ -337,7 +498,7 @@ $da=mysqli_query($connect,$s_query);
                                             <div class="col-sm-6" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Thrusday" name="checkThrusday" id="checkThrusday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkThrusday" id="checkThrusday">
                                                         <label class="form-check-label" for="inlineRadio3">Thrusday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -347,11 +508,11 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_ThuTime" name="WF_ThuTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control ThrusdayTime" id="WF_ThuTime" name="WF_ThuTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_ThuTime" name="WT_ThuTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control ThrusdayTime" id="WT_ThuTime" name="WT_ThuTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
@@ -360,7 +521,7 @@ $da=mysqli_query($connect,$s_query);
                                             <div class="col-sm-6" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Friday" name="checkFriday" id="checkFriday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkFriday" id="checkFriday">
                                                         <label class="form-check-label" for="inlineRadio3">Friday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -370,11 +531,11 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_FriTime" name="WF_FriTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control FridayTime" id="WF_FriTime" name="WF_FriTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_FriTime" name="WT_FriTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control FridayTime" id="WT_FriTime" name="WT_FriTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
@@ -383,7 +544,7 @@ $da=mysqli_query($connect,$s_query);
                                             <div class="col-sm-6" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Saturday" name="checkSaturday" id="checkSaturday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSaturday" id="checkSaturday">
                                                         <label class="form-check-label" for="inlineRadio3">Saturday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -393,11 +554,11 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_SatTime" name="WF_Satime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control SaturdayTime" id="WF_SatTime" name="WF_Satime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_SatTime" name="WT_SatTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control SaturdayTime" id="WT_SatTime" name="WT_SatTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
@@ -406,7 +567,7 @@ $da=mysqli_query($connect,$s_query);
                                             <div class="col-sm-5" style="margin-top: 6px;">
                                                 <div class="row">
                                                    <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Sunday" name="checkSunday" id="checkSunday">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSunday" id="checkSunday">
                                                         <label class="form-check-label" for="inlineRadio3">Sunday <i>(Checked, if closed)</span></label>
                                                     </div>				
                                                 </div>
@@ -416,23 +577,32 @@ $da=mysqli_query($connect,$s_query);
                                         <div class="form-group">
                                             <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WF_SunTime" name="WF_SunTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
+											  <input type="time"  class="form-control SundayTime" id="WF_SunTime" name="WF_SunTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
 											</div>
                                             <label for="shopAddress" class="col-sm-1 control-label">To</label>
 											<div class="col-sm-3">
-											  <input type="time"  class="form-control" id="WT_SunTime" name="WT_SunTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
+											  <input type="time"  class="form-control SundayTime" id="WT_SunTime" name="WT_SunTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
 											</div>
 
                                         </div>
+                                        <hr>
+										<div class="form-group">
+											<label for="password" class="col-sm-2 control-label">Password</label>
+											<div class="col-sm-9">
+											  <input type="password" class="form-control" id="password" name="password"/>
+											</div>
+										</div>
 									  <div class="form-group">
 										<div class="col-sm-offset-5 col-sm-10">
-											<input type="hidden" name="user_id" id="user_id" value="<?php echo $result['dealer_ID']; ?>" /> 
-										  <button type="submit" class="btn btn-success" data-loading-text="Loading..." id="changeProfileBtn">Save Changes </button>
+											<input type="hidden" name="dealer_id" id="dealer_id" value="<?php echo $result['dealer_ID']; ?>" /> 
+										  <button type="submit" class="btn btn-success" name="updateBtn" data-loading-text="Loading..." id="changeProfileBtn">Save Changes </button>
                                           <button type="reset" style="margin-left:10px;" class="btn btn-warning" id="cancelBtn">Cancel</button>
                                         </div>
 									  </div>
 									</fieldset>
 								</form>
+                                </div>
+								
 
 
 							</div> <!-- /panel-body -->		
@@ -444,7 +614,109 @@ $da=mysqli_query($connect,$s_query);
 
         </div>
         <!-- /#wrapper -->
-
+        <div class="modal fade" id="addScheduleModal" tabindex="-1" role="dialog">
+		    <div class="modal-dialog" style="width:45%;margin-top:1%">
+			    <div class="modal-content">
+				    <form class="form-horizontal" id="submitCategoryForm" action="createSchedule.php" method="POST" enctype="multipart/form-data">
+					    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Schedule</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkMondayAdd" id="checkMondayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Monday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required class="form-control MondayTimeAdd" id="AWF_MonTime" name="AWF_MonTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required class="form-control MondayTimeAdd" id="AWF_MonTime" name="AWF_MonTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkTuesdayAdd" id="checkTuesdayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Tuesday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required class="form-control TuesdayTimeAdd" id="AWF_TueTime" name="AWF_TueTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control TuesdayTimeAdd" id="AWF_TueTime" name="AWF_TueTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkWednesdayAdd" id="checkWednesdayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Wednesday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required class="form-control WednesdayTimeAdd" id="AWF_WedTime" name="AWF_WedTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control WednesdayTimeAdd" id="AWF_WedTime" name="AWF_WedTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkThrusdayAdd" id="checkThrusdayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Thrusday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required class="form-control ThrusdayTimeAdd" id="AWF_ThuTime" name="AWF_ThuTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control ThrusdayTimeAdd" id="AWF_ThuTime" name="AWF_ThuTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkFridayAdd" id="checkFridayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Friday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required  class="form-control FridayTimeAdd" id="AWF_FriTime" name="AWF_FriTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control FridayTimeAdd" id="AWF_FriTime" name="AWF_FriTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkSaturdayAdd" id="checkSaturdayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Saturday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required  class="form-control SaturdayTimeAdd" id="AWF_SatTime" name="AWF_SatTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control SaturdayTimeAdd" id="AWF_SatTime" name="AWF_SatTime" value=""/>
+								</div>
+							</div>
+                            <div class="form-group">
+								<div class="form-check form-check-inline col col-sm-3" style="margin-left: 30px;">
+                                    <input class="form-check-input" type="checkbox" value="Closed" name="checkSundayAdd" id="checkSundayAdd">
+                                    <label class="form-check-label" for="inlineRadio3" style="margin-left:10px">Sunday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="time" required  class="form-control SundayTimeAdd" id="AWF_SunTime" name="AWF_SunTime" value=""/>
+								</div>
+								<div class="col-sm-4">
+                                    <input type="time" required  class="form-control SundayTimeAdd" id="AWF_SunTime" name="AWF_SunTime" value=""/>
+								</div>
+							</div>
+                        </div>
+                        <div class="modal-footer">
+						    <input type="hidden" id="user_id" value="<?php echo $Id;?>" name="user_id">
+						    <button type="submit" class="btn btn-success" id="createScheduleBtn" autocomplete="off"> Confirm</button>
+						    <button type="button" class="btn btn-danger" data-dismiss="modal"> Close</button>
+					    </div>
+                    </form>
+                </div>>
+            </div>
+        </div>
 		<!-- jQuery -->
         <script src="../Bootstrap/js/jquery.min.js"></script>
 		<script src="../Bootstrap/js/metisMenu.min.js"></script>
@@ -457,6 +729,9 @@ $da=mysqli_query($connect,$s_query);
 				function redirect(){
 					location= "Working-Hours.php";
 				}
+                //$("input[type=time]").val('');
+                $('.editAbleForm').hide();
+                $('.editableBtns').hide();
                 $(".alert-warning").delay(500).show(10, function() {
 					$(this).delay(2000).hide(10, function() {
 						$(this).remove();
@@ -469,8 +744,206 @@ $da=mysqli_query($connect,$s_query);
 						redirect();
 				    });
 				});
-                
-                
+                $('.editFormBtn').on('click',function(){
+                    $('.editAbleForm').show();
+                    $('#ResultedInfo').hide();
+                    $('.editableBtns').show();
+                    $('.editBtn').hide();
+                });
+                $('#cancelBtn').on('click',function(){
+                    $('.editBtn').show();
+                    $('#ResultedInfo').show();
+                    $('.editAbleForm').hide();
+                });
+                /*-------  Days enable disable -- ADD ONLY*/
+                $('#checkMondayAdd').on('change',function(){
+                    var is_Checked=$(this).prop('checked');
+                    if(is_Checked==true)
+                    {
+                        $('.MondayTimeAdd').attr('disabled',true);
+                        $('.MondayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.MondayTimeAdd').attr('disabled',false);
+                        $('.MondayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkTuesdayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.TuesdayTimeAdd').attr('disabled',true);
+                        $('.TuesdayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.TuesdayTimeAdd').attr('disabled',false);
+                        $('.TuesdayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkWednesdayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.WednesdayTimeAdd').attr('disabled',true);
+                        $('.WednesdayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.WednesdayTimeAdd').attr('disabled',false);
+                        $('.WednesdayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkThrusdayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.ThrusdayTimeAdd').attr('disabled',true);
+                        $('.ThrusdayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.ThrusdayTimeAdd').attr('disabled',false);
+                        $('.ThrusdayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkFridayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.FridayTimeAdd').attr('disabled',true);
+                        $('.FridayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.FridayTimeAdd').attr('disabled',false);
+                        $('.FridayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkSaturdayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.SaturdayTimeAdd').attr('disabled',true);
+                        $('.SaturdayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.SaturdayTimeAdd').attr('disabled',false);
+                        $('.SaturdayTimeAdd').attr('required');
+                    }
+                });
+
+                $('#checkSundayAdd').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.SundayTimeAdd').attr('disabled',true);
+                        $('.SundayTimeAdd').val('');
+                    }
+                    else
+                    {
+                        $('.SundayTimeAdd').attr('disabled',false);
+                        $('.SundayTimeAdd').attr('required');
+                    }
+                });
+                /*------------ Days enable disable -- UPDATE ONLY*/
+                $('#checkMonday').on('change',function(){
+                    var is_Checked=$(this).prop('checked');
+                    if(is_Checked==true)
+                    {
+                        $('.MondayTime').attr('disabled',true);
+                        $('.MondayTime').val('');
+                    }
+                    else
+                    {
+                        $('.MondayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkTuesday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.TuesdayTime').attr('disabled',true);
+                        $('.TuesdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.TuesdayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkWednesday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.WednesdayTime').attr('disabled',true);
+                        $('.WednesdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.WednesdayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkThrusday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.ThrusdayTime').attr('disabled',true);
+                        $('.ThrusdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.ThrusdayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkFriday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.FridayTime').attr('disabled',true);
+                        $('.FridayTime').val('');
+                    }
+                    else
+                    {
+                        $('.FridayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkSaturday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.SaturdayTime').attr('disabled',true);
+                        $('.SaturdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.SaturdayTime').attr('disabled',false);
+                    }
+                });
+
+                $('#checkSunday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.SundayTime').attr('disabled',true);
+                        $('.SundayTime').val('');
+                    }
+                    else
+                    {
+                        $('.SundayTime').attr('disabled',false);
+                    }
+                });
             });
         </script>
     </body>

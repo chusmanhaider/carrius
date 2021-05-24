@@ -9,11 +9,7 @@ if($_POST) {
 	$agent = mysqli_real_escape_string($connect, $_POST['d_Agents']);
 	$cStock = mysqli_real_escape_string($connect, $_POST['carStock']);
 	$dType = mysqli_real_escape_string($connect, $_POST['dealershipType']);
-    $workFrom= mysqli_real_escape_string($connect, $_POST['workFrom']);
-    $toWork = mysqli_real_escape_string($connect, $_POST['toWork']);
-
-	$workFromTime=$_POST['WF_Time'];
-    $toWorkTime = $_POST['WT_Time'];
+    
 
 	$pass = mysqli_real_escape_string($connect, $_POST['password']);
 	$pass = sha1(md5($pass));
@@ -33,11 +29,7 @@ if($_POST) {
                     dealer_DealerNum='$dealership', 
                     dealer_NumAgent='$agent', 
                     dealer_NumCarStock='$cStock',
-                    dealer_Type = '$dType', 
-                    dealer_WorkFromDay='$workFrom', 
-                    dealer_WorkToDay='$toWork',
-					dealer_WorkFromTime='$workFromTime', 
-                    dealer_WorkToTime='$toWorkTime',
+                    dealer_Type = '$dType',
                     dealer_Password='$pass' 
                     WHERE dealer_ID = {$userId} AND dealer_Password='$pass'";
 					if($connect->query($updateSql) === TRUE) 
