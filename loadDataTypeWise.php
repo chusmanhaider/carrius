@@ -40,9 +40,26 @@
                         cars.CarTypeId='$type_id'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
-                        //echo $numRows_cars;
+                        //echo $numRows_cars;type_used_id
                     }
-                    
+                    else if(isset($_POST["type_used_id"])) 
+                    {
+                        $type_used_id=$_POST['type_used_id'];
+                        $sql_used = "SELECT * FROM cars 
+                        INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
+                        INNER JOIN cars_type ON cars_type.cType_ID=cars.CarTypeId
+                        INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+                        WHERE cars_type.cType_Status='Available' AND
+                        dealer.dealer_Status='Active' AND 
+                        cars_brand.carBrand_Status='Available' AND 
+                        cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND
+                        cars.car_NewUsed = 'Used' AND
+                        cars.CarTypeId='$type_used_id'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        //echo $numRows_cars;type_used_id
+                    }
                         if($numRows_cars > 0)
                         {
                             while($row = mysqli_fetch_assoc($result))
@@ -73,7 +90,7 @@
                                                     }
                                                     else{
                                             ?>
-                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconName" style="color:#047cf3"></i></span>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconName" style="color:#044cc4"></i></span>
                                             <?php
                                                     }
                                             ?>

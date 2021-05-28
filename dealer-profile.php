@@ -24,10 +24,12 @@
                             <?php
                                 include_once 'db_connect.php';
                                 $d_id = $_GET['url'];
-                                $sql_car = "SELECT * FROM cars 
+                                /*$sql_car = "SELECT * FROM cars 
                                 INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
                                 WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' 
-                                AND cars.car_AutoStatus = 'Active' AND dealer.dealer_ID = '$d_id'";
+                                AND cars.car_AutoStatus = 'Active' AND dealer.dealer_ID = '$d_id'";*/
+
+                                $sql_car="SELECT * FROM dealer WHERE dealer_ID='$d_id' AND dealer_Status='Active'";
                                 
                                 $res = mysqli_query($connect, $sql_car);
                                 while($row = mysqli_fetch_assoc($res))

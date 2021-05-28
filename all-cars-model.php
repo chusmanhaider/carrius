@@ -122,7 +122,7 @@
                                                     }
                                                     else{
                                             ?>
-                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#047cf3"></i></span>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#044cc4"></i></span>
                                             <?php
                                                     }
                                             ?>

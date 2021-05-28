@@ -1,7 +1,7 @@
 <?php
     error_reporting();
     include_once 'db_connect.php';
-    $car_id=$_GET['id'];
+    $car_id=$_GET['url'];
     $sql="Select * from cars Inner Join dealer ON cars.DealerId=dealer.dealer_ID
     Inner join car_gallery on car_gallery.CarId=cars.car_ID
     where cars.car_ID='$car_id' AND cars.car_Status='Available' AND cars.car_AutoStatus='Active' 
@@ -18,7 +18,8 @@
     <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
     <style>
         .markBorder{
-            border:3px solid #f7f7f7;
+            border:1px solid black;
+            height: 65%;
         }
         .setMe{
             margin-top: 14px;
@@ -90,15 +91,15 @@
                                         to you with appropriate cars that will suit you!
                                     </p>
                                     <span>
-                                        <label style="color:black;font-size:16px;margin-top:8px">1. What is your monthly budget for your car?</label>
+                                        <label style="color:black;font-size:16px;margin-top:10px">1. What is your monthly budget for your car?</label>
                                         <input type="text" style="width:80%;margin-left:10%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. $ 500, $ 625" class="form-control" name="monthlyBudget">
                                     </span>
                                     <span>
-                                        <label style="color:black;font-size:16px;margin-top:18px">2. How many Passenger/Family Members you have?</label>
+                                        <label style="color:black;font-size:16px;margin-top:20px">2. How many Passenger/Family Members you have?</label>
                                         <input type="number" style="width:80%;margin-left:10%;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. 7, 5" class="form-control" name="numFamilyMem">
                                     </span>
                                     <span>
-                                        <label style="color:black;font-size:16px;margin-top:18px">3. What is weather condition in your area?</label>
+                                        <label style="color:black;font-size:16px;margin-top:20px">3. What is weather condition in your area?</label>
                                         <input type="text" maxlength="60" style="width:80%;margin-left:10%;margin-bottom:17px;height: 30px; background-color:#f7f7f7;border-radius:3px" placeholder="E.g. Heavy/Light Snow, Dry, Rainy..." class="form-control" name="weatherCond">
                                     </span>
                             </span>
@@ -134,7 +135,7 @@
 
 <?php
     
-    if($_GET['msgR'] == 'SuccessR')
+    if(isset($_GET['msgR']) && $_GET['msgR'] == 'SuccessR')
     { ?>
         <script>
             function redirect(){
@@ -147,7 +148,7 @@
         </script>
 <?php         
     }
-    else if($_GET['msgErrR'] == 'ErrorR')
+    else if(isset ($_GET['msgErrR']) && $_GET['msgErrR'] == 'ErrorR')
     {
 ?>
         <script>

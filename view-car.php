@@ -13,7 +13,31 @@
     <link href="Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="css/scrollbar.css" rel="stylesheet">
     <link href="css/viewCar.css" rel="stylesheet">
-    
+    <style>
+        .styleFavIconLower{
+            position: absolute;
+            cursor: pointer;
+            left:89%;
+            top:3%;
+            text-decoration: none;
+        }
+        .addLeftMarLower{
+            padding-left: 85px;
+            
+        }
+        @media (max-width:575px){
+            .styleFavIconLower{
+            position: absolute;
+            cursor: pointer;
+            left:105%;
+            top:3%;
+            text-decoration: none;
+        }
+            .addLeftMarLower{
+                padding-left: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php
@@ -288,54 +312,94 @@
             <!--Last Row-->
             <h3 class="text-center alignHeading"><b>You might be interested in</b></h3>
                 <hr class="hrUnderStyle" style="border: 2px solid #047cf3;stroke: #047cf3; fill: #047cf3;margin-top:-3px;">
-                    <span class="usedCarDetail">
-                        <span class="row">
-                            <?php
-                                include('db_connect.php');
-                                $curr_id = $_GET['id'];
-                                $sql="Select * from cars INNER JOIN dealer ON dealer.dealer_ID=cars.DealerId 
-                                where cars.car_ID!='$curr_id' AND cars.car_NewUsed='New' AND cars.car_Status='Available' AND cars.car_AutoStatus!='Pending'";
-                                $result=mysqli_query($connect,$sql);
-                                if(mysqli_num_rows($result)>0)
+                <div class="col col-lg-12 allInfo" style="margin-left:20px">
+                    <div class="contentBlock">
+                        <div class="row addLeftMarLower">
+                        <?php
+                            require_once ("db_connect.php");
+                            $curr_car_id = $_GET['id'];
+                            $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                            dealer.dealer_ID = cars.DealerId
+                            WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                            cars.car_AutoStatus = 'Active' AND cars.car_ID!='$curr_car_id'";
+                            $result = mysqli_query($connect, $sql_used);
+                            $numRows_cars = mysqli_num_rows($result);
+                            if($numRows_cars > 0)
+                            {
+                                while($row = mysqli_fetch_assoc($result))
                                 {
-                                    while($row=mysqli_fetch_assoc($result))
-                                    {
-                                        $car_id=$row['car_ID'];
-                                        $t="Select * from car_gallery where CarId='$car_id' AND carGallery_Status='Available' LIMIT 1";
-                                        $res=mysqli_query($connect, $t);
-                                        while($rw=mysqli_fetch_assoc($res))
-                                        {
-                            ?>
-                            <span class="col col-lg-4 col-xs-8 eachBlock">
-                                <i class="fa fa-heart fa-lg styleFavIcon"><img src="<?php echo $rw['carGallery_Image'];?>" alt="<?php echo $rw['carGallery_Caption'];?>" width="260px" height="150px">
-                                <h4><?php echo $row['car_Name'];?></h4>
-                                <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
-                                <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
-                                <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'>".$row['car_Mileage']."</span>";?></p>
-                                <p>
-                                    <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Dealership']."</span>";?></span>
-                                </p>
-                                <p>
-                                    <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
-                                </p>
-                                <p class="infoSet">Price:</p>
-                                <span style="display:inline-block">
-                                    <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'>$ ".$row['car_Price']."</span>";?></strong>
-                                    <a class="noUnderline" style="color:white" href="viewCar.php?id=<?php echo $row['car_ID'];?>"><button class="viewCarBtn">View the car</button></a>
-                                </span>
-                                <hr style="border: 3px solid #5d95ef;width:140px;stroke: #5d95ef; fill: #5d95ef;margin-top:12px;margin-bottom:10px">
-                            </span>
-                            <?php
+                                    $selected_car=$row['car_ID'];
+                        ?>
+                                    <!--  Rempved class is eachBlock --->
+                                    <div class="col col-lg-3 col-xs-6 addBlockTop alignLowerTR">
+                                        <span class="eachBlockCar">
+                                            <?php
+                                                $sql_images="Select * from car_gallery where carGallery_Status='Available' AND CarId='$selected_car'";
+                                                $res = mysqli_query($connect, $sql_images);
+                                                $tw = mysqli_fetch_assoc($res);
+                                                $link=$tw['carGallery_Image'];
+
+                                                //
+                                                    //$carId=$_GET['id'];
+                                                    $q_ry="Select * from fav_cars Where favCar_CarId='$selected_car' AND 
+                                                    favCar_tmpUser='$tmpUser'";
+                                                    $re_qry=mysqli_query($connect, $q_ry);
+                                                    $line_favCar=mysqli_fetch_assoc($re_qry);
+                                                    $markFav=$line_favCar['favCar_MarkFav'];
+                                                    $markStatus=$line_favCar['favCar_Status'];
+                                                    if($markFav!="Yes" && $markStatus!="Marked")
+                                                    {
+                                            ?>
+                                            <span class="markFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconLower" style="color:white"></i></span>
+                                            <?php
+                                                    }
+                                                    else{
+                                            ?>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconLower" style="color:#044cc4"></i></span>
+                                            <?php
+                                                    }
+                                            ?>
+                                            <img src="<?php 
+                                                    //$link_active=$row['carGallery_Image'];
+                                                    $substr=substr($tw['carGallery_Image'],0,3);
+                                                    if($substr!='../')
+                                                        echo "Dashboard/".$tw['carGallery_Image'];
+                                                    else
+                                                    {
+                                                        $newlink_active=substr($link,3);
+                                                        echo "Dashboard/".$newlink_active;
+                                                    }?>" alt="<?php echo $tw['carGallery_Caption'];?>" alt="<?php echo $tw['carGallery_Caption'];?>" width="250px" height="140px">
+                                            <h4 style="color:black"><?php echo $row['car_Name'];?></h4>
+                                            <p class="infoSet">Year : <?php echo "<span style='font-weight:normal'>".$row['car_Year']."</span>";?></p>
+                                            <p class="infoSet">Condition : <?php echo "<span style='font-weight:normal'>".$row['car_NewUsed']."</span>";?></p>
+                                            <p class="infoSet">Mileage : <?php echo "<span style='font-weight:normal'>".$row['car_Mileage']."</span>";?></p>
+                                            <p>
+                                                <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Dealership']."</span>";?></span>
+                                            </p>
+                                            <p>
+                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
+                                            </p>
+                                            <p class="infoSet">Price:</p>
+                                            <span style="display:inline-block">
+                                                <strong> <?php echo "<span style='font-size:25px;font-weight:bold;'>$ ".$row['car_Price']."</span>";?></strong>
+                                                <a class="noUnderline" style="color:white;margin-left:10px" href="view-car.php?id=<?php echo $row['car_ID'];?>"><button class="viewCarBtn">View the car</button></a>
+                                            </span>
+                                            <hr class="hrUnderCarBlock" style="border: 2px solid #5d95ef;stroke: #5d95ef; fill: #5d95ef;">
+                                        </span>
+                                    </div>
+                                    <?php
+                                            }
                                         }
-                                    }
-                                }
-                                else
-                                {
-                                    echo "<h3 style='' id='noCarFound'> No car found..</h3>";
-                                }
-                            ?>
-                        </span>
-                    </span>
+                                        else
+                                        {
+                                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available</span>";
+                                        }
+                                    ?>
+                                
+                        </div>
+                                
+                    </div>
+                </div>
         
         </div> <!--Container-->
     </div><!-- End or Wrapper -->
@@ -354,7 +418,7 @@
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
     <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
-	<script src="markFav.js"></script>	
+	<!--<script src="markFav.js"></script>	-->
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();

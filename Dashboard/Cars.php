@@ -658,15 +658,30 @@ $adUser=$result['admin_username'];
 								</div>
 								<div class="form-group">
 									<label for="categoryStatus" class="col-sm-3 control-label">Car Brand </label>
-										<div class="col-sm-8">
+										<div class="col-sm-4">
 											<select class="form-control" required id="selectedCarBrand" name="selectedCarBrand">
-												<option value="">Select Car Brand</option>
+												<option value="">Select Brand</option>
 												<?php
 													$sql="SELECT* FROM cars_brand WHERE carBrand_Status='Available'";
 													$resu=mysqli_query($connect,$sql);
 													while($t=mysqli_fetch_assoc($resu))
 													{
 														echo "<option class='text-capitalize' value='".$t['carBrand_ID']."'>".$t['carBrand_Name']."</option>";
+													}
+												?>
+												
+											</select>
+										</div>
+										<label for="categoryStatus" class="col-sm-1 control-label">Type</label>
+										<div class="col-sm-3">
+											<select class="form-control" required id="selectedCarType" name="selectedCarType">
+												<option value="">Select Type</option>
+												<?php
+													$sql="SELECT* FROM cars_type WHERE cType_Status='Available'";
+													$resu=mysqli_query($connect,$sql);
+													while($t=mysqli_fetch_assoc($resu))
+													{
+														echo "<option class='text-capitalize' value='".$t['cType_ID']."'>".$t['cType_Name']."</option>";
 													}
 												?>
 												
@@ -1528,6 +1543,7 @@ $adUser=$result['admin_username'];
     <script src="Bootstrap/js/dataTables/dataTables.bootstrap.min.js"></script>
 	<script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
 	<script type="text/javascript" src="js/products.js"></script>
+	
 	
 	</body>
 </html>

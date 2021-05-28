@@ -99,7 +99,7 @@ strong{
     width:115px;
     display:inline-block;
     padding:1px;
-    margin-right:55px;
+    margin-right:-10px;
     font-weight:bold;
     border:2px solid white;
     border-radius:8px;
@@ -151,7 +151,15 @@ strong{
     margin-left:1%;
     width:160px;
 }
-
+.alignLowerTR{
+    height:50%;
+    margin-top:20px;
+    margin-bottom:130px;
+    display: grid;
+    max-width: 300px;
+    margin-left: 5px;
+    margin-right: 60px;
+}
 .eachBlock{
     height:50%;
     margin-top:20px;
@@ -373,10 +381,28 @@ tr {
         margin-left: 10px;
         display: block;
     }
+    .alignLower{
+        margin-left: 70px;
+    }
+    .alignLowerTR{
+        height:55%;
+        margin-top:20px;
+        margin-bottom:130px;
+        display: grid;
+        max-width: 300px;
+        margin-left: 70px;
+        margin-right: 20px;
+    }
     .styleFavIcon{
         position: absolute;
         top:4%;
         left:99%;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .styleFavIconLower{
+        position: absolute;
+        
         cursor: pointer;
         text-decoration: none;
     }
@@ -441,4 +467,5 @@ tr {
         padding:10px;
         font-size:14px;
     }
+    
 }

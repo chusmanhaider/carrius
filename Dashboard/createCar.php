@@ -24,6 +24,7 @@ if($_POST)
 	$car_NewUsed=$car_Cond;
 	$car_isElectric	=mysqli_real_escape_string($connect, $_POST['isElectric']);
 	$carBrand_Id	= mysqli_real_escape_string($connect, $_POST['selectedCarBrand']);
+	$carType_Id	= mysqli_real_escape_string($connect, $_POST['selectedCarType']);
 
 	//First Image
 	$filename = explode('.', $_FILES['fileOne']['name']);
@@ -223,8 +224,8 @@ if($_POST)
 	$notifications_status="Available";
 	$notification_status="Unseen";
 
-	$sql_car = "INSERT INTO cars (car_Name, car_Status, car_AutoStatus, car_Year, car_Mileage, car_Price, car_NewUsed, car_isElectric, car_UploadedBy, CarBrandId, DealerId) VALUES 
-	('$carName', '$carStatus', 'Active', '$year', '$car_Mileage', '$car_Price', '$car_NewUsed', '$car_isElectric', '$carUploadedBy', '$carBrand_Id', '$car_Dealer_id')";
+	$sql_car = "INSERT INTO cars (car_Name, car_Status, car_AutoStatus, car_Year, car_Mileage, car_Price, car_NewUsed, car_isElectric, car_UploadedBy, CarBrandId, CarTypeId, DealerId) VALUES 
+	('$carName', '$carStatus', 'Active', '$year', '$car_Mileage', '$car_Price', '$car_NewUsed', '$car_isElectric', '$carUploadedBy', '$carBrand_Id', '$carType_Id', '$car_Dealer_id')";
 	
 	if(mysqli_query($connect,$sql_car)) 
 	{
@@ -248,14 +249,17 @@ if($_POST)
 					$sql_notify_by_admin="INSERT INTO notify_byadmin (notifyByAdmin_adminId, notificationsId) VALUES ('$user_id', '$notify_last_id')";
 					if(mysqli_query($connect,$sql_notify_by_admin))
 					{
-						$notifybyadmin_last_id = mysqli_insert_id($connect);
-						$sql_notify_seen="INSERT INTO notifications_seen (notifySeen_Status, notifySeen_DealerId, notifySeen_NotificationId, notifyByAdminId) VALUES ('$notification_status', '$car_Dealer_id', '$notify_last_id', '$notifybyadmin_last_id')";
-						if(mysqli_query($connect,$sql_notify_seen))
+						//$notifybyadmin_last_id = mysqli_insert_id($connect);
+						//$sql_notify_seen="INSERT INTO notifications_seen (notifySeen_Status, notifySeen_DealerId, notifySeen_NotificationId, notifyByAdminId) VALUES ('$notification_status', '$car_Dealer_id', '$notify_last_id', '$notifybyadmin_last_id')";
+						/*if(mysqli_query($connect,$sql_notify_seen))
 						{
+							*/
 							header('location: Cars.php?msg=Success');
-						}
+						//}
+						/*
 						else
 							header('location: Cars.php?msgError=UnableToAdd');
+							*/
 						
 					}
 					else

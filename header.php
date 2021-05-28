@@ -173,9 +173,25 @@
                         <li>
                             <a href="all-cars-model.php">All cars model</a>
                         </li>
+                        <?php
+                            $page_url='';
+                            if($page_url=='index.php')
+                            {
+                        ?>
                         <li>
-                            <a href="#">What's my car style</a>
+                            <a href="#myCarStyle">What's my car style</a>
                         </li>
+                        <?php
+                            }
+                            else
+                            {
+                        ?>
+                        <li>
+                            <a href="index.php#myCarStyle">What's my car style</a>
+                        </li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                 </li>
                 <li class="dropdown">

@@ -36,7 +36,22 @@
                         $numRows_cars = mysqli_num_rows($result);
                         //echo $numRows_cars;
                     }
-                    
+                    else if (isset($_POST['brand_used_id']))
+                    {
+                        $brand_used_id=$_POST['brand_used_id'];
+                        $sql_used = "SELECT * FROM cars 
+                        INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
+                        INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND cars_brand.carBrand_Status='Available' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_NewUsed='Used' AND cars_brand.carBrand_ID='$brand_used_id'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                    }
+                    else
+                    {
+                        $numRows_cars=-1;
+                    }
+                        //echo $numRows_cars;
                         if($numRows_cars > 0)
                         {
                             while($row = mysqli_fetch_assoc($result))
@@ -67,7 +82,7 @@
                                                     }
                                                     else{
                                             ?>
-                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconName" style="color:#047cf3"></i></span>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIconName" style="color:#044cc4"></i></span>
                                             <?php
                                                     }
                                             ?>
@@ -102,9 +117,13 @@
                     <?php
                             }
                         }
-                        else
+                        else if($numRows_cars==0)
                         {
                             echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>No Car Available for this brand</span>";
+                        }
+                        else
+                        {
+                            echo "<span style='color:red;font-weight:bold;font-size:22px;' class='noCarFound'>You haven't select any option</span>";
                         }
                     ?>
                                 

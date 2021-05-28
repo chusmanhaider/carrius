@@ -25,7 +25,7 @@
                                 <select class="form-control" id="carSelect">
                                     <option value="">Select Car Name</option>
                                     <?php
-                                        include_once 'getCarList.php';
+                                        include_once 'getCarListUsed.php';
                                     ?>
                                 </select>
                             </div>
@@ -40,7 +40,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-2 col-xs-6" id="typeSelect">
-                                        <select class="form-control">
+                                        <select class="form-control typeSelect">
                                             <option value="">Select Type</option>
                                             <?php
                                                 include_once 'getTypeList.php';
@@ -48,7 +48,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-3 col-xs-4" id="priceSelect">
-                                        <select class="form-control">
+                                        <select class="form-control priceSelect">
                                             <option value="">Select Maximum Price</option>
                                             <option value="5000">Below 5000 ($)</option>
                                             <option value="10000">5001 - 10,000 ($)</option>
@@ -65,7 +65,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-1 col-xs-4 allFilters" id="filterResult">
-                                        <button type="submit" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button> 
+                                        <a href="used-cars.php"><button type="button" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-refresh"></i> Clear</button></a> 
                                     </div> 
                                 <!--</form>-->
                             </span>
@@ -75,7 +75,7 @@
                         <div class="sortingMenuSide">
                             <?php include_once 'sortingMenuSide.php'; ?>
                         </div>
-                        <div class="col col-lg-9" style="margin-left:20px">
+                        <div class="col col-lg-9 allInfo" style="margin-left:20px">
                             <div class="contentBlock">
                                 <div class="row">
                                     <?php
@@ -116,7 +116,7 @@
                                                     }
                                                     else{
                                             ?>
-                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#047cf3"></i></span>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#044cc4"></i></span>
                                             <?php
                                                     }
                                             ?>
@@ -250,7 +250,9 @@
                                 
                             </div>
                         </div>
-                    
+                        <div class="row specificInfo">  
+										    
+						</div>
                     </div>
                     
                 </div>
@@ -329,7 +331,100 @@
                                     
                                         
                 });
-
+                //
+                $(document).on('change','#carSelect',function(){
+                    //var car_id=$(this).children('option:selected').attr("id");
+                    var car_name=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(car_name);
+                    if(car_name!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{car_name:car_name},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                //Brand wise
+                $(document).on('change','#brandSelect',function(){
+                    var brand_used_id=$(this).children('option:selected').attr("id");
+                    //var car_name=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(brand_id);
+                    if(brand_used_id!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataBrandWise.php",  
+							method:"POST",  
+							data:{brand_used_id:brand_used_id},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.typeSelect',function(){
+                    var type_used_id=$(this).children('option:selected').attr("id");
+                    //var type_id=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(type_used_id);
+                    if(type_used_id!='' && typeof type_used_id!='undefined')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataTypeWise.php",  
+							method:"POST",  
+							data:{type_used_id:type_used_id},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.priceSelect',function(){
+                    var price_used=$(this).children('option:selected').attr("value");
+                    //var type_id=$(this).val();
+                    //alert(car_id+'  '+car_name); loadDataNameWise
+                    //alert(price);
+                    if(price_used!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataPriceWise.php",  
+							method:"POST",  
+							data:{price_used:price_used},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
             });
         </script>
     </body>

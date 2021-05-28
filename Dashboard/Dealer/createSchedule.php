@@ -32,8 +32,21 @@
             $sun_from = mysqli_real_escape_string($connect, $_POST['AWF_SunTime']);
             $sun_to = mysqli_real_escape_string($connect, $_POST['AWT_SunTime']);
             $sun_check = mysqli_real_escape_string($connect, $_POST['checkSundayAdd']);
-
-            $sql="INSERT INTO business_schedule (bS_Day, bS_DayCode, bS_FromTime) VALUES ('')";
+            
+            if($mon_check=='Closed')
+            {
+                $mon_from = ''; 
+                $mon_to = '';
+            }
+            $sql_from = "INSERT INTO business_fromtime (bsFrom_Mon, bsFrom_Tue) VALUES ('$mon_from','$tue_from')";
+            $sql_to = "INSERT INTO business_totime (bsTo_Mon, bsTo_Tue) VALUES ('$mon_to','$tue_to')";
+            if(mysqli_query($connect, $sql_from) && mysqli_query($connect, $sql_to))
+            {
+                
+                    header('location:Working-Hours.php?msg=Success');
+                
+            }
+            
         }
         else
         {

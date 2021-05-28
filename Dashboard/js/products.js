@@ -213,7 +213,18 @@ $(document).ready(function() {
 			}  
 		});
 	});
-	
+	$(".alert-warning").delay(500).show(10, function() {
+		$(this).delay(2000).hide(10, function() {
+			$(this).remove();
+			redirect();
+		});
+	});
+	$(".alert-success").delay(500).show(10, function() {
+		$(this).delay(2000).hide(10, function() {
+			$(this).remove();
+			redirect();
+		});
+	});
 	//Update
 	$(document).on('click', '.update_car', function(){  
 		var car_id = $(this).attr("id");
@@ -612,4 +623,16 @@ $(document).ready(function() {
 		});
 	});
 	*/
+	$(".alert-warning").delay(500).show(10, function() {
+		$(this).delay(2000).hide(10, function() {
+			$(this).remove();
+			redirect();
+		});
+	});
+	$(".alert-success").delay(500).show(10, function() {
+		$(this).delay(2000).hide(10, function() {
+			$(this).remove();
+			redirect();
+		});
+	});
 });

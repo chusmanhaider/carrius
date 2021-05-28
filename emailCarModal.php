@@ -86,7 +86,7 @@
 
 <?php include_once 'emailCarMessage.php'; ?>
 <?php
-    if($_GET['msg'] == 'Success')
+    if(isset($_GET['msg']) && $_GET['msg'] == 'Success')
     { ?>
         <script>
             function redirect(){
@@ -99,7 +99,7 @@
         </script>
 <?php         
     }
-    else if($_GET['msgErr'] == 'Error')
+    else if(isset($_GET['msgErr']) && $_GET['msgErr'] == 'Error')
     {
 ?>
         <script>

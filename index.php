@@ -8,6 +8,31 @@
     <link href="Bootstrap/css/metisMenu.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <link href="css/scrollbar.css" rel="stylesheet">
+    <style>
+        #lookingForHr,#drivetainHr{
+            width:390px;
+            margin-top:-3px;
+            align-content:center;
+        }
+        @media (max-width:575px){
+            #lookingForHr{
+                width:280px;
+                margin-top:-3px;
+                align-content:center;
+            } 
+            .drivetain{
+                margin-left: 10%;
+            }
+            #drivetainHr{
+                width:300px;
+                margin-top:-3px;
+                align-content:center;
+            }
+            #drivetainHeading{
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php
@@ -19,7 +44,7 @@
             Shaping the <i>FUTURE</i><br>
             of car shopping<br>
             <i>FOREVER</i>...<br>
-            <a href="what-car-style.php"><button class="headerBtn">What’s my car style?</button></a>
+            <a href="#myCarStyle"><button class="headerBtn">What’s my car style?</button></a>
             
         </div>
         <br>
@@ -131,9 +156,9 @@
             <div class="container">
                 <div class="row">
                     <div class="custom-padding">
-                        <div class="browseType">
-                            <h2 style="text-align: center;"><b>What Drivetrain fits your need?</b></h2>
-                            <hr style="border: 2px solid #047cf3;width:390px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;align-content:center">
+                        <div class="browseType drivetain">
+                            <h2 style="text-align: center;" id="drivetainHeading"><b>What Drivetrain fits your need?</b></h2>
+                            <hr style="border: 2px solid #047cf3;stroke: #047cf3; fill: #047cf3;" id="drivetainHr">
                             <div class="row">
                                 <div class="col col-lg-3 col-xs-6">
                                     <span class="imgPortion">
@@ -214,11 +239,11 @@
             </div>
         </div>
         <!--What are you looking for?-->
-        <div class="container-fluid" style="background-color: #f7f7f7;">
+        <div class="container-fluid" id="myCarStyle" style="background-color: #f7f7f7;">
             <div class="container">
                 <div class="custom-padding markHeight">
                     <h2 style="text-align: center;" id="changeFontSize"><b>What are you looking for?</b></h2>
-                    <hr style="border: 2px solid #047cf3;width:390px;stroke: #047cf3; fill: #047cf3;margin-top:-3px;align-content:center">
+                    <hr style="border: 2px solid #047cf3;stroke: #047cf3; fill: #047cf3;" id="lookingForHr">
                     <div class="row">
                         <span class="addPad">
                             <img src="resources/Updated Icons/Group 1367@2x.png" style="width:71px;height:100px;margin-left:30px">
@@ -304,5 +329,29 @@
     <script src="Bootstrap/js/metisMenu.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
+    <script>
+    $(document).ready(function(){
+        
+        $(document).on('click', '.headerBtn', function(e) {
+            // target element id
+            var id = $(this).attr('href');
+
+            // target element
+            var $id = $(id);
+            if ($id.length === 0) {
+                return;
+            }
+
+            // prevent standard hash navigation (avoid blinking in IE)
+            e.preventDefault();
+
+            // top position relative to the document
+            var pos = $(id).offset().top - 10;
+
+            // animated top scrolling
+            $('body, html').animate({scrollTop: pos});
+        });
+    });
+    </script>
 </body>
 </html>

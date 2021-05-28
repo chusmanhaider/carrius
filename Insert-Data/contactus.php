@@ -35,22 +35,22 @@ if(!empty($_POST))
 				$sql_notify_by_admin="INSERT INTO notify_byadmin (notifyByAdmin_adminId, notificationsId) VALUES ('$user_id', '$notify_last_id')";
 				if(mysqli_query($connect,$sql_notify_by_admin))
 				{
-					header('location: ../contact-us.php?msgContact=runA');
+					header('location: ../contact-us.php?msgContact=Success');
 							
 				}
 				else
-					header('location: ../contact-us.php?msgNotContactA=error');
+					header('location: ../contact-us.php?msgContactErr=error');
 			}
 			else
-				header('location: ../contact-us.php?msgNotContactB=error');
+				header('location: ../contact-us.php?msgContactErr=error');
 		}
         else{
-			header('location: ../contact-us.php?msgNotContactC=error');
+			header('location: ../contact-us.php?msgContactErr=error');
 		}
         
     }
     else{
-        header('location: ../contact-us.php?msgNotContactC=error');
+        header('location: ../contact-us.php?msgContactErr=error');
     }
 }
 

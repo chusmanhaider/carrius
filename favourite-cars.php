@@ -102,7 +102,7 @@
                                         </select>
                                     </div>
                                     <div class="col col-lg-1 col-xs-4 allFilters" id="filterResult">
-                                        <button type="submit" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-filter"></i> Filter</button> 
+                                        <a href="favourite-cars.php"><button type="submit" id="filterResultBtn" name="filterResultBtn" class="btn btn-info"><i class="fa fa-refresh"></i> Clear</button></a> 
                                     </div> 
                                 <!--</form>-->
                             </span>
@@ -156,7 +156,7 @@
                                                     }
                                                     else{
                                             ?>
-                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#047cf3"></i></span>
+                                            <span class="unMarkFav" name="<?php echo $row['car_ID'];?>" id="<?php echo $tmpUser; ?>"><i class="fa fa-heart fa-lg styleFavIcon" style="color:#044cc4"></i></span>
                                             <?php
                                                     }
                                             ?>
@@ -178,7 +178,7 @@
                                                 <img src="resources/icons png/user (1).png" width="12px" height="12px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Dealership']."</span>";?></span>
                                             </p>
                                             <p>
-                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?>XYZ Dealership Lahore</span>
+                                                <img src="resources/icons png/pin.png" width="14px" height="14px"> <span class="loctionInfo"><?php echo "<span style='font-weight:normal'>".$row['dealer_Location']."</span>";?></span>
                                             </p>
                                             <p class="infoSet">Price:</p>
                                             <span style="display:inline-block">
