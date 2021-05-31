@@ -1,3 +1,7 @@
+<?php 
+    include_once 'temp_session.php';
+    error_reporting();
+?>
 <html>
     <head>
         <title>Carrius - Used Cars</title>
@@ -102,7 +106,7 @@
 
                                                 //
                                                     //$carId=$_GET['id'];
-                                                    $q_ry="Select * from fav_cars Where
+                                                    $q_ry="Select * from fav_cars Where favCar_CarId='$selected_car' AND 
                                                     favCar_tmpUser='$tmpUser'";
                                                     $re_qry=mysqli_query($connect, $q_ry);
                                                     $line_favCar=mysqli_fetch_assoc($re_qry);
@@ -280,56 +284,56 @@
 			    }
                 $(document).on('click', '.markFav', function(){  
                     //var dealer_id = $(this).attr("id"); 
-                        var car_id = $(this).attr("name");
-                        var tmpuser_id=$(this).attr("id");
-                        //alert(tmpuser_id);
-                        $.ajax({  
-                            url:"carFav.php",  
-                            method:"POST",  
-                            data:{car_id:car_id,tmpuser_id:tmpuser_id},  
-                            success:function(data){
-                                
-                                    Swal.fire({
-                                        position: 'center',
-                                        type: 'success',
-                                        showCloseButton: true,
-                                        title: 'Car Favourite',
-                                        text:'Car marked as favourite',
-                                        customClass: 'animated tada',
-                                        showConfirmButton: false,
-                                        timer: 3000
-                                    });
-                                setTimeout(function() { redirect(); }, 3000);
-                            }  
-                        });
+                    var car_id = $(this).attr("name");
+                    var tmpuser_id=$(this).attr("id");
+                    //alert(car_id);
+                    $.ajax({  
+                                    url:"carFav.php",  
+                                    method:"POST",  
+                                    data:{car_id:car_id,tmpuser_id:tmpuser_id},  
+                                    success:function(data){
+                                        
+                                            Swal.fire({
+                                                position: 'center',
+                                                type: 'success',
+                                                showCloseButton: true,
+                                                title: 'Car Favourite',
+                                                text:'Car marked as favourite',
+                                                customClass: 'animated tada',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            });
+                                        setTimeout(function() { redirect(); }, 3000);
+                                    }  
+                    });
                 }); 
                 $(document).on('click', '.unMarkFav', function(){  
-                                    var car_u_id = $(this).attr("name");
-                                    var buyer_u_id=$(this).attr("id");
-                                    //alert(car_u_id);
-                                
-                                    $.ajax({  
-                                            url:"carNotFav.php",  
-                                            method:"POST",  
-                                            data:{car_u_id:car_u_id,buyer_u_id:buyer_u_id},  
-                                            success:function(data){
-                                            
-                                                Swal.fire({
-                                                    position: 'center',
-                                                    type: 'success',
-                                                    showCloseButton: true,
-                                                    title: 'Car Not Favourite',
-                                                    text:'Car unmarked as favourite',
-                                                    customClass: 'animated tada',
-                                                    showConfirmButton: false,
-                                                    timer: 3000
-                                                });
-                                            
-                                            setTimeout(function() { redirect(); }, 3000);
-                                            }  
-                                        }); 
-                                    
+                                var car_u_id = $(this).attr("name");
+                                var buyer_u_id=$(this).attr("id");
+                                //alert(car_u_id);
+                            
+                                $.ajax({  
+                                        url:"carNotFav.php",  
+                                        method:"POST",  
+                                        data:{car_u_id:car_u_id,buyer_u_id:buyer_u_id},  
+                                        success:function(data){
                                         
+                                            Swal.fire({
+                                                position: 'center',
+                                                type: 'success',
+                                                showCloseButton: true,
+                                                title: 'Car Not Favourite',
+                                                text:'Car unmarked as favourite',
+                                                customClass: 'animated tada',
+                                                showConfirmButton: false,
+                                                timer: 3000
+                                            });
+                                        
+                                        setTimeout(function() { redirect(); }, 3000);
+                                        }  
+                                    }); 
+                                
+                                    
                 });
                 //
                 $(document).on('change','#carSelect',function(){
@@ -412,9 +416,54 @@
                         $('.allInfo').hide();
 						$('.specificInfo').show();
 						$.ajax({  
-							url:"loadDataPriceWise.php",  
+							url:"loadDataPriceWiseTest.php",  
 							method:"POST",  
 							data:{price_used:price_used},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                    }
+                });
+                $(document).on('change','.common_selector_drive:checked',function(){
+                    var val_drive_used=$(this).val();
+                    var selected_num_cBoxes = $('.common_selector_drive:checked').length;
+                    //alert(checkedBoxes);
+                    //alert(val_drive_used);
+                    if(val_drive_used!='' && selected_num_cBoxes>0)
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{val_drive_used:val_drive_used},  
+							success:function(data){  
+								$('.specificInfo').html(data);  
+							}  
+					   });
+                    }
+                    else{
+                        $('.allInfo').show();
+						$('.specificInfo').hide();
+                        redirect();
+                    }
+                });
+                $(document).on('change','.common_selector_ele',function(){
+                    var val_ele_used=$(this).val();
+                    //alert(val);
+                    if(val_ele_used!='')
+                    {
+                        $('.allInfo').hide();
+						$('.specificInfo').show();
+						$.ajax({  
+							url:"loadDataNameWise.php",  
+							method:"POST",  
+							data:{val_ele_used:val_ele_used},  
 							success:function(data){  
 								$('.specificInfo').html(data);  
 							}  

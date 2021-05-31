@@ -58,7 +58,25 @@
                         cars.CarTypeId='$type_used_id'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
-                        //echo $numRows_cars;type_used_id
+                        //echo $numRows_cars;type_used_id//
+                    }
+                    else if(isset($_POST["type_elec_id"])) 
+                    {
+                        $type_elec_id=$_POST['type_elec_id'];
+                        $sql_used = "SELECT * FROM cars 
+                        INNER JOIN cars_brand ON cars_brand.carBrand_ID=cars.CarBrandId
+                        INNER JOIN cars_type ON cars_type.cType_ID=cars.CarTypeId
+                        INNER JOIN dealer ON dealer.dealer_ID = cars.DealerId
+                        WHERE cars_type.cType_Status='Available' AND
+                        dealer.dealer_Status='Active' AND 
+                        cars_brand.carBrand_Status='Available' AND 
+                        cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND
+                        cars.car_isElectric = 'Yes' AND
+                        cars.CarTypeId='$type_elec_id'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        //echo $numRows_cars;type_used_id//type_elec_id
                     }
                         if($numRows_cars > 0)
                         {

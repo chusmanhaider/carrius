@@ -1,3 +1,7 @@
+<?php 
+    include_once 'temp_session.php';
+    error_reporting();
+?>
     <head>
         <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="Bootstrap/css/startmin.css" rel="stylesheet">
@@ -58,6 +62,31 @@
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
                         $count=3;
+                    }
+                    else if(isset($_POST["car_name_ele"])) 
+                    {
+                        $car_name_ele=$_POST['car_name_ele'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND 
+                        cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_isElectric='Yes' AND
+                        cars.car_Name='$car_name_ele'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=3;
+                    }
+                    else if(isset($_POST["val_ele_used"])) 
+                    {
+                        $val_ele_used=$_POST['val_ele_used'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_NewUsed='Used' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_isElectric='$val_ele_used'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=3;
 
                     }
                     else if(isset($_POST["val_drive"])) 
@@ -66,7 +95,7 @@
                         $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
                         dealer.dealer_ID = cars.DealerId INNER JOIN vehicle_overview ON
                         vehicle_overview.carId=cars.car_ID
-                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND 
                         cars.car_AutoStatus = 'Active' AND vehicle_overview.vehOver_DTrain='$val_drive'";
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
@@ -84,6 +113,48 @@
                         $result = mysqli_query($connect, $sql_used);
                         $numRows_cars = mysqli_num_rows($result);
                         $count=4;
+
+                    }
+                    else if(isset($_POST["val_drive_used"])) 
+                    {
+                        $val_drive_used=$_POST['val_drive_used'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId INNER JOIN vehicle_overview ON
+                        vehicle_overview.carId=cars.car_ID
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_NewUsed='Used' AND
+                        cars.car_AutoStatus = 'Active' AND vehicle_overview.vehOver_DTrain='$val_drive_used'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=4;
+
+                    }
+                    else if(isset($_POST["val_drive_elec"])) 
+                    {
+                        $val_drive_elec=$_POST['val_drive_elec'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId INNER JOIN vehicle_overview ON
+                        vehicle_overview.carId=cars.car_ID
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_isElectric='Yes' AND
+                        cars.car_AutoStatus = 'Active' AND vehicle_overview.vehOver_DTrain='$val_drive_elec'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=4;
+
+                    }
+
+                    else if(isset($_POST["val_elec"])) 
+                    {
+                        $val_elec=$_POST['val_elec'];
+                        $sql_used = "SELECT * FROM cars INNER JOIN dealer ON 
+                        dealer.dealer_ID = cars.DealerId
+                        WHERE dealer.dealer_Status='Active' AND cars.car_Status = 'Available' AND
+                        cars.car_AutoStatus = 'Active' AND cars.car_NewUsed='$val_elec'
+                        AND cars.car_isElectric='Yes'";
+                        $result = mysqli_query($connect, $sql_used);
+                        $numRows_cars = mysqli_num_rows($result);
+                        $count=2;
 
                     }
                         if($numRows_cars > 0)
@@ -175,4 +246,5 @@
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="Bootstrap/js/startmin.js"></script>
     <script src="Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
+    
     </body>

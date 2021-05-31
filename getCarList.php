@@ -1,6 +1,6 @@
 <?php
     require_once ("db_connect.php");
-    $sql="Select * from cars Where car_Status='Available'";
+    $sql="Select * from cars Where car_Status='Available' AND car_AutoStatus='Active'";
     $result=mysqli_query($connect, $sql);
     $numRows=mysqli_num_rows($result);
     if($numRows>0)

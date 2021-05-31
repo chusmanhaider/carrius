@@ -1,6 +1,7 @@
 <?php
     require_once ("db_connect.php");
-    $sql="Select * from cars Where car_Status='Available' AND car_AutoStatus='Active' AND car_NewUsed='Used'";
+    $sql="Select * from cars Where car_Status='Available' AND car_AutoStatus='Active' AND 
+    car_isElectric='Yes'";
     $result=mysqli_query($connect, $sql);
     $numRows=mysqli_num_rows($result);
     if($numRows>0)
@@ -15,6 +16,3 @@
         echo "";
     }
 ?>
-<script>
-    
-</script>

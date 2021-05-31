@@ -41,6 +41,7 @@ $da=mysqli_query($connect,$s_query);
         <link href="../Bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../Bootstrap/css/metisMenu.min.css" rel="stylesheet">
 		<link href="../Bootstrap/css/thisCSS.css" rel="stylesheet">
+        <link href="../Bootstrap/Sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
         <style>
 			.carField{
 				overflow: hidden;
@@ -221,16 +222,57 @@ $da=mysqli_query($connect,$s_query);
 							<div class="panel-heading">
 								<div class="page-heading"> <i class="fa fa-calendar-times-o fa-fw"></i> Working Hours</div>
 							</div> <!-- /panel-heading -->
-							
+							<?php
+                                $sql_test="Select * from business_schedule Inner join
+                                bschedule_check on business_schedule.bsCheckId = bschedule_check.bSCheck_ID
+                                where business_schedule.DealerId='$Id'";
+                                $result = mysqli_query($connect, $sql_test);
+                                $numRows = mysqli_num_rows($result);
+                            ?>
 							<div class="panel-body">
-                                <div class="row editBtn">
-                                    <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
-                                        <button class="btn btn-danger editFormBtn" id="editFormBtn"> <i class="fa fa-edit fa-faw"></i> Edit</button>
+                                <div class="row">
+                                    <div class="messages" style="width: 70%;margin-left:10%;display:inline-block;">
+                                    <?php
+                                        if(isset($_GET['msg']))
+                                        {
+                                            echo "<div class='alert alert-success alert-dismissible fade in alertSuccess'>
+                                                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                                                <i class='fa fa-check'></i> <strong>Success !!</strong> Time schedule has been added
+                                            </div>";
+                                        }
+                                        else if(isset($_GET['msgErr']))
+                                        {
+                                            echo "<div class='alert alert-danger alert-dismissible fade in'>
+                                                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                                                <i class='fa fa-warning'></i> <strong>Error !!</strong> While adding time schedule
+                                            </div>";
+                                        }
+								    ?>
                                     </div>
-                                    <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
-                                        <button class="btn btn-success addFormBtn" data-toggle="modal" data-target="#addScheduleModal" id="addFormBtn"> <i class="fa fa-plus fa-faw"></i>  Add</button>
+                                    <div class="editBtn" style="float:right;margin-right:20px;display:inline-block;">
+                                        <?php
+                                            if($numRows>0)
+                                            {
+                                        ?>
+                                                <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
+                                                    <span data-toggle="tooltip" title="Edit Schedule"><button class="btn btn-danger editFormBtn" data-toggle="modal" data-target="#updateScheduleModal" name="<?php echo $Id;?>" id="editFormBtn"> <i class="fa fa-edit fa-faw fa-lg"></i> </button></span>
+                                                </div>
+                                        <?php
+                                            }
+                                            else if($numRows==0)
+                                            {
+                                        ?>
+                                                <div class="pull pull-right" style="padding-bottom:20px;margin-right:20px">
+                                                    <span data-toggle="tooltip" title="Add Schedule"><button class="btn btn-success addFormBtn" data-toggle="modal" data-target="#addScheduleModal" id="addFormBtn"> <i class="fa fa-plus fa-faw fa-lg"></i></button></span>
+                                                </div>
+                                        <?php
+
+                                            }
+                                        ?>
                                     </div>
                                 </div>
+                                
+                                
                                 <div class="row" id="ResultedInfo">
                                     <table class="table table-bordered table-hover table-striped table-responsive workingHrsTable" style="margin-left:10%;width:80%">
                                         <tr>
@@ -239,370 +281,294 @@ $da=mysqli_query($connect,$s_query);
                                             <th class="text-center">To (Time)</th>
                                         </tr>
                                         <!-- Monday-->
+                                        <?php
+                                            $sql_test="Select * from business_schedule Inner join
+                                            bschedule_check on business_schedule.bsCheckId = bschedule_check.bSCheck_ID
+                                            where business_schedule.DealerId='$Id'";
+                                            $result = mysqli_query($connect, $sql_test);
+                                            $numRows = mysqli_num_rows($result);
+                                            $line = mysqli_fetch_assoc($result);
+
+                                            $isClosed_Mon = $line['bSCheck_Mon'];
+                                            $isClosed_Tue = $line['bSCheck_Tue'];
+                                            $isClosed_Wed = $line['bSCheck_Wed'];
+                                            $isClosed_Thr = $line['bSCheck_Thr'];
+                                            $isClosed_Fri = $line['bSCheck_Fri'];
+                                            $isClosed_Sat = $line['bSCheck_Sat'];
+                                            $isClosed_Sun = $line['bSCheck_Sun'];
+                                            
+                                            //From Time
+                                            $query_from = "Select * from business_fromtime Inner join business_schedule on
+                                            business_schedule.fromTimeId = business_fromtime.bsFrom_ID 
+                                            where business_schedule.DealerId='$Id'";
+
+                                            $result_from = mysqli_query($connect, $query_from);
+                                            $row_from = mysqli_fetch_assoc($result_from);
+                                            
+                                            //TO TIME
+                                            $query_to = "Select * from business_totime Inner join business_schedule on
+                                            business_schedule.toTimeId = business_totime.bsTo_ID 
+                                            where business_schedule.DealerId='$Id'";
+
+                                            $result_to = mysqli_query($connect, $query_to);
+                                            $row_to = mysqli_fetch_assoc($result_to);
+                                        ?>
                                         <tr>
                                             <td class="text-center">Monday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Mon=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Mon=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                            <?php
+                                                                $mon_time = date("g:i A", strtotime($row_from['bsFrom_Mon'])); 
+                                                                echo $mon_time;
+                                                            ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <?php
+                                                                $mon_ttime = date("g:i A", strtotime($row_to['bsTo_Mon'])); 
+                                                                echo $mon_ttime;
+                                                            ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Tuesday-->
                                         <tr>
                                             <td class="text-center">Tuesday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Tue=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Tue=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $tue_time = date("g:i A", strtotime($row_from['bsFrom_Tue'])); 
+                                                            echo $tue_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $tue_ttime = date("g:i A", strtotime($row_to['bsTo_Tue'])); 
+                                                            echo $tue_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Wednesday-->
                                         <tr>
                                             <td class="text-center">Wednesday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Wed=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Wed=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $wed_time = date("g:i A", strtotime($row_from['bsFrom_Wed'])); 
+                                                            echo $wed_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $wed_ttime = date("g:i A", strtotime($row_to['bsTo_Wed'])); 
+                                                            echo $wed_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Thrusday-->
                                         <tr>
                                             <td class="text-center">Thrusday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Thr=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Thr=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $thr_time = date("g:i A", strtotime($row_from['bsFrom_Thr'])); 
+                                                            echo $thr_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $thr_ttime = date("g:i A", strtotime($row_to['bsTo_Thr'])); 
+                                                            echo $thr_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Friday-->
                                         <tr>
                                             <td class="text-center">Friday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Fri=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Fri=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $fri_time = date("g:i A", strtotime($row_from['bsFrom_Fri'])); 
+                                                            echo $fri_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $fri_ttime = date("g:i A", strtotime($row_to['bsTo_Fri'])); 
+                                                            echo $fri_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Saturday-->
                                         <tr>
                                             <td class="text-center">Saturday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Sat=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Sat=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $sat_time = date("g:i A", strtotime($row_from['bsFrom_Sat'])); 
+                                                            echo $sat_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $sat_ttime = date("g:i A", strtotime($row_to['bsTo_Sat'])); 
+                                                            echo $sat_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
                                         <!-- Sunday-->
                                         <tr>
                                             <td class="text-center">Sunday</td>
                                             <?php
-                                                if($isClosed=='No')
+                                                if($numRows==0)
                                                 {
-                                            ?>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"></td>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                                    <td class="text-center text-danger" colspan="2"><b><i>Marked as Closed Day</i></b></td>
-                                            <?php
+                                                    echo "<td class='text-center' colspan='2' style='color:red'><b><i>Business Schedule not set yet</i></b></td>";
                                             
                                                 }
+                                                else if($numRows>0)
+                                                {
+                                                    if($isClosed_Sun=='Closed')
+                                                    {
+                                                        echo "<td class='text-center text-danger' colspan='2'><b><i>Marked as Closed Day</i></b></td>";
+                                                    }
+                                                    else if($isClosed_Sun=='')
+                                                    {
+                                            ?>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $sun_time = date("g:i A", strtotime($row_from['bsFrom_Sun'])); 
+                                                            echo $sun_time;
+                                                        ?>
+                                                        </td>
+                                                        <td class="text-center">
+                                                        <?php
+                                                            $sun_ttime = date("g:i A", strtotime($row_to['bsTo_Sun'])); 
+                                                            echo $sun_ttime;
+                                                        ?>
+                                                        </td>
+                                            <?php
+                                                    }
+                                                }
+                                              
                                             ?>
                                         </tr>
 
                                     </table>
                                 </div>
-								<?php
-									if(isset($_GET['updateMsg']))
-									{
-										echo "<div class='alert alert-success alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-check'></i> <strong>Success !!</strong> Profile has been updated successfully
-										</div>";
-									}
-									else if(isset($_GET['msgError']))
-									{
-										echo "<div class='alert alert-danger alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-error'></i> <strong>Error !!</strong> While updating your profile
-										</div>";
-									}
-									else if(isset($_GET['passMsg']))
-									{
-										echo "<div class='alert alert-danger alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-warning'></i> <strong>Error !!</strong> Password doesn&apos;t match.
-										</div>";
-									}
-									else if(isset($_GET['passEmptyMsg']))
-									{
-										echo "<div class='alert alert-warning alert-dismissible fade in'>
-												 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-											<i class='fa fa-warning'></i> <strong>Warning !!</strong> Enter your password to update your profile.
-										</div>";
-									}
-								?>
-                                <div class="editAbleForm">
-                                    <form action="WorkingHours-Action.php" method="post" class="form-horizontal" id="changeUsernameForm">
-									<fieldset>
-										<div class="changeUsenrameMessages"></div>
-                                        <?php
-                                            /*
-                                            while($line=mysqli_fetch_assoc($da))
-                                            {
-                                                */
-                                        ?>
-                                        <!-- Monday-->
-										<div class="form-group">
-                                            <div class="col-sm-5" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkMonday" id="checkMonday">
-                                                        <label class="form-check-label" for="inlineRadio3">Monday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control MondayTime" id="WF_MonTime" name="WF_MonTime" value="<?php $from_Time=$line['bs_FromTime']; $formated_time = date("H:i", strtotime($from_Time)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control MondayTime" id="WT_MonTime" name="WT_MonTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <?php
-                                           // }
-                                        ?>
-                                        <!-- Tuesday -->
-                                        <div class="form-group">
-                                            <div class="col-sm-5" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkTuesday" id="checkTuesday">
-                                                        <label class="form-check-label" for="inlineRadio3">Tuesday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control TuesdayTime" id="WF_TueTime" name="WF_TueTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control TuesdayTime" id="WT_TueTime" name="WT_TueTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <!-- Wed -->
-                                        <div class="form-group">
-                                            <div class="col-sm-6" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkWednesday" id="checkWednesday">
-                                                        <label class="form-check-label" for="inlineRadio3">Wednesday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control WednesdayTime" id="WF_WedTime" name="WF_WedTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control WednesdayTime" id="WT_WedTime" name="WT_WedTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <!-- Thu -->
-                                        <div class="form-group">
-                                            <div class="col-sm-6" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkThrusday" id="checkThrusday">
-                                                        <label class="form-check-label" for="inlineRadio3">Thrusday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control ThrusdayTime" id="WF_ThuTime" name="WF_ThuTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control ThrusdayTime" id="WT_ThuTime" name="WT_ThuTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <!-- Fri-->
-                                        <div class="form-group">
-                                            <div class="col-sm-6" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkFriday" id="checkFriday">
-                                                        <label class="form-check-label" for="inlineRadio3">Friday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control FridayTime" id="WF_FriTime" name="WF_FriTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control FridayTime" id="WT_FriTime" name="WT_FriTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <!-- Sat -->
-                                        <div class="form-group">
-                                            <div class="col-sm-6" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSaturday" id="checkSaturday">
-                                                        <label class="form-check-label" for="inlineRadio3">Saturday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control SaturdayTime" id="WF_SatTime" name="WF_Satime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control SaturdayTime" id="WT_SatTime" name="WT_SatTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <!-- Sun -->
-                                        <div class="form-group">
-                                            <div class="col-sm-5" style="margin-top: 6px;">
-                                                <div class="row">
-                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
-                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSunday" id="checkSunday">
-                                                        <label class="form-check-label" for="inlineRadio3">Sunday <i>(Checked, if closed)</span></label>
-                                                    </div>				
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control SundayTime" id="WF_SunTime" name="WF_SunTime" value="<?php $formated_time = date("H:i", strtotime($fromTime)); echo $formated_time; ?>"/>
-											</div>
-                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
-											<div class="col-sm-3">
-											  <input type="time"  class="form-control SundayTime" id="WT_SunTime" name="WT_SunTime" value="<?php $formated_time_t = date("H:i", strtotime($toTime)); echo $formated_time_t; ?>"/>
-											</div>
-
-                                        </div>
-                                        <hr>
-										<div class="form-group">
-											<label for="password" class="col-sm-2 control-label">Password</label>
-											<div class="col-sm-9">
-											  <input type="password" class="form-control" id="password" name="password"/>
-											</div>
-										</div>
-									  <div class="form-group">
-										<div class="col-sm-offset-5 col-sm-10">
-											<input type="hidden" name="dealer_id" id="dealer_id" value="<?php echo $result['dealer_ID']; ?>" /> 
-										  <button type="submit" class="btn btn-success" name="updateBtn" data-loading-text="Loading..." id="changeProfileBtn">Save Changes </button>
-                                          <button type="reset" style="margin-left:10px;" class="btn btn-warning" id="cancelBtn">Cancel</button>
-                                        </div>
-									  </div>
-									</fieldset>
-								</form>
-                                </div>
 								
+                                
 
 
 							</div> <!-- /panel-body -->		
@@ -632,7 +598,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required class="form-control MondayTimeAdd" id="AWF_MonTime" name="AWF_MonTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required class="form-control MondayTimeAdd" id="AWF_MonTime" name="AWF_MonTime" value=""/>
+                                    <input type="time" required class="form-control MondayTimeAdd" id="AWT_MonTime" name="AWT_MonTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -644,7 +610,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required class="form-control TuesdayTimeAdd" id="AWF_TueTime" name="AWF_TueTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control TuesdayTimeAdd" id="AWF_TueTime" name="AWF_TueTime" value=""/>
+                                    <input type="time" required  class="form-control TuesdayTimeAdd" id="AWT_TueTime" name="AWT_TueTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -656,7 +622,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required class="form-control WednesdayTimeAdd" id="AWF_WedTime" name="AWF_WedTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control WednesdayTimeAdd" id="AWF_WedTime" name="AWF_WedTime" value=""/>
+                                    <input type="time" required  class="form-control WednesdayTimeAdd" id="AWT_WedTime" name="AWT_WedTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -668,7 +634,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required class="form-control ThrusdayTimeAdd" id="AWF_ThuTime" name="AWF_ThuTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control ThrusdayTimeAdd" id="AWF_ThuTime" name="AWF_ThuTime" value=""/>
+                                    <input type="time" required  class="form-control ThrusdayTimeAdd" id="AWT_ThuTime" name="AWT_ThuTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -680,7 +646,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required  class="form-control FridayTimeAdd" id="AWF_FriTime" name="AWF_FriTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control FridayTimeAdd" id="AWF_FriTime" name="AWF_FriTime" value=""/>
+                                    <input type="time" required  class="form-control FridayTimeAdd" id="AWT_FriTime" name="AWT_FriTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -692,7 +658,7 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required  class="form-control SaturdayTimeAdd" id="AWF_SatTime" name="AWF_SatTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control SaturdayTimeAdd" id="AWF_SatTime" name="AWF_SatTime" value=""/>
+                                    <input type="time" required  class="form-control SaturdayTimeAdd" id="AWT_SatTime" name="AWT_SatTime" value=""/>
 								</div>
 							</div>
                             <div class="form-group">
@@ -704,17 +670,202 @@ $da=mysqli_query($connect,$s_query);
                                     <input type="time" required  class="form-control SundayTimeAdd" id="AWF_SunTime" name="AWF_SunTime" value=""/>
 								</div>
 								<div class="col-sm-4">
-                                    <input type="time" required  class="form-control SundayTimeAdd" id="AWF_SunTime" name="AWF_SunTime" value=""/>
+                                    <input type="time" required  class="form-control SundayTimeAdd" id="AWT_SunTime" name="AWT_SunTime" value=""/>
 								</div>
 							</div>
                         </div>
                         <div class="modal-footer">
 						    <input type="hidden" id="user_id" value="<?php echo $Id;?>" name="user_id">
-						    <button type="submit" class="btn btn-success" id="createScheduleBtn" autocomplete="off"> Confirm</button>
+						    <button type="submit" class="btn btn-success" name="createScheduleBtn" id="createScheduleBtn" autocomplete="off"> Confirm</button>
 						    <button type="button" class="btn btn-danger" data-dismiss="modal"> Close</button>
 					    </div>
                     </form>
                 </div>>
+            </div>
+        </div>
+        <!-- Update-->
+        <div class="modal fade" id="updateScheduleModal" tabindex="-1" role="dialog">
+		    <div class="modal-dialog" style="width:65%;margin-top:1%">
+			    <div class="modal-content">
+				    <form class="form-horizontal" id="updateScheduleForm" method="POST" enctype="multipart/form-data">
+					    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"><i class="fa fa-refresh"></i> Update Schedule</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Monday-->
+							<div class="form-group">
+                                <div class="col-sm-5" style="margin-top: 6px;">
+                                    <div class="row">
+                                        <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                            <input class="form-check-input" type="checkbox" value="Closed" name="checkMonday" id="checkMonday">
+                                            <label class="form-check-label" for="inlineRadio3">Monday <i>(Checked, if closed)</span></label>
+                                        </div>				
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+								<div class="col-sm-3">
+								    <input type="time"  class="form-control MondayTime" id="WF_MonTime" name="WF_MonTime"/>
+								</div>
+                                <label for="shopAddress" class="col-sm-1 control-label">To</label>
+								<div class="col-sm-3">
+									<input type="time"  class="form-control MondayTime" id="WT_MonTime" name="WT_MonTime"/>
+								</div>
+
+                            </div>
+                            <!-- Tuesday -->
+                            <div class="form-group">
+                                            <div class="col-sm-5" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkTuesday" id="checkTuesday">
+                                                        <label class="form-check-label" for="inlineRadio3">Tuesday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                            </div>
+                            <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control TuesdayTime" id="WF_TueTime" name="WF_TueTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control TuesdayTime" id="WT_TueTime" name="WT_TueTime"/>
+											</div>
+
+                            </div>
+                            <!-- Wed -->
+                                        <div class="form-group">
+                                            <div class="col-sm-6" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkWednesday" id="checkWednesday">
+                                                        <label class="form-check-label" for="inlineRadio3">Wednesday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control WednesdayTime" id="WF_WedTime" name="WF_WedTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control WednesdayTime" id="WT_WedTime" name="WT_WedTime"/>
+											</div>
+
+                                        </div>
+                                        <!-- Thu -->
+                                        <div class="form-group">
+                                            <div class="col-sm-6" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkThrusday" id="checkThrusday">
+                                                        <label class="form-check-label" for="inlineRadio3">Thrusday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control ThrusdayTime" id="WF_ThuTime" name="WF_ThuTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control ThrusdayTime" id="WT_ThuTime" name="WT_ThuTime"/>
+											</div>
+
+                                        </div>
+                                        <!-- Fri-->
+                                        <div class="form-group">
+                                            <div class="col-sm-6" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkFriday" id="checkFriday">
+                                                        <label class="form-check-label" for="inlineRadio3">Friday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control FridayTime" id="WF_FriTime" name="WF_FriTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control FridayTime" id="WT_FriTime" name="WT_FriTime"/>
+											</div>
+
+                                        </div>
+                                        <!-- Sat -->
+                                        <div class="form-group">
+                                            <div class="col-sm-6" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSaturday" id="checkSaturday">
+                                                        <label class="form-check-label" for="inlineRadio3">Saturday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control SaturdayTime" id="WF_SatTime" name="WF_SatTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control SaturdayTime" id="WT_SatTime" name="WT_SatTime"/>
+											</div>
+
+                                        </div>
+                                        <!-- Sun -->
+                                        <div class="form-group">
+                                            <div class="col-sm-5" style="margin-top: 6px;">
+                                                <div class="row">
+                                                   <div class="form-check form-check-inline col col-sm-9" style="margin-left:20px">
+                                                        <input class="form-check-input" type="checkbox" value="Closed" name="checkSunday" id="checkSunday">
+                                                        <label class="form-check-label" for="inlineRadio3">Sunday <i>(Checked, if closed)</span></label>
+                                                    </div>				
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shopAddress" class="col-sm-3 control-label">From Time</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control SundayTime" id="WF_SunTime" name="WF_SunTime"/>
+											</div>
+                                            <label for="shopAddress" class="col-sm-1 control-label">To</label>
+											<div class="col-sm-3">
+											  <input type="time"  class="form-control SundayTime" id="WT_SunTime" name="WT_SunTime"/>
+											</div>
+
+                                        </div>        
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="dealer_id" id="dealer_id" value="<?php echo $Id;?>"/> 
+                            <input type="hidden" name="fromTimeId" id="fromTimeId">
+                            <input type="hidden" name="toTimeId" id="toTimeId">
+                            <input type="hidden" name="checkId" id="checkId">
+                            <input type="hidden" name="dealerId" id="dealerId"> 
+						    <button type="submit" class="btn btn-success" name="updateScheduleBtn" id="updateScheduleBtn" autocomplete="off"> Confirm</button>
+						    <button type="button" class="btn btn-danger" data-dismiss="modal"> Close</button>
+					    </div>
+                    </form>
+                </div>
             </div>
         </div>
 		<!-- jQuery -->
@@ -722,6 +873,7 @@ $da=mysqli_query($connect,$s_query);
 		<script src="../Bootstrap/js/metisMenu.min.js"></script>
         <script src="../Bootstrap/js/bootstrap.min.js"></script>
         <script src="../Bootstrap/js/startmin.js"></script>
+        <script src="../Bootstrap/Sweetalert/dist/sweetalert2.all.min.js"></script>
 		<script src="../Bootstrap/js/project/Shopkeeper/Profile.js"></script>
 		<script>
             $(document).ready(function(){
@@ -730,31 +882,37 @@ $da=mysqli_query($connect,$s_query);
 					location= "Working-Hours.php";
 				}
                 //$("input[type=time]").val('');
-                $('.editAbleForm').hide();
-                $('.editableBtns').hide();
-                $(".alert-warning").delay(500).show(10, function() {
+                
+                //$('.editAbleForm').hide();
+                //$('.editableBtns').hide();
+                
+                
+                $(".alert-danger").delay(500).show(10, function() {
 					$(this).delay(2000).hide(10, function() {
 						$(this).remove();
 						redirect();
 				    });
 				});
-                $(".alert-success").delay(500).show(10, function() {
+                $(".alertSuccess").delay(500).show(10, function() {
 					$(this).delay(2000).hide(10, function() {
 						$(this).remove();
 						redirect();
 				    });
 				});
+                /*
                 $('.editFormBtn').on('click',function(){
                     $('.editAbleForm').show();
                     $('#ResultedInfo').hide();
                     $('.editableBtns').show();
                     $('.editBtn').hide();
                 });
+                
                 $('#cancelBtn').on('click',function(){
                     $('.editBtn').show();
                     $('#ResultedInfo').show();
                     $('.editAbleForm').hide();
                 });
+                */
                 /*-------  Days enable disable -- ADD ONLY*/
                 $('#checkMondayAdd').on('change',function(){
                     var is_Checked=$(this).prop('checked');
@@ -853,7 +1011,7 @@ $da=mysqli_query($connect,$s_query);
                         $('.SundayTimeAdd').attr('required');
                     }
                 });
-                /*------------ Days enable disable -- UPDATE ONLY*/
+                /*------------ Days enable disable -- UPDATE ONLY
                 $('#checkMonday').on('change',function(){
                     var is_Checked=$(this).prop('checked');
                     if(is_Checked==true)
@@ -943,6 +1101,251 @@ $da=mysqli_query($connect,$s_query);
                     {
                         $('.SundayTime').attr('disabled',false);
                     }
+                });*/
+                ///
+                /*-------  Days enable disable -- UPDATE ONLY*/
+                $('#checkMonday').on('change',function(){
+                    var is_Checked=$(this).prop('checked');
+                    if(is_Checked==true)
+                    {
+                        $('.MondayTime').attr('disabled',true);
+                        $('.MondayTime').val('');
+                    }
+                    else
+                    {
+                        $('.MondayTime').attr('disabled',false);
+                        $('.MondayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkTuesday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.TuesdayTime').attr('disabled',true);
+                        $('.TuesdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.TuesdayTime').attr('disabled',false);
+                        $('.TuesdayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkWednesday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.WednesdayTime').attr('disabled',true);
+                        $('.WednesdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.WednesdayTime').attr('disabled',false);
+                        $('.WednesdayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkThrusday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.ThrusdayTime').attr('disabled',true);
+                        $('.ThrusdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.ThrusdayTime').attr('disabled',false);
+                        $('.ThrusdayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkFriday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.FridayTime').attr('disabled',true);
+                        $('.FridayTime').val('');
+                    }
+                    else
+                    {
+                        $('.FridayTime').attr('disabled',false);
+                        $('.FridayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkSaturday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    if(is_CheckedT==true)
+                    {
+                        $('.SaturdayTime').attr('disabled',true);
+                        $('.SaturdayTime').val('');
+                    }
+                    else
+                    {
+                        $('.SaturdayTime').attr('disabled',false);
+                        $('.SaturdayTime').attr('required','required');
+                    }
+                });
+
+                $('#checkSunday').on('change',function(){
+                    var is_CheckedT=$(this).prop('checked');
+                    //alert(is_CheckedT);
+                    if(is_CheckedT==true)
+                    {
+                        $('.SundayTime').attr('disabled',true);
+                        $('.SundayTime').val('');
+                    }
+                    else if(is_CheckedT==false)
+                    {
+                        $('.SundayTime').attr('disabled',false);
+                        $('.SundayTime').attr('required','required');
+                    }
+                });
+                ///Update
+                $(document).on('click', '.editFormBtn', function(){  
+                    var dealer_id = $(this).attr("name");  
+                    //alert(dealer_id);
+                    $.ajax({
+
+                        url:"fetchTimeSchedule.php",  
+                        method:"POST",  
+                        data:{dealer_id:dealer_id},  	
+                        dataType:"json",  
+                        success:function(data)
+                        {
+                            //alert(data);`
+                            var mon_check = data.bSCheck_Mon;
+                            var tue_check = data.bSCheck_Tue;
+                            var wed_check = data.bSCheck_Wed;
+                            var thr_check = data.bSCheck_Thr;
+                            var fri_check = data.bSCheck_Fri;
+                            var sat_check = data.bSCheck_Sat;
+                            var sun_check = data.bSCheck_Sun;
+
+                            //Monday
+                            if(mon_check=='Closed')
+                            {
+                                $('.MondayTime').attr('disabled',true);
+                                $('.MondayTime').val('');
+                                $('#checkMonday').prop('checked','checked');
+                            }
+                            else if(mon_check=='')
+                            {
+                                $('#WF_MonTime').val(data.bsFrom_Mon);
+                                $('#WT_MonTime').val(data.bsTo_Mon);
+                            }
+                            
+                            //Tueday
+                            if(tue_check=='Closed')
+                            {
+                                $('.TuesdayTime').attr('disabled',true);
+                                $('.TuesdayTime').val('');
+                                $('#checkTuesday').prop('checked','checked');
+                            }
+                            else if(tue_check=='')
+                            {
+                                $('#WF_TueTime').val(data.bsFrom_Tue);
+                                $('#WT_TueTime').val(data.bsTo_Tue);
+                            }
+
+                            //Wednesday
+                            if(wed_check=='Closed')
+                            {
+                                $('.WednesdayTime').attr('disabled',true);
+                                $('.WednesdayTime').val('');
+                                $('#checkWednesday').prop('checked','checked');
+                            }
+                            else if(wed_check=='')
+                            {
+                                $('#WF_WedTime').val(data.bsFrom_Wed);
+                                $('#WT_WedTime').val(data.bsTo_Wed);
+                            }
+
+                            //Thrusday
+                            if(thr_check=='Closed')
+                            {
+                                $('.MondayTime').attr('disabled',true);
+                                $('.MondayTime').val('');
+                                $('#checkMonday').prop('checked','checked');
+                            }
+                            else if(thr_check=='')
+                            {
+                                $('#WF_ThuTime').val(data.bsFrom_Thr);
+                                $('#WT_ThuTime').val(data.bsTo_Thr);
+                            }
+
+                            //Friday
+                            if(fri_check=='Closed')
+                            {
+                                $('.FridayTime').attr('disabled',true);
+                                $('.FridayTime').val('');
+                                $('#checkFriday').prop('checked','checked');
+                            }
+                            else if(fri_check=='')
+                            {
+                                $('#WF_FriTime').val(data.bsFrom_Fri);
+                                $('#WT_FriTime').val(data.bsTo_Fri);
+                            }
+
+                            //Saturday
+                            if(sat_check=='Closed')
+                            {
+                                $('.SaturdayTime').attr('disabled',true);
+                                $('.SaturdayTime').val('');
+                                $('#checkSaturday').prop('checked','checked');
+                            }
+                            else if(sat_check=='')
+                            {
+                                $('#WF_SatTime').val(data.bsFrom_Sat);
+                                $('#WT_SatTime').val(data.bsTo_Sat);
+                            }
+
+                            //Sunday
+                            if(sun_check=='Closed')
+                            {
+                                $('.SundayTime').attr('disabled',true);
+                                $('.SundayTime').val('');
+                                $('#checkSunday').prop('checked','checked');
+                            }
+                            else if(sun_check=='')
+                            {
+                                $('#WF_SunTime').val(data.bsFrom_Sun);
+                                $('#WT_SunTime').val(data.bsTo_Sun);
+                            }
+                            $('#checkId').val(data.bSCheck_ID);
+                            $('#toTimeId').val(data.bsTo_ID);
+                            $('#fromTimeId').val(data.bsFrom_ID);
+                            $('#dealerId').val(data.DealerId);
+                        }
+                    });
+                });
+                $('#updateScheduleForm').on('submit',function(){
+                    event.preventDefault();
+                    $.ajax({  
+                        url:"WorkingHours-Action.php",  
+                        method:"POST",  
+                        data:$('#updateScheduleForm').serialize(),  
+                        beforeSend:function(){  
+                            $('#Update').val("Updating..");  
+                        },  
+                        success:function(data)
+                        {  
+                            $('#updateScheduleForm')[0].reset();  
+                            $('#updateScheduleModal').modal('hide');  
+                        //$('#product_table').html(data);
+                            Swal.fire({
+                                position: 'center',
+                                type: 'success',
+                                showCloseButton: true,
+                                title: 'Schedule has been updated',
+                                customClass: 'animated tada',
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+                            setTimeout(function() { redirect(); }, 1000);
+                        }  
+                    });
                 });
             });
         </script>

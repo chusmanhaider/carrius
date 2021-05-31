@@ -1,7 +1,7 @@
 <html>
     <head>
        <style>
-
+            
        </style>
     </head>
     <body>
@@ -16,16 +16,16 @@
                         {
                     ?>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
+                        <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive awd" name="drivetain" value="AWD"  > AWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
+                        <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fwd" name="drivetain" value="FWD"  > FWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
+                        <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive rwd" name="drivetain" value="RWD"  > RWD</label>
                     </div>
                     <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
+                        <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fourwd" name="drivetain" value="4WD"  > 4WD</label>
                     </div>
                     <?php
                         }
@@ -35,16 +35,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector_drive awd" value="AWD"  > AWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" checked="checked" class="common_selector_drive awd" name="drivetain" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fwd" name="drivetain" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive rwd" name="drivetain" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fourwd" name="drivetain" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -52,16 +52,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive awd" name="drivetain" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector_drive fwd" value="FWD"  > FWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" checked="checked" class="common_selector_drive fwd" name="drivetain" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive rwd" name="drivetain" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fourwd" name="drivetain" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -69,16 +69,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive awd" name="drivetain" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fwd" name="drivetain" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector_drive rwd" value="RWD"  > RWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" checked="checked" class="common_selector_drive rwd" name="drivetain" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fourwd" name="drivetain" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }
@@ -86,16 +86,16 @@
                             {
                     ?>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive awd" value="AWD"  > AWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive awd" name="drivetain" value="AWD"  > AWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive fwd" value="FWD"  > FWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive fwd" name="drivetain" value="FWD"  > FWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" class="common_selector_drive rwd" value="RWD"  > RWD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" class="common_selector_drive rwd" name="drivetain" value="RWD"  > RWD</label>
                                 </div>
                                 <div class="list-group-item checkbox">
-                                    <label><input type="checkbox" checked="checked" class="common_selector_drive fourwd" value="4WD"  > 4WD</label>
+                                    <label><input type="radio" style="margin-left: -20px;" checked="checked" class="common_selector_drive fourwd" name="drivetain" value="4WD"  > 4WD</label>
                                 </div>
                     <?php
                             }

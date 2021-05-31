@@ -1,3 +1,7 @@
+<?php 
+    include_once 'temp_session.php';
+    error_reporting();
+?>
 <html>
     <head>
         <title>Carrius - All Cars Model</title>
